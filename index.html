@@ -177,7 +177,7 @@ footer{padding:36px 0;text-align:center;color:var(--muted);font-size:.85rem;bord
 .kc:hover{border-color:var(--accent);transform:translateY(-2px)}.kc span{display:block;color:var(--muted);font-size:.78rem}
 .bars{display:flex;align-items:flex-end;gap:14px;height:170px;margin:6px 0 26px;padding:0 6px;border-bottom:1px solid var(--glass-b)}
 .bw{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative}
-.bar{width:100%;max-width:56px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--accent2),var(--accent));height:0;transition:height 1s cubic-bezier(.2,.8,.2,1)}
+.cbar{width:100%;max-width:56px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--accent2),var(--accent));height:0;transition:height 1s cubic-bezier(.2,.8,.2,1)}
 .bw em{position:absolute;bottom:-22px;font-style:normal;font-size:.72rem;color:var(--muted)}
 .tbl{width:100%;border-collapse:collapse;font-size:.85rem}.tbl th{text-align:left;color:var(--muted);font-weight:500;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
 .tbl th,.tbl td{padding:10px 8px;border-bottom:1px solid var(--glass-b)}
@@ -658,8 +658,8 @@ function drawKb(){
 drawKb();
 const months=[['Mayo',48],['Jun',62],['Jul',55],['Ago',78],['Sep',70],['Oct',92]];
 const bars=document.getElementById('bars');
-bars.innerHTML=months.map(m=>`<div class="bw"><div class="bar" data-h="${m[1]}"></div><em>${m[0]}</em></div>`).join('');
-function drawBars(){bars.querySelectorAll('.bar').forEach(b=>{b.style.height='0';requestAnimationFrame(()=>requestAnimationFrame(()=>b.style.height=b.dataset.h+'%'))})}
+bars.innerHTML=months.map(m=>`<div class="bw"><div class="cbar" data-h="${m[1]}"></div><em>${m[0]}</em></div>`).join('');
+function drawBars(){bars.querySelectorAll(".cbar").forEach(b=>{b.style.height='0';requestAnimationFrame(()=>requestAnimationFrame(()=>b.style.height=b.dataset.h+'%'))})}
 document.getElementById('form').addEventListener('submit',e=>{
   e.preventDefault();
   const f=new FormData(e.target);
