@@ -4,605 +4,428 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Joe Arellano R. · Ingeniero en Computación e Informática</title>
-<meta name="description" content="Servicios de ingeniería de software: desarrollo web full-stack, APIs, microservicios, bases de datos, contenedores y redes. Arica, Chile.">
+<meta name="description" content="Desarrollo de software a medida: sistemas de gestión, páginas web, APIs, microservicios y bases de datos. Arica, Chile.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f3f6fc; --bg2:#e6edfa;
-  --text:#0b1530; --muted:#4a5878;
-  --glass:rgba(255,255,255,.62); --glass-b:rgba(20,50,120,.14);
-  --accent:#1d4ed8; --accent2:#0891b2; --accent-soft:rgba(29,78,216,.1);
-  --shadow:0 10px 40px rgba(20,40,100,.12);
-  --orb1:#60a5fa; --orb2:#22d3ee; --orb3:#818cf8;
-  --on-accent:#fff;
+  --bg:#f4f6fb; --surface:#ffffff; --line:rgba(10,25,70,.14);
+  --text:#0a1226; --muted:#55627f; --dim:#9aa5bf;
+  --accent:#1c3f9e; --accent-soft:rgba(28,63,158,.08); --on-accent:#fff;
+  --ok:#15803d; --warn:#a16207;
 }
 :root[data-theme="dark"]{
-  --bg:#03060f; --bg2:#070d1f;
-  --text:#e8eefc; --muted:#94a3c4;
-  --glass:rgba(14,24,52,.55); --glass-b:rgba(120,160,255,.16);
-  --accent:#4f8cff; --accent2:#22d3ee; --accent-soft:rgba(79,140,255,.13);
-  --shadow:0 10px 50px rgba(0,0,0,.55);
-  --orb1:#1d4ed8; --orb2:#0e7490; --orb3:#4338ca;
-  --on-accent:#03060f;
+  --bg:#02050d; --surface:#060c1b; --line:rgba(110,150,255,.13);
+  --text:#e9eefc; --muted:#8793b2; --dim:#46526f;
+  --accent:#3a63c8; --accent-soft:rgba(58,99,200,.14); --on-accent:#fff;
+  --ok:#4ade80; --warn:#facc15;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .4s,color .4s}
-h1,h2,h3{font-family:'Space Grotesk',Inter,sans-serif;line-height:1.15;letter-spacing:-.02em}
+html{scroll-behavior:auto;scroll-padding-top:80px}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
 .mono{font-family:'JetBrains Mono',monospace}
-
-/* fondo animado */
-.bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(160deg,var(--bg),var(--bg2));overflow:hidden}
-.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;animation:float 22s ease-in-out infinite}
-.orb.a{width:520px;height:520px;background:var(--orb1);top:-120px;left:-100px}
-.orb.b{width:460px;height:460px;background:var(--orb2);top:35%;right:-140px;animation-delay:-8s}
-.orb.c{width:480px;height:480px;background:var(--orb3);bottom:-160px;left:25%;animation-delay:-15s}
-.grid{position:absolute;inset:0;background-image:linear-gradient(var(--glass-b) 1px,transparent 1px),linear-gradient(90deg,var(--glass-b) 1px,transparent 1px);background-size:56px 56px;opacity:.35;mask-image:radial-gradient(ellipse at 50% 20%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 20%,#000 20%,transparent 75%)}
-@keyframes float{50%{transform:translate(60px,40px) scale(1.08)}}
-
+h1,h2,h3,h4{letter-spacing:-.03em;line-height:1.1;font-weight:700}
 .wrap{width:min(1120px,100% - 40px);margin-inline:auto}
-section{padding:90px 0}
-.glass{background:var(--glass);border:1px solid var(--glass-b);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border-radius:20px;box-shadow:var(--shadow)}
+section{padding:96px 0;border-top:1px solid var(--line)}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:flex;justify-content:space-between;gap:16px}
+h2{font-size:clamp(2rem,5vw,3.6rem);margin-bottom:18px}
+.sub{color:var(--muted);max-width:60ch;margin-bottom:48px;font-size:1.05rem}
 
-/* nav */
-nav{position:fixed;top:14px;left:0;right:0;z-index:50}
-nav .bar{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 10px 20px;border-radius:999px;width:min(1120px,100% - 28px);margin-inline:auto}
-.logo{font-family:'Space Grotesk';font-weight:700;font-size:1.1rem}
-.logo span{color:var(--accent)}
-.links{display:flex;gap:4px;align-items:center}
-.links a{padding:8px 14px;border-radius:999px;font-size:.9rem;color:var(--muted);transition:.2s}
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:1.05rem}
+.links{display:flex;gap:2px}
+.links a{padding:8px 13px;font-size:.88rem;color:var(--muted);border-radius:8px}
 .links a:hover{color:var(--text);background:var(--accent-soft)}
 .right{display:flex;gap:10px;align-items:center}
-.toggle{width:58px;height:30px;border-radius:999px;border:1px solid var(--glass-b);background:var(--accent-soft);cursor:pointer;position:relative;padding:0}
-.toggle::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));transition:transform .35s cubic-bezier(.6,-.3,.3,1.4)}
-:root[data-theme="light"] .toggle::after{transform:translateX(28px)}
-.toggle svg{position:absolute;top:7px;width:14px;height:14px;z-index:1;fill:none;stroke:var(--muted);stroke-width:2}
-.toggle .sun{right:8px}.toggle .moon{left:8px}
-.menu-btn{display:none;background:none;border:0;color:var(--text);cursor:pointer;padding:6px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:.95rem;border:1px solid transparent;cursor:pointer;transition:.25s;font-family:inherit}
-.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--on-accent);box-shadow:0 8px 28px -6px var(--accent)}
-.btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px -6px var(--accent)}
-.btn.ghost{background:var(--glass);border-color:var(--glass-b);color:var(--text);backdrop-filter:blur(10px)}
-.btn.ghost:hover{border-color:var(--accent);transform:translateY(-2px)}
-.btn.sm{padding:8px 16px;font-size:.85rem}
+.icon-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;display:grid;place-items:center}
+.icon-btn:hover{border-color:var(--accent)}
+.icon-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+#theme .sun{display:none}:root[data-theme="light"] #theme .sun{display:block}:root[data-theme="light"] #theme .moon{display:none}
+.menu-btn{display:none}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:.92rem;border:1px solid transparent;cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{filter:brightness(1.15)}
+.btn.ghost{border-color:var(--line);background:transparent}
+.btn.ghost:hover{border-color:var(--accent)}
+.btn.sm{padding:8px 16px;font-size:.84rem}
 
 /* hero */
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:120px}
-.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}
-.chip{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;font-size:.82rem;color:var(--muted)}
-.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 #22c55e;animation:pulse 2s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 9px transparent}}
-h1{font-size:clamp(2.4rem,6vw,4.4rem);margin:22px 0 18px}
-.grad{background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-size:1.15rem;color:var(--muted);max-width:56ch}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
-.stats{display:flex;gap:30px;margin-top:44px;flex-wrap:wrap}
-.stats b{font-family:'Space Grotesk';font-size:1.9rem;display:block}
-.stats span{font-size:.82rem;color:var(--muted)}
-.term{padding:0;overflow:hidden}
-.term .top{display:flex;gap:7px;padding:14px 16px;border-bottom:1px solid var(--glass-b)}
-.term .top i{width:11px;height:11px;border-radius:50%;background:var(--glass-b)}
-.term .top i:nth-child(1){background:#ff5f57}.term .top i:nth-child(2){background:#febc2e}.term .top i:nth-child(3){background:#28c840}
-.term pre{padding:20px;font-size:.82rem;line-height:1.8;white-space:pre-wrap;color:var(--muted)}
-.term .k{color:var(--accent2)}.term .s{color:var(--accent)}.term .c{opacity:.6}
-.cursor{display:inline-block;width:8px;height:15px;background:var(--accent);vertical-align:middle;animation:blink 1s steps(2) infinite}
-@keyframes blink{50%{opacity:0}}
+.hero{padding:170px 0 90px;border-top:0}
+.hero .big{font-size:clamp(1.9rem,4.6vw,3.7rem);font-weight:600;letter-spacing:-.035em;line-height:1.14;max-width:22em;color:var(--muted)}
+.hero .big b{color:var(--text);font-weight:800}
+.hero .big em{font-style:normal;color:var(--text)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;margin-top:80px;border-top:1px solid var(--line)}
+.facts div{padding:22px 0;border-bottom:1px solid var(--line)}
+.facts b{font-size:2rem;font-weight:800;display:block;letter-spacing:-.04em}
+.facts span{font-size:.82rem;color:var(--muted)}
 
-/* títulos */
-.eyebrow{color:var(--accent);font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
-h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:14px}
-.sub{color:var(--muted);max-width:60ch;margin-bottom:48px}
+/* servicios */
+.svc{display:grid;grid-template-columns:90px 1.1fr 1fr 40px;gap:24px;align-items:start;padding:32px 0;border-top:1px solid var(--line)}
+.svc:last-child{border-bottom:1px solid var(--line)}
+.svc .n{font-size:.82rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.svc h3{font-size:clamp(1.4rem,2.6vw,2rem);margin-bottom:8px}
+.svc p{color:var(--muted)}
+.svc ul{list-style:none;display:grid;gap:6px;color:var(--muted);font-size:.95rem}
+.svc ul li::before{content:"— ";color:var(--dim)}
+.svc .go{color:var(--dim);font-size:1.3rem}
+.svc:hover h3{color:var(--accent)}
 
-/* tarjetas */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.card{padding:28px;transition:.3s}
-.card:hover{transform:translateY(-6px);border-color:var(--accent)}
-.ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);margin-bottom:18px}
-.ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.card h3{font-size:1.2rem;margin-bottom:8px}
-.card p{color:var(--muted);font-size:.95rem}
-.card ul{list-style:none;margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
-.tag{font-size:.74rem;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-family:'JetBrains Mono',monospace}
+/* tarjetas ejemplo/recurso */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.card{display:flex;flex-direction:column;text-align:left;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden}
+.card:hover{border-color:var(--accent)}
+.thumb{height:150px;background:var(--accent-soft);border-bottom:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:7px;justify-content:center;overflow:hidden}
+.thumb i{display:block;height:9px;border-radius:5px;background:var(--line)}
+.thumb i.a{background:var(--accent);opacity:.8}
+.thumb .row{display:flex;gap:7px}.thumb .row i{flex:1;height:44px;border-radius:8px}
+.thumb .code{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);line-height:1.6;white-space:pre;overflow:hidden}
+.thumb .code b{color:var(--accent);font-weight:500}
+.card .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.tag{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.card h3{font-size:1.4rem}
+.card p{color:var(--muted);font-size:.92rem;flex:1}
+.card .more{font-size:.85rem;font-weight:600;margin-top:6px}
+.count{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--muted)}
+.disc{margin-top:22px;font-size:.8rem;color:var(--muted)}
+.sub-h{font-size:clamp(1.6rem,3vw,2.2rem);margin:72px 0 24px;display:flex;justify-content:space-between;align-items:baseline;gap:16px}
 
-/* proyectos */
-.proj{padding:32px;margin-bottom:20px;display:grid;grid-template-columns:70px 1fr;gap:20px}
-.num{font-family:'Space Grotesk';font-size:3rem;font-weight:700;line-height:1;opacity:.9}
-.proj h3{font-size:1.4rem;margin-bottom:4px}
-.proj .org{color:var(--muted);font-size:.88rem;margin-bottom:12px}
-.proj ul.pts{margin:16px 0 0 18px;color:var(--muted);font-size:.95rem}
-.proj ul.pts li{margin-bottom:6px}
-.proj .tags{display:flex;flex-wrap:wrap;gap:6px}
-
-/* sobre mi */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.panel{padding:30px}
-.panel h3{margin-bottom:16px;font-size:1.2rem}
-.skill{margin-bottom:18px}
-.skill h4{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;font-weight:600}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tl{list-style:none;border-left:2px solid var(--glass-b);padding-left:20px;margin-left:6px}
-.tl li{position:relative;margin-bottom:20px}
-.tl li::before{content:"";position:absolute;left:-27px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
-.tl b{display:block}.tl span{color:var(--muted);font-size:.88rem}
-.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:6px}
-.cert{padding:16px 18px;border-radius:14px;background:var(--accent-soft);font-size:.9rem}
-.cert b{display:block}.cert span{color:var(--muted);font-size:.8rem}
-
-/* proceso */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;counter-reset:s}
-.step{padding:26px;counter-increment:s}
-.step::before{content:"0" counter(s);font-family:'JetBrains Mono';color:var(--accent);font-size:.9rem}
-.step h3{margin:8px 0;font-size:1.1rem}.step p{color:var(--muted);font-size:.9rem}
-
-/* contacto */
-.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
-.cinfo{padding:34px}
-.crow{display:flex;gap:14px;align-items:center;padding:14px;border-radius:14px;margin-top:12px;transition:.2s;border:1px solid transparent}
-.crow:hover{background:var(--accent-soft);border-color:var(--glass-b)}
-.crow .ico{margin:0;flex:none}
-.crow small{display:block;color:var(--muted);font-size:.78rem}
-.crow b{font-weight:600;word-break:break-all}
-form{padding:34px;display:grid;gap:14px}
-label{font-size:.82rem;color:var(--muted);font-weight:500;display:grid;gap:6px}
-input,select,textarea{font:inherit;color:var(--text);background:var(--accent-soft);border:1px solid var(--glass-b);border-radius:12px;padding:12px 14px;outline:none;transition:.2s;width:100%}
-select option{color:#0b1530}
-input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-textarea{min-height:120px;resize:vertical}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.note{font-size:.78rem;color:var(--muted)}
-footer{padding:36px 0;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--glass-b)}
-
-/* ejemplos */
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.tabbtn{font:inherit;font-size:.88rem;font-weight:500;padding:9px 18px;border-radius:999px;border:1px solid var(--glass-b);background:var(--glass);color:var(--muted);cursor:pointer;transition:.2s;backdrop-filter:blur(10px)}
-.tabbtn:hover{color:var(--text);border-color:var(--accent)}
-.tabbtn.on{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--on-accent);border-color:transparent}
-.demo{padding:0;overflow:hidden}
-.demo-top{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--glass-b)}
-.demo-top i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.demo-top i:nth-child(2){background:#febc2e}.demo-top i:nth-child(3){background:#28c840}
-.demo-top .url{margin-left:12px;flex:1;background:var(--accent-soft);border-radius:8px;padding:4px 12px;font-size:.78rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pane{display:none;padding:22px}.pane.on{display:block;animation:fade .4s}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}}
-.pane h3{font-size:1.1rem;margin-bottom:4px}.pane .hint{color:var(--muted);font-size:.82rem;margin-bottom:16px}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:18px}
-.kpi{padding:14px;border-radius:12px;background:var(--accent-soft)}.kpi small{color:var(--muted);font-size:.75rem;display:block}.kpi b{font-family:'Space Grotesk';font-size:1.4rem}
+/* modal */
+dialog{border:1px solid var(--line);border-radius:18px;background:var(--bg);color:var(--text);width:min(960px,100% - 24px);max-height:calc(100vh - 32px);padding:0;margin:auto}
+dialog::backdrop{background:rgba(0,2,8,.78);backdrop-filter:blur(4px)}
+.mh{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:2}
+.mh .url{flex:1;background:var(--accent-soft);border-radius:8px;padding:5px 12px;font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mb{padding:24px;overflow:auto;max-height:calc(100vh - 110px)}
+.mb h3{font-size:1.5rem;margin-bottom:6px}.mb .hint{color:var(--muted);font-size:.88rem;margin-bottom:20px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:20px}
+.kpi{padding:14px;border-radius:12px;background:var(--accent-soft)}.kpi small{color:var(--muted);font-size:.75rem;display:block}.kpi b{font-size:1.4rem;letter-spacing:-.03em}
 .kbwrap{overflow-x:auto;padding-bottom:6px}
 .kb{display:grid;grid-template-columns:repeat(4,minmax(175px,1fr));gap:12px}
 .col{background:var(--accent-soft);border-radius:14px;padding:12px;min-height:210px}
-.col h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:flex;justify-content:space-between}
-.kc{background:var(--glass);border:1px solid var(--glass-b);border-radius:10px;padding:10px 12px;margin-top:8px;cursor:pointer;font-size:.85rem;transition:.2s;text-align:left;width:100%;color:var(--text);font-family:inherit}
-.kc:hover{border-color:var(--accent);transform:translateY(-2px)}.kc span{display:block;color:var(--muted);font-size:.78rem}
-.bars{display:flex;align-items:flex-end;gap:14px;height:170px;margin:6px 0 26px;padding:0 6px;border-bottom:1px solid var(--glass-b)}
+.col h4{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);display:flex;justify-content:space-between}
+.kc{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:8px;cursor:pointer;font-size:.85rem;text-align:left;width:100%}
+.kc:hover{border-color:var(--accent)}.kc span{display:block;color:var(--muted);font-size:.78rem}
+.bars{display:flex;align-items:flex-end;gap:14px;height:170px;margin:6px 0 30px;padding:0 6px;border-bottom:1px solid var(--line)}
 .bw{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative}
-.cbar{width:100%;max-width:56px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--accent2),var(--accent));height:0;transition:height 1s cubic-bezier(.2,.8,.2,1)}
+.cbar{width:100%;max-width:56px;border-radius:6px 6px 0 0;background:var(--accent)}
 .bw em{position:absolute;bottom:-22px;font-style:normal;font-size:.72rem;color:var(--muted)}
-.tbl{width:100%;border-collapse:collapse;font-size:.85rem}.tbl th{text-align:left;color:var(--muted);font-weight:500;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
-.tbl th,.tbl td{padding:10px 8px;border-bottom:1px solid var(--glass-b)}
-.tblw{overflow-x:auto}
-.pill{font-size:.72rem;padding:3px 10px;border-radius:999px;font-weight:600;white-space:nowrap}
-.pill.ok{background:rgba(34,197,94,.16);color:#22c55e}.pill.wip{background:rgba(250,204,21,.16);color:#ca8a04}.pill.todo{background:var(--accent-soft);color:var(--accent)}
-.site{border-radius:14px;overflow:hidden;background:#fbf6ee;color:#2b1d12;border:1px solid var(--glass-b)}
-.site nav{position:static;display:flex;justify-content:space-between;align-items:center;padding:14px 22px;font-size:.85rem}
-.site nav b{font-family:'Space Grotesk';font-size:1.05rem}.site nav span{display:flex;gap:18px;opacity:.7}
+.tblw{overflow-x:auto}.tbl{width:100%;border-collapse:collapse;font-size:.85rem}
+.tbl th{text-align:left;color:var(--muted);font-weight:500;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+.tbl th,.tbl td{padding:10px 8px;border-bottom:1px solid var(--line)}
+.pill{font-size:.72rem;padding:3px 10px;border-radius:999px;font-weight:600;white-space:nowrap;background:var(--accent-soft)}
+.pill.ok{color:var(--ok)}.pill.wip{color:var(--warn)}.pill.todo{color:var(--accent)}
+.site{border-radius:14px;overflow:hidden;background:#fbf6ee;color:#2b1d12;border:1px solid var(--line)}
+.site .sn{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;font-size:.85rem}
+.site .sn b{font-size:1.05rem}.site .sn span{display:flex;gap:18px;opacity:.7}
 .site .sh{padding:44px 24px;background:linear-gradient(120deg,#3b2414,#8a5a36);color:#fff}
-.site .sh h4{font-family:'Space Grotesk';font-size:clamp(1.4rem,3.5vw,2.2rem);margin-bottom:8px}.site .sh p{opacity:.8;font-size:.9rem;max-width:44ch}
+.site .sh h4{font-size:clamp(1.4rem,3.5vw,2.2rem);margin-bottom:8px}.site .sh p{opacity:.8;font-size:.9rem;max-width:44ch}
 .site .sh i{display:inline-block;margin-top:16px;font-style:normal;background:#f3c98b;color:#3b2414;padding:9px 18px;border-radius:999px;font-weight:600;font-size:.82rem}
 .site .sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;padding:22px}
 .site .sg div{background:#fff;border-radius:12px;padding:14px;font-size:.82rem;box-shadow:0 4px 14px rgba(60,30,10,.08)}
-.site .sg div u{display:block;height:70px;border-radius:8px;margin-bottom:10px;text-decoration:none;background:linear-gradient(135deg,#d7a46b,#8a5a36)}
+.site .sg div u{display:block;height:70px;border-radius:8px;margin-bottom:10px;background:linear-gradient(135deg,#d7a46b,#8a5a36)}
 .site .sg div:nth-child(2) u{background:linear-gradient(135deg,#c98b5a,#5a3720)}.site .sg div:nth-child(3) u{background:linear-gradient(135deg,#e8c9a0,#b07a46)}
-.er rect{fill:var(--accent-soft);stroke:var(--glass-b)}.er .hd{fill:var(--accent);stroke:none}
-.er text{fill:var(--text);font-size:12px;font-family:'JetBrains Mono',monospace}.er .ht{fill:var(--on-accent);font-weight:700}.er .k{fill:var(--accent2)}
-.er line,.ms line,.ms path{stroke:var(--accent);stroke-width:1.6;fill:none}
-.ms rect{fill:var(--accent-soft);stroke:var(--glass-b)}.ms text{fill:var(--text);font-size:13px;font-family:Inter,sans-serif}.ms .s{fill:var(--muted);font-size:11px}
-.ms .flow{stroke-dasharray:6 6;animation:dash 1s linear infinite}
-@keyframes dash{to{stroke-dashoffset:-12}}
 svg.dg{width:100%;height:auto;display:block}
-pre.code{margin-top:16px;padding:16px;border-radius:12px;background:var(--accent-soft);font-family:'JetBrains Mono',monospace;font-size:.78rem;overflow-x:auto;color:var(--muted);line-height:1.7}
-.anis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
-.ani{border-radius:14px;background:var(--accent-soft);padding:18px;text-align:center;font-size:.78rem;color:var(--muted)}
-.ani .st{height:90px;display:grid;place-items:center;margin-bottom:10px}
-.spin{width:38px;height:38px;border-radius:50%;border:4px solid var(--glass-b);border-top-color:var(--accent);animation:spin .9s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.pulse{width:44px;height:44px;border-radius:50%;background:var(--accent);animation:pl 1.8s infinite}
-@keyframes pl{0%{box-shadow:0 0 0 0 var(--accent)}100%{box-shadow:0 0 0 24px transparent}}
-.shim{font-family:'Space Grotesk';font-weight:700;font-size:1.5rem;background:linear-gradient(90deg,var(--muted),var(--accent2),var(--accent),var(--muted));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 3s linear infinite}
-@keyframes sh{to{background-position:-300% 0}}
-.lift{width:90px;height:60px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));transition:.3s;box-shadow:0 6px 18px -6px var(--accent)}.ani:hover .lift{transform:translateY(-8px) rotate(-4deg);box-shadow:0 18px 30px -8px var(--accent)}
-.load{width:120px;height:8px;border-radius:99px;background:var(--glass-b);overflow:hidden}.load::after{content:"";display:block;height:100%;width:40%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2));animation:ld 1.4s ease-in-out infinite}
-@keyframes ld{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
-.type{font-family:'JetBrains Mono';color:var(--text);font-size:.85rem;border-right:2px solid var(--accent);white-space:nowrap;overflow:hidden;width:0;animation:ty 3s steps(14) infinite alternate}
-@keyframes ty{to{width:14ch}}
-.disc{margin-top:18px;font-size:.8rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+.er rect,.ms rect{fill:var(--accent-soft);stroke:var(--line)}.er .hd{fill:var(--accent);stroke:none}
+.er text,.ms text{fill:var(--text);font-size:12px;font-family:'JetBrains Mono',monospace}.er .ht{fill:#fff;font-weight:700}.er .k{fill:var(--accent)}
+.er line,.ms line,.ms path{stroke:var(--accent);stroke-width:1.6;fill:none}
+.ms text{font-family:Inter,sans-serif;font-size:13px}.ms .s{fill:var(--muted);font-size:11px}
+pre.code{margin-top:16px;padding:18px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.8rem;overflow-x:auto;color:var(--muted);line-height:1.7;white-space:pre;font-variant-ligatures:none}
+.copy{margin-top:14px}
+.chk{list-style:none;display:grid;gap:10px}
+.chk li{display:flex;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface);font-size:.95rem}
+.chk li::before{content:"□";color:var(--accent)}
 
-/* reveal */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
-.rv.in{opacity:1;transform:none}
+/* proceso */
+.proc{list-style:none;counter-reset:p}
+.proc li{counter-increment:p;display:grid;grid-template-columns:70px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line);font-size:clamp(1.15rem,2.4vw,1.7rem);font-weight:600;letter-spacing:-.025em}
+.proc li:last-child{border-bottom:1px solid var(--line)}
+.proc li::before{content:"0" counter(p);font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted);font-weight:400;padding-top:.5em}
+.proc li span{display:block;font-size:.95rem;color:var(--muted);font-weight:400;letter-spacing:0;margin-top:4px}
 
-.fab{position:fixed;right:20px;bottom:20px;z-index:40;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;box-shadow:0 8px 28px rgba(37,211,102,.45);transition:.25s}
-.fab:hover{transform:scale(1.1)}
-.fab svg{width:28px;height:28px;fill:currentColor}
+/* proyectos */
+.proj{display:grid;grid-template-columns:90px 1fr;gap:24px;padding:36px 0;border-top:1px solid var(--line)}
+.proj:last-child{border-bottom:1px solid var(--line)}
+.proj .n{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted)}
+.proj h3{font-size:clamp(1.4rem,2.6vw,2rem);margin-bottom:4px}.proj .org{color:var(--muted);font-size:.9rem;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.74rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-family:'JetBrains Mono',monospace}
+.proj ul.pts{margin:18px 0 0 18px;color:var(--muted);font-size:.95rem}.proj ul.pts li{margin-bottom:6px}
 
-@media(max-width:1020px){.nav-cta{display:none}.links a{padding:8px 10px}}
+/* perfil */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{padding:28px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.panel h3{margin-bottom:18px;font-size:1.3rem}
+.skill{margin-bottom:18px}.skill h4{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;font-weight:600}
+.certs{display:grid;gap:10px}
+.cert{padding:14px 16px;border-radius:12px;background:var(--accent-soft);font-size:.92rem}.cert b{display:block}.cert span{color:var(--muted);font-size:.8rem}
+
+/* contacto */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}
+.cinfo,form{padding:30px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.crow{display:flex;flex-direction:column;padding:16px 0;border-bottom:1px solid var(--line)}
+.crow:last-child{border-bottom:0}.crow small{color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.1em}.crow b{font-weight:600;font-size:1.05rem;word-break:break-all}
+a.crow:hover b{color:var(--accent)}
+form{display:grid;gap:14px}
+label{font-size:.82rem;color:var(--muted);font-weight:500;display:grid;gap:6px}
+input,select,textarea{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;outline:none;width:100%}
+select option{color:#0a1226}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:120px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.note{font-size:.78rem;color:var(--muted)}
+footer{padding:36px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.fab{position:fixed;right:20px;bottom:20px;z-index:40;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff}
+.fab svg{width:27px;height:27px;fill:currentColor}
+
+@media(max-width:1000px){.nav-cta{display:none}}
 @media(max-width:860px){
-  .hero-grid,.about,.contact{grid-template-columns:1fr}
-  .links{position:absolute;top:64px;left:0;right:0;flex-direction:column;padding:12px;border-radius:20px;background:var(--glass);border:1px solid var(--glass-b);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:none;align-items:stretch}
-  .links.open{display:flex}
-  .links a{text-align:center}
-  .menu-btn{display:block}
-  .proj{grid-template-columns:1fr}
-  .row2{grid-template-columns:1fr}
-  .nav-cta{display:none}
-  section{padding:64px 0}
+  .links{position:absolute;top:64px;left:0;right:0;flex-direction:column;padding:12px 20px;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+  .links.open{display:flex}.links a{padding:12px 4px}
+  .menu-btn{display:grid}
+  .svc{grid-template-columns:1fr;gap:12px}.svc .go{display:none}
+  .proj{grid-template-columns:1fr;gap:8px}
+  .about,.contact{grid-template-columns:1fr}.row2{grid-template-columns:1fr}
+  .proc li{grid-template-columns:40px 1fr}
+  section{padding:64px 0}.hero{padding:130px 0 60px}
 }
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<div class="bg"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div><div class="grid"></div></div>
 
-<nav>
-  <div class="bar glass">
-    <a href="#inicio" class="logo">JA<span>.</span>dev</a>
-    <div class="links" id="links">
+<header>
+  <div class="wrap in">
+    <a href="#inicio" class="logo">JOE ARELLANO</a>
+    <nav class="links" id="links">
       <a href="#servicios">Servicios</a>
       <a href="#ejemplos">Ejemplos</a>
+      <a href="#recursos">Recursos</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#perfil">Perfil</a>
-      <a href="#proceso">Proceso</a>
       <a href="#contacto">Contacto</a>
-    </div>
+    </nav>
     <div class="right">
-      <button class="toggle" id="theme" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">
+      <button class="icon-btn" id="theme" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">
         <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
       <a href="#contacto" class="btn primary sm nav-cta">Cotizar</a>
-      <button class="menu-btn" id="menu" aria-label="Abrir menú"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <button class="icon-btn menu-btn" id="menu" aria-label="Abrir menú"><svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg></button>
     </div>
   </div>
-</nav>
+</header>
 
 <main>
 <section class="hero" id="inicio">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="chip glass"><span class="dot"></span>Disponible para nuevos proyectos · Arica, Chile</span>
-      <h1>Software sólido,<br><span class="grad">arquitectura moderna.</span></h1>
-      <p class="lead">Soy <b>Joe Arellano R.</b>, Ingeniero de Ejecución en Computación e Informática. Diseño y construyo plataformas web, APIs seguras y sistemas distribuidos para empresas, instituciones y emprendedores.</p>
-      <div class="cta">
-        <a href="#contacto" class="btn primary">Solicitar cotización →</a>
-        <a href="#proyectos" class="btn ghost">Ver proyectos</a>
-      </div>
-      <div class="stats">
-        <div><b>+3</b><span>años de experiencia</span></div>
-        <div><b>3</b><span>proyectos destacados</span></div>
-        <div><b>5</b><span>certificaciones</span></div>
-      </div>
+  <div class="wrap">
+    <p class="big"><b>Joe Arellano R.</b> es ingeniero de software y construye <em>sistemas de gestión, páginas web, APIs y microservicios</em> para empresas que ya no caben en una plantilla. Primero entiendo la operación; después sale un sistema claro, seguro y hecho para durar.</p>
+    <div class="cta">
+      <a href="#contacto" class="btn primary">Solicitar cotización →</a>
+      <a href="#ejemplos" class="btn ghost">Ver ejemplos</a>
     </div>
-    <div class="glass term rv">
-      <div class="top"><i></i><i></i><i></i></div>
-<pre class="mono"><span class="c">// perfil.ts</span>
-<span class="k">const</span> joe = {
-  rol: <span class="s">"Full-Stack Engineer"</span>,
-  stack: [<span class="s">"Angular"</span>, <span class="s">"React"</span>,
-          <span class="s">"Node.js"</span>, <span class="s">"TypeScript"</span>],
-  datos: [<span class="s">"MySQL"</span>, <span class="s">"Prisma"</span>],
-  devops: [<span class="s">"Docker"</span>, <span class="s">"Git"</span>],
-  seguridad: [<span class="s">"JWT"</span>, <span class="s">"RBAC"</span>, <span class="s">"Bcrypt"</span>],
-  metodo: <span class="s">"SCRUM"</span>,
-  listo: <span class="k">true</span>
-};<span class="cursor"></span></pre>
+    <div class="facts">
+      <div><b>+3</b><span>años de experiencia aplicada</span></div>
+      <div><b>3</b><span>proyectos de ingeniería destacados</span></div>
+      <div><b>5</b><span>certificaciones</span></div>
+      <div><b>Arica</b><span>Chile · trabajo remoto</span></div>
     </div>
   </div>
 </section>
 
 <section id="servicios">
   <div class="wrap">
-    <p class="eyebrow rv">Servicios</p>
-    <h2 class="rv">Qué puedo hacer por tu proyecto</h2>
-    <p class="sub rv">Desde una idea hasta un sistema en producción: diseño, desarrollo, seguridad y despliegue con buenas prácticas.</p>
-    <div class="cards">
-      <article class="card glass rv">
-        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div>
-        <h3>Desarrollo web full-stack</h3>
-        <p>Sitios y aplicaciones web modernas, rápidas y responsivas, con interfaces cuidadas y lógica de negocio robusta.</p>
-        <ul><li class="tag">Angular</li><li class="tag">React</li><li class="tag">Tailwind</li><li class="tag">Node.js</li></ul>
-      </article>
-      <article class="card glass rv">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg></div>
-        <h3>APIs y backend</h3>
-        <p>APIs REST escalables y bien estructuradas, con controladores modulares, validaciones e integración con servicios externos.</p>
-        <ul><li class="tag">Express</li><li class="tag">TypeScript</li><li class="tag">REST</li><li class="tag">Axios</li></ul>
-      </article>
-      <article class="card glass rv">
-        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M12 7.5v4M12 11.5l-6 4.5M12 11.5l6 4.5"/></svg></div>
-        <h3>Arquitectura y microservicios</h3>
-        <p>Monolitos modulares, microservicios, micro frontends y API Gateway, elegidos según la necesidad real de tu negocio.</p>
-        <ul><li class="tag">API Gateway</li><li class="tag">Micro Frontend</li><li class="tag">CORS</li></ul>
-      </article>
-      <article class="card glass rv">
-        <div class="ico"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
-        <h3>Bases de datos</h3>
-        <p>Modelado relacional, optimización de consultas e integridad de datos con ORM para sistemas confiables.</p>
-        <ul><li class="tag">MySQL</li><li class="tag">Prisma ORM</li></ul>
-      </article>
-      <article class="card glass rv">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Autenticación y seguridad</h3>
-        <p>Login seguro, control de acceso por roles, cifrado de contraseñas y rotación de tokens para proteger tu plataforma.</p>
-        <ul><li class="tag">JWT</li><li class="tag">RBAC</li><li class="tag">Bcrypt</li><li class="tag">Refresh Tokens</li></ul>
-      </article>
-      <article class="card glass rv">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 13h18v6H3zM5 13V9h14v4M8 9V5h8v4"/><path d="M7 16h.01M11 16h.01"/></svg></div>
-        <h3>Contenedores y redes</h3>
-        <p>Entornos reproducibles con Docker y Docker Compose, y apoyo en configuración de redes con formación CCNA.</p>
-        <ul><li class="tag">Docker</li><li class="tag">Compose</li><li class="tag">CCNA</li><li class="tag">Git/GitHub</li></ul>
-      </article>
-    </div>
+    <p class="eyebrow"><span>Servicios</span><span class="count">06</span></p>
+    <h2>Lo que hago.</h2>
+
+    <div class="svc"><span class="n">01 / 06</span><div><h3>Sistemas de gestión y CRM</h3><p>Un solo lugar para toda la operación.</p></div><ul><li>Clientes y ventas</li><li>Inventario y bodegas</li><li>Reportes y paneles</li><li>Integraciones</li></ul><span class="go">→</span></div>
+    <div class="svc"><span class="n">02 / 06</span><div><h3>Páginas web y aplicaciones</h3><p>Sitios y apps que cargan rápido y se pueden mantener.</p></div><ul><li>Angular, React y Tailwind</li><li>Sitios, portales y catálogos</li><li>Diseño responsivo</li></ul><span class="go">→</span></div>
+    <div class="svc"><span class="n">03 / 06</span><div><h3>APIs y backend</h3><p>La lógica de tu negocio, ordenada y documentada.</p></div><ul><li>Node.js, Express y TypeScript</li><li>APIs REST</li><li>Integración con servicios externos</li></ul><span class="go">→</span></div>
+    <div class="svc"><span class="n">04 / 06</span><div><h3>Arquitectura y microservicios</h3><p>La arquitectura que tu negocio realmente necesita.</p></div><ul><li>Monolitos modulares</li><li>API Gateway y micro frontends</li><li>Resiliencia ante fallos</li></ul><span class="go">→</span></div>
+    <div class="svc"><span class="n">05 / 06</span><div><h3>Bases de datos</h3><p>Datos íntegros, consultas rápidas.</p></div><ul><li>Modelado relacional en MySQL</li><li>Prisma ORM</li><li>Optimización de consultas</li></ul><span class="go">→</span></div>
+    <div class="svc"><span class="n">06 / 06</span><div><h3>Seguridad, contenedores y redes</h3><p>Entornos reproducibles y accesos bajo control.</p></div><ul><li>JWT, RBAC y Bcrypt</li><li>Docker y Docker Compose</li><li>Redes (formación CCNA)</li></ul><span class="go">→</span></div>
   </div>
 </section>
 
 <section id="ejemplos">
   <div class="wrap">
-    <p class="eyebrow rv">Ejemplos</p>
-    <h2 class="rv">Así se ven las soluciones que ofrezco</h2>
-    <p class="sub rv">Maquetas interactivas que construí con datos ficticios para mostrar el tipo de sistemas que puedo desarrollar para tu negocio.</p>
-
-    <div class="tabs rv" role="tablist">
-      <button class="tabbtn on" data-t="crm" role="tab">CRM</button>
-      <button class="tabbtn" data-t="gestion" role="tab">Sistema de gestión</button>
-      <button class="tabbtn" data-t="web" role="tab">Página web</button>
-      <button class="tabbtn" data-t="bd" role="tab">Base de datos</button>
-      <button class="tabbtn" data-t="ms" role="tab">Microservicios</button>
-      <button class="tabbtn" data-t="anim" role="tab">Animaciones</button>
+    <p class="eyebrow"><span>Ejemplos</span><span class="count">05 maquetas</span></p>
+    <h2>Así se ven las soluciones.</h2>
+    <p class="sub">Maquetas que construí con datos ficticios para mostrar el tipo de sistemas que puedo desarrollar. Haz clic en una para abrirla.</p>
+    <div class="cards">
+      <button class="card" data-open="crm">
+        <div class="thumb"><div class="row"><i class="a"></i><i></i><i></i><i></i></div><div class="row"><i></i><i class="a"></i><i></i><i></i></div></div>
+        <div class="body"><span class="tag">Gestión</span><h3>CRM</h3><p>Embudo de ventas con oportunidades que avanzan de etapa.</p><span class="more">Abrir →</span></div>
+      </button>
+      <button class="card" data-open="gestion">
+        <div class="thumb"><i class="a" style="width:40%"></i><i style="width:90%"></i><i style="width:70%"></i><i style="width:80%"></i><i style="width:55%"></i></div>
+        <div class="body"><span class="tag">Gestión</span><h3>Panel de operaciones</h3><p>Indicadores, gráfico mensual y seguimiento de tareas.</p><span class="more">Abrir →</span></div>
+      </button>
+      <button class="card" data-open="web">
+        <div class="thumb"><i class="a" style="width:100%;height:46px"></i><div class="row"><i></i><i></i><i></i></div></div>
+        <div class="body"><span class="tag">Web</span><h3>Sitio corporativo</h3><p>Página responsiva para un negocio, rápida y a la medida de la marca.</p><span class="more">Abrir →</span></div>
+      </button>
+      <button class="card" data-open="bd">
+        <div class="thumb"><div class="code"><b>roles</b> ──< <b>usuarios</b> ──1 <b>egresados</b>
+                              └──< <b>seguimientos</b></div></div>
+        <div class="body"><span class="tag">Base de datos</span><h3>Modelo relacional</h3><p>Diagrama entidad-relación y esquema Prisma.</p><span class="more">Abrir →</span></div>
+      </button>
+      <button class="card" data-open="ms">
+        <div class="thumb"><div class="code">cliente → <b>gateway</b> → auth
+                       → usuarios → <b>mysql</b>
+                       → correos</div></div>
+        <div class="body"><span class="tag">Arquitectura</span><h3>Microservicios</h3><p>Servicios independientes detrás de un API Gateway.</p><span class="more">Abrir →</span></div>
+      </button>
     </div>
-
-    <div class="demo glass rv">
-      <div class="demo-top"><i></i><i></i><i></i><span class="url" id="demourl">demo.ejemplo.cl/crm</span></div>
-
-      <div class="pane on" id="p-crm">
-        <h3>CRM · Embudo de ventas</h3>
-        <p class="hint">Haz clic en una oportunidad para avanzarla de etapa.</p>
-        <div class="kpis">
-          <div class="kpi"><small>Oportunidades</small><b id="k-n">0</b></div>
-          <div class="kpi"><small>En pipeline</small><b id="k-p">$0</b></div>
-          <div class="kpi"><small>Ganado</small><b id="k-g">$0</b></div>
-          <div class="kpi"><small>Conversión</small><b id="k-c">0%</b></div>
-        </div>
-        <div class="kbwrap"><div class="kb" id="kb"></div></div>
-      </div>
-
-      <div class="pane" id="p-gestion">
-        <h3>Panel de gestión · Operaciones</h3>
-        <p class="hint">Indicadores, gráficos y seguimiento de tareas en un solo lugar.</p>
-        <div class="kpis">
-          <div class="kpi"><small>Tickets abiertos</small><b>24</b></div>
-          <div class="kpi"><small>Resueltos (mes)</small><b>138</b></div>
-          <div class="kpi"><small>Tiempo medio</small><b>3,2 h</b></div>
-          <div class="kpi"><small>Satisfacción</small><b>94%</b></div>
-        </div>
-        <div class="bars" id="bars"></div>
-        <div class="tblw"><table class="tbl">
-          <tr><th>Tarea</th><th>Responsable</th><th>Entrega</th><th>Estado</th></tr>
-          <tr><td>Migrar inventario a nueva BD</td><td>Equipo TI</td><td>12 nov</td><td><span class="pill wip">En curso</span></td></tr>
-          <tr><td>Módulo de reportes mensuales</td><td>Desarrollo</td><td>20 nov</td><td><span class="pill todo">Pendiente</span></td></tr>
-          <tr><td>Respaldo automático diario</td><td>Infraestructura</td><td>05 nov</td><td><span class="pill ok">Completado</span></td></tr>
-          <tr><td>Control de acceso por roles</td><td>Desarrollo</td><td>28 nov</td><td><span class="pill wip">En curso</span></td></tr>
-        </table></div>
-      </div>
-
-      <div class="pane" id="p-web">
-        <h3>Página web corporativa</h3>
-        <p class="hint">Diseño responsivo, rápido y a la medida de tu marca (negocio ficticio).</p>
-        <div class="site">
-          <nav><b>Café Andino</b><span><a>Inicio</a><a>Carta</a><a>Nosotros</a><a>Contacto</a></span></nav>
-          <div class="sh"><h4>Café de origen,<br>tostado en Arica.</h4><p>Granos seleccionados y entrega a todo Chile.</p><i>Ver productos</i></div>
-          <div class="sg"><div><u></u><b>Espresso</b><br>Notas a chocolate</div><div><u></u><b>Filtrado</b><br>Notas frutales</div><div><u></u><b>Cold brew</b><br>Suave y dulce</div></div>
-        </div>
-      </div>
-
-      <div class="pane" id="p-bd">
-        <h3>Diseño de base de datos relacional</h3>
-        <p class="hint">Modelo entidad-relación con llaves, relaciones e integridad de datos (MySQL + Prisma).</p>
-        <svg class="dg er" viewBox="0 0 740 330" role="img" aria-label="Diagrama entidad relación de ejemplo">
-          <g><rect x="10" y="20" width="190" height="100" rx="8"/><rect class="hd" x="10" y="20" width="190" height="28" rx="8"/><text class="ht" x="22" y="39">roles</text><text x="22" y="68"><tspan class="k">PK</tspan> id</text><text x="22" y="92">nombre</text></g>
-          <g><rect x="270" y="20" width="200" height="124" rx="8"/><rect class="hd" x="270" y="20" width="200" height="28" rx="8"/><text class="ht" x="282" y="39">usuarios</text><text x="282" y="68"><tspan class="k">PK</tspan> id</text><text x="282" y="92">nombre, correo</text><text x="282" y="116"><tspan class="k">FK</tspan> rol_id</text></g>
-          <g><rect x="540" y="20" width="190" height="124" rx="8"/><rect class="hd" x="540" y="20" width="190" height="28" rx="8"/><text class="ht" x="552" y="39">egresados</text><text x="552" y="68"><tspan class="k">PK</tspan> id</text><text x="552" y="92"><tspan class="k">FK</tspan> usuario_id</text><text x="552" y="116">carrera, anio</text></g>
-          <g><rect x="540" y="204" width="190" height="100" rx="8"/><rect class="hd" x="540" y="204" width="190" height="28" rx="8"/><text class="ht" x="552" y="223">seguimientos</text><text x="552" y="252"><tspan class="k">FK</tspan> egresado_id</text><text x="552" y="276">empleo, fecha</text></g>
-          <line x1="200" y1="70" x2="270" y2="70"/><line x1="470" y1="70" x2="540" y2="70"/><line x1="635" y1="144" x2="635" y2="204"/>
-          <text x="204" y="62" style="font-size:10px">1</text><text x="256" y="62" style="font-size:10px">N</text>
-          <text x="474" y="62" style="font-size:10px">1</text><text x="526" y="62" style="font-size:10px">1</text>
-          <text x="642" y="162" style="font-size:10px">1</text><text x="642" y="198" style="font-size:10px">N</text>
-        </svg>
-<pre class="code">model Usuario {
-  id     Int      @id @default(autoincrement())
-  correo String   @unique
-  rol    Rol      @relation(fields: [rolId], references: [id])
-  rolId  Int
-}</pre>
-      </div>
-
-      <div class="pane" id="p-ms">
-        <h3>Arquitectura de microservicios</h3>
-        <p class="hint">Servicios independientes detrás de un API Gateway, con autenticación centralizada.</p>
-        <svg class="dg ms" viewBox="0 0 840 300" role="img" aria-label="Diagrama de microservicios de ejemplo">
-          <rect x="20" y="120" width="160" height="56" rx="10"/><text x="40" y="146">Micro Frontend</text><text class="s" x="40" y="164">React · Vite</text>
-          <rect x="250" y="120" width="160" height="56" rx="10"/><text x="270" y="146">API Gateway</text><text class="s" x="270" y="164">Enrutamiento · CORS</text>
-          <rect x="480" y="20" width="160" height="56" rx="10"/><text x="500" y="46">Auth Server</text><text class="s" x="500" y="64">JWT · Bcrypt</text>
-          <rect x="480" y="120" width="160" height="56" rx="10"/><text x="500" y="146">Servicio Usuarios</text><text class="s" x="500" y="164">Node · Express</text>
-          <rect x="480" y="220" width="160" height="56" rx="10"/><text x="500" y="246">Servicio Correos</text><text class="s" x="500" y="264">Notificaciones</text>
-          <rect x="690" y="120" width="130" height="56" rx="10"/><text x="710" y="146">MySQL</text><text class="s" x="710" y="164">Docker Compose</text>
-          <line class="flow" x1="180" y1="148" x2="250" y2="148"/>
-          <path class="flow" d="M410 148 C445 148 445 48 480 48"/><line class="flow" x1="410" y1="148" x2="480" y2="148"/><path class="flow" d="M410 148 C445 148 445 248 480 248"/>
-          <path class="flow" d="M640 48 C665 48 665 135 690 135"/><line class="flow" x1="640" y1="148" x2="690" y2="148"/>
-        </svg>
-      </div>
-
-      <div class="pane" id="p-anim">
-        <h3>Animaciones e interacciones</h3>
-        <p class="hint">Detalles de interfaz con CSS puro: ligeros, fluidos y accesibles. Pasa el cursor sobre las tarjetas.</p>
-        <div class="anis">
-          <div class="ani"><div class="st"><div class="spin"></div></div>Cargando</div>
-          <div class="ani"><div class="st"><div class="pulse"></div></div>Notificación</div>
-          <div class="ani"><div class="st"><div class="shim">Brillo</div></div>Texto con gradiente</div>
-          <div class="ani"><div class="st"><div class="lift"></div></div>Tarjeta con hover</div>
-          <div class="ani"><div class="st"><div class="load"></div></div>Barra de progreso</div>
-          <div class="ani"><div class="st"><div class="type">Hola, mundo</div></div>Efecto de tipeo</div>
-        </div>
-<pre class="code">@keyframes spin { to { transform: rotate(360deg); } }
-.spin { animation: spin .9s linear infinite; }</pre>
-      </div>
-    </div>
-    <p class="disc rv">ⓘ Ejemplos ilustrativos creados con datos ficticios. No corresponden a sistemas ni clientes reales.</p>
+    <p class="disc">ⓘ Ejemplos ilustrativos con datos ficticios. No corresponden a sistemas ni clientes reales.</p>
   </div>
 </section>
 
-<section id="proyectos">
+<section id="recursos">
   <div class="wrap">
-    <p class="eyebrow rv">Portafolio</p>
-    <h2 class="rv">Proyectos de ingeniería destacados</h2>
-    <p class="sub rv">Experiencia aplicada en sistemas reales desarrollados para la Universidad de Tarapacá y proyectos de arquitectura distribuida.</p>
-
-    <article class="proj glass rv">
-      <div class="num grad">01</div>
-      <div>
-        <h3>Sistema de Progresión Estudiantil (SDPE)</h3>
-        <p class="org">Universidad de Tarapacá</p>
-        <div class="tags"><span class="tag">Angular</span><span class="tag">Node.js · TypeScript</span><span class="tag">Prisma ORM</span><span class="tag">JWT</span><span class="tag">Scrum</span></div>
-        <ul class="pts">
-          <li>Diseñé e implementé la arquitectura de la plataforma de seguimiento académico y laboral para egresados de Pedagogía en Educación Diferencial.</li>
-          <li>Construí un backend modular con controladores estables y Prisma ORM para asegurar la integridad de la base de datos.</li>
-          <li>Autentiqué la plataforma con flujos JWT y políticas de Control de Acceso Basado en Roles (RBAC).</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="proj glass rv">
-      <div class="num grad">02</div>
-      <div>
-        <h3>Sistema de Gestión de Posgrados</h3>
-        <p class="org">Universidad de Tarapacá</p>
-        <div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MySQL</span><span class="tag">Bcrypt</span><span class="tag">Docker Compose</span></div>
-        <ul class="pts">
-          <li>Orquesté el backend y las bases de datos MySQL mediante Docker y Docker Compose para garantizar portabilidad.</li>
-          <li>Desarrollé un servidor independiente de autenticación (authserver) con cifrado Bcrypt y rotación de Refresh Tokens.</li>
-          <li>Configuré middlewares para proteger rutas y validar accesos jerárquicos de forma segura.</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="proj glass rv">
-      <div class="num grad">03</div>
-      <div>
-        <h3>Plataforma de Microservicios Distribuidos</h3>
-        <p class="org">Arquitectura de microservicios</p>
-        <div class="tags"><span class="tag">React · Vite</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Axios</span><span class="tag">CORS</span></div>
-        <ul class="pts">
-          <li>Diseñé un sistema distribuido que integra un Micro Frontend (Vite/Tailwind) con un API Gateway centralizado.</li>
-          <li>Implementé resiliencia ante desconexiones críticas con servidores y endpoints espejo para envío de correos y recuperación de credenciales.</li>
-          <li>Resolví cuellos de botella de red con llamadas asíncronas concurrentes en Axios y gestión de políticas CORS.</li>
-        </ul>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section id="perfil">
-  <div class="wrap">
-    <p class="eyebrow rv">Sobre mí</p>
-    <h2 class="rv">Ingeniería con enfoque práctico</h2>
-    <p class="sub rv">Ingeniero de Ejecución en Computación e Informática y Licenciado en Ciencias de la Ingeniería, con más de 3 años de experiencia en el ciclo de vida completo del desarrollo de software. Sólidos conocimientos en seguridad, redes e integración continua bajo metodologías ágiles.</p>
-    <div class="about">
-      <div class="panel glass rv">
-        <h3>Habilidades técnicas</h3>
-        <div class="skill"><h4>Lenguajes &amp; Frameworks</h4><div class="tags"><span class="tag">JavaScript ES6+</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Angular</span><span class="tag">React</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Tailwind CSS</span></div></div>
-        <div class="skill"><h4>Bases de datos &amp; API</h4><div class="tags"><span class="tag">MySQL</span><span class="tag">Prisma ORM</span><span class="tag">JWT</span><span class="tag">Bcrypt</span><span class="tag">Axios</span><span class="tag">REST APIs</span></div></div>
-        <div class="skill"><h4>DevOps &amp; Metodologías</h4><div class="tags"><span class="tag">Docker</span><span class="tag">Docker Compose</span><span class="tag">Git/GitHub</span><span class="tag">SCRUM</span></div></div>
-        <div class="skill"><h4>Idiomas</h4><div class="tags"><span class="tag">Español · Nativo</span><span class="tag">Inglés · Intermedio (lectura técnica)</span></div></div>
-      </div>
-      <div class="panel glass rv">
-        <h3>Educación</h3>
-        <ul class="tl">
-          <li><b>Ingeniería de Ejecución en Computación e Informática</b><span>Universidad de Tarapacá · 2019 – 2026 · Titulado</span></li>
-          <li><b>Licenciatura en Ciencias de la Ingeniería</b><span>Universidad de Tarapacá · 2019 – 2026 · Graduado</span></li>
-          <li><b>Licencia de Educación Media H-C</b><span>Liceo Jovina Naranjo Fernández · 2014 – 2018</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="panel glass rv" style="margin-top:20px">
-      <h3>Certificaciones</h3>
-      <div class="certs">
-        <div class="cert"><b>CCNA: Routing &amp; Switching</b><span>Cisco Networking Academy</span></div>
-        <div class="cert"><b>CCNAv7: Redes</b><span>Cisco Networking Academy</span></div>
-        <div class="cert"><b>Bachiller en Ciencias de la Ingeniería</b><span>Universidad de Tarapacá</span></div>
-        <div class="cert"><b>Diseño y Programación Web Full-Stack</b><span>AIEP / Sence / Fundación Telefónica</span></div>
-        <div class="cert"><b>Fundamentos de Videojuegos</b><span>Huawei / YODO / UGame Studio</span></div>
-      </div>
+    <p class="eyebrow"><span>Recursos</span><span class="count">04 archivos</span></p>
+    <h2>Material que puedes usar.</h2>
+    <p class="sub">Plantillas y código de ejemplo que uso en mis proyectos. Ábrelos y cópialos.</p>
+    <div class="cards">
+      <button class="card" data-open="r-docker">
+        <div class="thumb"><div class="code"><b>services:</b>
+  db:  mysql:8
+  api: build ./api
+  <b>depends_on:</b> db</div></div>
+        <div class="body"><span class="tag">Docker</span><h3>Docker Compose</h3><p>API en Node y MySQL con healthcheck y variables de entorno.</p><span class="more">Abrir →</span></div>
+      </button>
+      <button class="card" data-open="r-prisma">
+        <div class="thumb"><div class="code"><b>model</b> Usuario {
+  id    Int @id
+  rol   Rol @relation
+}</div></div>
+        <div class="body"><span class="tag">Base de datos</span><h3>Esquema Prisma</h3><p>Usuarios y roles listos para un sistema con control de acceso.</p><span class="more">Abrir →</span></div>
+      </button>
+      <button class="card" data-open="r-rbac">
+        <div class="thumb"><div class="code"><b>requireRole</b>('admin')
+  → verifica JWT
+  → 401 / 403 / next()</div></div>
+        <div class="body"><span class="tag">Seguridad</span><h3>Middleware JWT + roles</h3><p>Protege rutas de Express según el rol del usuario.</p><span class="more">Abrir →</span></div>
+      </button>
+      <button class="card" data-open="r-check">
+        <div class="thumb"><i class="a" style="width:30%"></i><i style="width:80%"></i><i style="width:65%"></i><i style="width:75%"></i></div>
+        <div class="body"><span class="tag">Proceso</span><h3>Checklist antes de encargar un sistema</h3><p>Preguntas clave para definir el alcance antes de empezar.</p><span class="more">Abrir →</span></div>
+      </button>
     </div>
   </div>
 </section>
 
 <section id="proceso">
   <div class="wrap">
-    <p class="eyebrow rv">Metodología</p>
-    <h2 class="rv">Cómo trabajamos juntos</h2>
-    <p class="sub rv">Un proceso ágil, transparente y con entregas continuas.</p>
-    <div class="steps">
-      <div class="step glass rv"><h3>Descubrimiento</h3><p>Conversamos sobre tu necesidad, objetivos y alcance para definir la mejor solución.</p></div>
-      <div class="step glass rv"><h3>Propuesta</h3><p>Te entrego una cotización clara con tecnologías, plazos y entregables.</p></div>
-      <div class="step glass rv"><h3>Desarrollo ágil</h3><p>Trabajo en iteraciones tipo Scrum, con avances visibles y feedback constante.</p></div>
-      <div class="step glass rv"><h3>Entrega y soporte</h3><p>Despliegue, documentación y acompañamiento posterior a la puesta en marcha.</p></div>
+    <p class="eyebrow"><span>Cómo trabajo</span></p>
+    <h2>Escuchar primero.</h2>
+    <ol class="proc">
+      <li>Entiendo el negocio antes de proponer nada.<span>Reunión inicial y levantamiento de lo que necesitas.</span></li>
+      <li>Defino un alcance claro.<span>Es lo que permite cumplir plazos.</span></li>
+      <li>Ves el sistema antes de que exista.<span>Maquetas y prototipos para validar contigo.</span></li>
+      <li>Cada entrega es algo que ya se puede usar.<span>Iteraciones cortas bajo metodología Scrum.</span></li>
+      <li>Lo ajusto con quienes lo usan todos los días.<span>Feedback real, cambios rápidos.</span></li>
+      <li>Después seguimos.<span>Soporte, mejoras y nuevas etapas.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="proyectos">
+  <div class="wrap">
+    <p class="eyebrow"><span>Proyectos</span><span class="count">03</span></p>
+    <h2>Experiencia real.</h2>
+    <p class="sub">Sistemas desarrollados para la Universidad de Tarapacá y proyectos de arquitectura distribuida.</p>
+
+    <article class="proj"><span class="n">01</span><div>
+      <h3>Sistema de Progresión Estudiantil (SDPE)</h3><p class="org">Universidad de Tarapacá</p>
+      <div class="chips"><span class="chip">Angular</span><span class="chip">Node.js · TypeScript</span><span class="chip">Prisma ORM</span><span class="chip">JWT</span><span class="chip">Scrum</span></div>
+      <ul class="pts">
+        <li>Diseñé e implementé la arquitectura de la plataforma de seguimiento académico y laboral para egresados de Pedagogía en Educación Diferencial.</li>
+        <li>Construí un backend modular con controladores estables y Prisma ORM para asegurar la integridad de la base de datos.</li>
+        <li>Autentiqué la plataforma con flujos JWT y políticas de Control de Acceso Basado en Roles (RBAC).</li>
+      </ul></div></article>
+
+    <article class="proj"><span class="n">02</span><div>
+      <h3>Sistema de Gestión de Posgrados</h3><p class="org">Universidad de Tarapacá</p>
+      <div class="chips"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">MySQL</span><span class="chip">Bcrypt</span><span class="chip">Docker Compose</span></div>
+      <ul class="pts">
+        <li>Orquesté el backend y las bases de datos MySQL mediante Docker y Docker Compose para garantizar portabilidad.</li>
+        <li>Desarrollé un servidor independiente de autenticación (authserver) con cifrado Bcrypt y rotación de Refresh Tokens.</li>
+        <li>Configuré middlewares para proteger rutas y validar accesos jerárquicos de forma segura.</li>
+      </ul></div></article>
+
+    <article class="proj"><span class="n">03</span><div>
+      <h3>Plataforma de Microservicios Distribuidos</h3><p class="org">Arquitectura de microservicios</p>
+      <div class="chips"><span class="chip">React · Vite</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Axios</span><span class="chip">CORS</span></div>
+      <ul class="pts">
+        <li>Diseñé un sistema distribuido que integra un Micro Frontend (Vite/Tailwind) con un API Gateway centralizado.</li>
+        <li>Implementé resiliencia ante desconexiones críticas con servidores y endpoints espejo para envío de correos y recuperación de credenciales.</li>
+        <li>Resolví cuellos de botella de red con llamadas asíncronas concurrentes en Axios y gestión de políticas CORS.</li>
+      </ul></div></article>
+  </div>
+</section>
+
+<section id="perfil">
+  <div class="wrap">
+    <p class="eyebrow"><span>Perfil</span></p>
+    <h2>Ingeniería con enfoque práctico.</h2>
+    <p class="sub">Ingeniero de Ejecución en Computación e Informática y Licenciado en Ciencias de la Ingeniería, con más de 3 años de experiencia en el ciclo de vida completo del desarrollo de software. Sólidos conocimientos en seguridad, redes e integración continua bajo metodologías ágiles.</p>
+    <div class="about">
+      <div class="panel">
+        <h3>Habilidades técnicas</h3>
+        <div class="skill"><h4>Lenguajes y frameworks</h4><div class="chips"><span class="chip">JavaScript ES6+</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Angular</span><span class="chip">React</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">Tailwind CSS</span></div></div>
+        <div class="skill"><h4>Bases de datos y API</h4><div class="chips"><span class="chip">MySQL</span><span class="chip">Prisma ORM</span><span class="chip">JWT</span><span class="chip">Bcrypt</span><span class="chip">Axios</span><span class="chip">REST APIs</span></div></div>
+        <div class="skill"><h4>DevOps y metodologías</h4><div class="chips"><span class="chip">Docker</span><span class="chip">Docker Compose</span><span class="chip">Git/GitHub</span><span class="chip">SCRUM</span></div></div>
+        <div class="skill"><h4>Idiomas</h4><div class="chips"><span class="chip">Español · Nativo</span><span class="chip">Inglés · Intermedio (lectura técnica)</span></div></div>
+      </div>
+      <div class="panel">
+        <h3>Certificaciones</h3>
+        <div class="certs">
+          <div class="cert"><b>CCNA: Routing &amp; Switching</b><span>Cisco Networking Academy</span></div>
+          <div class="cert"><b>CCNAv7: Redes</b><span>Cisco Networking Academy</span></div>
+          <div class="cert"><b>Bachiller en Ciencias de la Ingeniería</b><span>Universidad de Tarapacá</span></div>
+          <div class="cert"><b>Diseño y Programación Web Full-Stack</b><span>AIEP / Sence / Fundación Telefónica</span></div>
+          <div class="cert"><b>Fundamentos de Videojuegos</b><span>Huawei / YODO / UGame Studio</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="contacto">
   <div class="wrap">
-    <p class="eyebrow rv">Contacto</p>
-    <h2 class="rv">Conversemos sobre tu proyecto</h2>
-    <p class="sub rv">Cuéntame qué necesitas y te responderé con una propuesta a tu medida.</p>
+    <p class="eyebrow"><span>Contacto</span></p>
+    <h2>Conversemos sobre tu proyecto.</h2>
+    <p class="sub">Cuéntame qué necesitas resolver y te respondo con una propuesta clara.</p>
     <div class="contact">
-      <div class="cinfo glass rv">
-        <h3>Datos de contacto</h3>
-        <a class="crow" href="mailto:jonathanarejoe5@gmail.com">
-          <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
-          <div><small>Correo</small><b>jonathanarejoe5@gmail.com</b></div>
-        </a>
-        <a class="crow" href="tel:+56941094590">
-          <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div>
-          <div><small>Teléfono</small><b>+56 9 4109 4590</b></div>
-        </a>
-        <a class="crow" href="https://wa.me/56941094590?text=Hola%20Joe%2C%20vi%20tu%20p%C3%A1gina%20y%20quisiera%20cotizar%20un%20proyecto." target="_blank" rel="noopener">
-          <div class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg></div>
-          <div><small>WhatsApp</small><b>Escríbeme directo</b></div>
-        </a>
-        <div class="crow">
-          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-          <div><small>Ubicación</small><b>Arica, Chile · Trabajo remoto</b></div>
-        </div>
+      <div class="cinfo">
+        <a class="crow" href="mailto:jonathanarejoe5@gmail.com"><small>Correo</small><b>jonathanarejoe5@gmail.com</b></a>
+        <a class="crow" href="tel:+56941094590"><small>Teléfono</small><b>+56 9 4109 4590</b></a>
+        <a class="crow" href="https://wa.me/56941094590?text=Hola%20Joe%2C%20vi%20tu%20p%C3%A1gina%20y%20quisiera%20cotizar%20un%20proyecto." target="_blank" rel="noopener"><small>WhatsApp</small><b>Escríbeme directo →</b></a>
+        <div class="crow"><small>Ubicación</small><b>Arica, Chile · Trabajo remoto</b></div>
       </div>
-      <form class="glass rv" id="form">
+      <form id="form">
         <div class="row2">
           <label>Nombre<input name="nombre" required placeholder="Tu nombre"></label>
           <label>Correo<input name="correo" type="email" required placeholder="tu@correo.com"></label>
         </div>
-        <label>Tipo de servicio
+        <label>¿Qué necesitas?
           <select name="servicio">
-            <option>Desarrollo web full-stack</option>
+            <option>Sistema de gestión / CRM</option>
+            <option>Página web</option>
             <option>API / Backend</option>
             <option>Arquitectura y microservicios</option>
             <option>Base de datos</option>
-            <option>Autenticación y seguridad</option>
-            <option>Docker / Redes</option>
-            <option>Otro</option>
+            <option>Seguridad / Docker / Redes</option>
+            <option>Otra cosa</option>
           </select>
         </label>
-        <label>Cuéntame tu proyecto<textarea name="mensaje" required placeholder="Describe brevemente qué necesitas, plazos y presupuesto estimado..."></textarea></label>
-        <button class="btn primary" type="submit">Enviar mensaje →</button>
+        <label>Cuéntame tu idea<textarea name="mensaje" required placeholder="Describe brevemente qué necesitas, plazos y presupuesto estimado..."></textarea></label>
+        <button class="btn primary" type="submit">Enviar por correo →</button>
         <p class="note">Al enviar se abrirá tu aplicación de correo con el mensaje listo para mandar.</p>
       </form>
     </div>
@@ -610,9 +433,156 @@ pre.code{margin-top:16px;padding:16px;border-radius:12px;background:var(--accent
 </section>
 </main>
 
-<footer><div class="wrap">© <span id="y"></span> Joe Arellano R. · Ingeniero de Ejecución en Computación e Informática · Arica, Chile</div></footer>
+<footer><div class="wrap"><span>© <span id="y"></span> Joe Arellano R.</span><span>Ingeniero de Ejecución en Computación e Informática · Arica, Chile</span></div></footer>
 
 <a class="fab" href="https://wa.me/56941094590" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg></a>
+
+<dialog id="dlg">
+  <div class="mh"><span class="url" id="dlgurl"></span><button class="icon-btn" id="dlgx" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="mb" id="dlgbody"></div>
+</dialog>
+
+<template id="t-crm">
+  <h3>CRM · Embudo de ventas</h3><p class="hint">Haz clic en una oportunidad para avanzarla de etapa.</p>
+  <div class="kpis"><div class="kpi"><small>Oportunidades</small><b data-k="n">0</b></div><div class="kpi"><small>En pipeline</small><b data-k="p">$0</b></div><div class="kpi"><small>Ganado</small><b data-k="g">$0</b></div><div class="kpi"><small>Conversión</small><b data-k="c">0%</b></div></div>
+  <div class="kbwrap"><div class="kb" data-k="kb"></div></div>
+</template>
+<template id="t-gestion">
+  <h3>Panel de gestión · Operaciones</h3><p class="hint">Indicadores, gráfico y seguimiento de tareas en un solo lugar.</p>
+  <div class="kpis"><div class="kpi"><small>Tickets abiertos</small><b>24</b></div><div class="kpi"><small>Resueltos (mes)</small><b>138</b></div><div class="kpi"><small>Tiempo medio</small><b>3,2 h</b></div><div class="kpi"><small>Satisfacción</small><b>94%</b></div></div>
+  <div class="bars" data-k="bars"></div>
+  <div class="tblw"><table class="tbl">
+    <tr><th>Tarea</th><th>Responsable</th><th>Entrega</th><th>Estado</th></tr>
+    <tr><td>Migrar inventario a nueva BD</td><td>Equipo TI</td><td>12 nov</td><td><span class="pill wip">En curso</span></td></tr>
+    <tr><td>Módulo de reportes mensuales</td><td>Desarrollo</td><td>20 nov</td><td><span class="pill todo">Pendiente</span></td></tr>
+    <tr><td>Respaldo automático diario</td><td>Infraestructura</td><td>05 nov</td><td><span class="pill ok">Completado</span></td></tr>
+    <tr><td>Control de acceso por roles</td><td>Desarrollo</td><td>28 nov</td><td><span class="pill wip">En curso</span></td></tr>
+  </table></div>
+</template>
+<template id="t-web">
+  <h3>Sitio corporativo</h3><p class="hint">Diseño responsivo y a la medida de la marca (negocio ficticio).</p>
+  <div class="site">
+    <div class="sn"><b>Café Andino</b><span><a>Inicio</a><a>Carta</a><a>Nosotros</a><a>Contacto</a></span></div>
+    <div class="sh"><h4>Café de origen,<br>tostado en Arica.</h4><p>Granos seleccionados y entrega a todo Chile.</p><i>Ver productos</i></div>
+    <div class="sg"><div><u></u><b>Espresso</b><br>Notas a chocolate</div><div><u></u><b>Filtrado</b><br>Notas frutales</div><div><u></u><b>Cold brew</b><br>Suave y dulce</div></div>
+  </div>
+</template>
+<template id="t-bd">
+  <h3>Diseño de base de datos relacional</h3><p class="hint">Modelo entidad-relación con llaves, relaciones e integridad (MySQL + Prisma).</p>
+  <svg class="dg er" viewBox="0 0 740 330" role="img" aria-label="Diagrama entidad relación de ejemplo">
+    <g><rect x="10" y="20" width="190" height="100" rx="8"/><rect class="hd" x="10" y="20" width="190" height="28" rx="8"/><text class="ht" x="22" y="39">roles</text><text x="22" y="68"><tspan class="k">PK</tspan> id</text><text x="22" y="92">nombre</text></g>
+    <g><rect x="270" y="20" width="200" height="124" rx="8"/><rect class="hd" x="270" y="20" width="200" height="28" rx="8"/><text class="ht" x="282" y="39">usuarios</text><text x="282" y="68"><tspan class="k">PK</tspan> id</text><text x="282" y="92">nombre, correo</text><text x="282" y="116"><tspan class="k">FK</tspan> rol_id</text></g>
+    <g><rect x="540" y="20" width="190" height="124" rx="8"/><rect class="hd" x="540" y="20" width="190" height="28" rx="8"/><text class="ht" x="552" y="39">egresados</text><text x="552" y="68"><tspan class="k">PK</tspan> id</text><text x="552" y="92"><tspan class="k">FK</tspan> usuario_id</text><text x="552" y="116">carrera, anio</text></g>
+    <g><rect x="540" y="204" width="190" height="100" rx="8"/><rect class="hd" x="540" y="204" width="190" height="28" rx="8"/><text class="ht" x="552" y="223">seguimientos</text><text x="552" y="252"><tspan class="k">FK</tspan> egresado_id</text><text x="552" y="276">empleo, fecha</text></g>
+    <line x1="200" y1="70" x2="270" y2="70"/><line x1="470" y1="70" x2="540" y2="70"/><line x1="635" y1="144" x2="635" y2="204"/>
+    <text x="204" y="62" style="font-size:10px">1</text><text x="256" y="62" style="font-size:10px">N</text>
+    <text x="474" y="62" style="font-size:10px">1</text><text x="526" y="62" style="font-size:10px">1</text>
+    <text x="642" y="162" style="font-size:10px">1</text><text x="642" y="198" style="font-size:10px">N</text>
+  </svg>
+</template>
+<template id="t-ms">
+  <h3>Arquitectura de microservicios</h3><p class="hint">Servicios independientes detrás de un API Gateway, con autenticación centralizada.</p>
+  <svg class="dg ms" viewBox="0 0 840 300" role="img" aria-label="Diagrama de microservicios de ejemplo">
+    <rect x="20" y="120" width="160" height="56" rx="10"/><text x="40" y="146">Micro Frontend</text><text class="s" x="40" y="164">React · Vite</text>
+    <rect x="250" y="120" width="160" height="56" rx="10"/><text x="270" y="146">API Gateway</text><text class="s" x="270" y="164">Enrutamiento · CORS</text>
+    <rect x="480" y="20" width="160" height="56" rx="10"/><text x="500" y="46">Auth Server</text><text class="s" x="500" y="64">JWT · Bcrypt</text>
+    <rect x="480" y="120" width="160" height="56" rx="10"/><text x="500" y="146">Servicio Usuarios</text><text class="s" x="500" y="164">Node · Express</text>
+    <rect x="480" y="220" width="160" height="56" rx="10"/><text x="500" y="246">Servicio Correos</text><text class="s" x="500" y="264">Notificaciones</text>
+    <rect x="690" y="120" width="130" height="56" rx="10"/><text x="710" y="146">MySQL</text><text class="s" x="710" y="164">Docker Compose</text>
+    <line x1="180" y1="148" x2="250" y2="148"/>
+    <path d="M410 148 C445 148 445 48 480 48"/><line x1="410" y1="148" x2="480" y2="148"/><path d="M410 148 C445 148 445 248 480 248"/>
+    <path d="M640 48 C665 48 665 135 690 135"/><line x1="640" y1="148" x2="690" y2="148"/>
+  </svg>
+</template>
+<template id="t-r-docker">
+  <h3>Docker Compose · API + MySQL</h3><p class="hint">Archivo docker-compose.yml. Las contraseñas van en un archivo .env, nunca en el código.</p>
+<pre class="code" data-copy>services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: app
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+
+  api:
+    build: ./api
+    environment:
+      DATABASE_URL: mysql://root:${DB_ROOT_PASSWORD}@db:3306/app
+      JWT_SECRET: ${JWT_SECRET}
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db_data:</pre>
+</template>
+<template id="t-r-prisma">
+  <h3>Esquema Prisma · Usuarios y roles</h3><p class="hint">Archivo schema.prisma para MySQL con relación uno a muchos.</p>
+<pre class="code" data-copy>generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Rol {
+  id       Int       @id @default(autoincrement())
+  nombre   String    @unique
+  usuarios Usuario[]
+}
+
+model Usuario {
+  id       Int      @id @default(autoincrement())
+  nombre   String
+  correo   String   @unique
+  password String
+  rol      Rol      @relation(fields: [rolId], references: [id])
+  rolId    Int
+  creadoEn DateTime @default(now())
+}</pre>
+</template>
+<template id="t-r-rbac">
+  <h3>Middleware JWT con roles</h3><p class="hint">Express + jsonwebtoken. Uso: <span class="mono">router.delete('/usuarios/:id', requireRole('admin'), handler)</span></p>
+<pre class="code" data-copy>import jwt from 'jsonwebtoken';
+
+export const requireRole = (...roles) => (req, res, next) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) return res.status(401).json({ error: 'No autenticado' });
+
+  try {
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    if (!roles.includes(payload.rol)) {
+      return res.status(403).json({ error: 'Sin permisos' });
+    }
+    req.user = payload;
+    next();
+  } catch {
+    res.status(401).json({ error: 'Token inválido o vencido' });
+  }
+};</pre>
+</template>
+<template id="t-r-check">
+  <h3>Checklist antes de encargar un sistema</h3><p class="hint">Si puedes responder esto, el proyecto parte con un alcance claro.</p>
+  <ul class="chk">
+    <li>¿Qué problema concreto quieres resolver y cómo lo resuelves hoy?</li>
+    <li>¿Quiénes lo usarán y con qué roles o permisos?</li>
+    <li>¿Qué datos se guardan y de dónde vienen hoy (planillas, otros sistemas)?</li>
+    <li>¿Con qué otros sistemas debe integrarse (correo, pagos, facturación)?</li>
+    <li>¿Qué reportes o indicadores necesitas ver cada semana?</li>
+    <li>¿Cuál es la fecha límite y cuál es la primera entrega útil?</li>
+    <li>¿Cuál es el presupuesto disponible y quién aprueba los avances?</li>
+    <li>¿Quién será el contacto que valide las entregas?</li>
+  </ul>
+</template>
 
 <script>
 const root=document.documentElement;
@@ -626,45 +596,53 @@ const links=document.getElementById('links');
 document.getElementById('menu').onclick=()=>links.classList.toggle('open');
 links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
 document.getElementById('y').textContent=new Date().getFullYear();
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-/* ejemplos */
-const urls={crm:'crm',gestion:'panel',web:'sitio',bd:'modelo-datos',ms:'arquitectura',anim:'animaciones'};
+
+/* modal de ejemplos y recursos */
+const dlg=document.getElementById('dlg'),body=document.getElementById('dlgbody'),urlEl=document.getElementById('dlgurl');
+const names={crm:'demo.ejemplo.cl/crm',gestion:'demo.ejemplo.cl/panel',web:'demo.ejemplo.cl/sitio',bd:'demo.ejemplo.cl/modelo-datos',ms:'demo.ejemplo.cl/arquitectura','r-docker':'recursos/docker-compose.yml','r-prisma':'recursos/schema.prisma','r-rbac':'recursos/requireRole.js','r-check':'recursos/checklist.md'};
 const clp=n=>'$'+n.toLocaleString('es-CL');
-document.querySelectorAll('.tabbtn').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('.tabbtn').forEach(x=>x.classList.toggle('on',x===b));
-  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+b.dataset.t));
-  document.getElementById('demourl').textContent='demo.ejemplo.cl/'+urls[b.dataset.t];
-  if(b.dataset.t==='gestion')drawBars();
-});
+document.querySelectorAll('[data-open]').forEach(c=>c.onclick=()=>open(c.dataset.open));
+document.getElementById('dlgx').onclick=()=>dlg.close();
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+function open(id){
+  body.innerHTML='';body.appendChild(document.getElementById('t-'+id).content.cloneNode(true));
+  urlEl.textContent=names[id];
+  if(id==='crm')initCrm();
+  if(id==='gestion')initBars();
+  const code=body.querySelector('[data-copy]');
+  if(code){const b=document.createElement('button');b.className='btn ghost sm copy';b.textContent='Copiar código';
+    b.onclick=()=>{navigator.clipboard.writeText(code.textContent).then(()=>b.textContent='¡Copiado!',()=>b.textContent='Selecciona y copia')};
+    code.after(b)}
+  dlg.showModal();body.scrollTop=0;
+}
 const stages=['Nuevo','Contactado','Propuesta','Ganado'];
 const deals=[['Altiplano Logística',4800000,0],['Norte Salud SpA',2500000,0],['Pampa Retail',7200000,1],['Costa Verde Hotel',3900000,1],['Andes Educa',5600000,2],['Tamarugal Agro',1800000,3],['Puerto Sur Ltda.',6400000,2]].map(d=>({n:d[0],v:d[1],s:d[2]}));
-function drawKb(){
-  const kb=document.getElementById('kb');kb.innerHTML='';
-  stages.forEach((st,i)=>{
-    const items=deals.filter(d=>d.s===i);
-    const col=document.createElement('div');col.className='col';
-    col.innerHTML=`<h4>${st}<span>${items.length}</span></h4>`;
-    items.forEach(d=>{const c=document.createElement('button');c.className='kc';c.innerHTML=`${d.n}<span>${clp(d.v)}</span>`;
-      c.onclick=()=>{d.s=(d.s+1)%4;drawKb()};col.appendChild(c)});
-    kb.appendChild(col);
-  });
-  const won=deals.filter(d=>d.s===3),open=deals.filter(d=>d.s<3);
-  document.getElementById('k-n').textContent=deals.length;
-  document.getElementById('k-p').textContent=clp(open.reduce((a,d)=>a+d.v,0));
-  document.getElementById('k-g').textContent=clp(won.reduce((a,d)=>a+d.v,0));
-  document.getElementById('k-c').textContent=Math.round(won.length/deals.length*100)+'%';
+function initCrm(){
+  const q=k=>body.querySelector('[data-k="'+k+'"]'),kb=q('kb');
+  (function draw(){
+    kb.innerHTML='';
+    stages.forEach((st,i)=>{
+      const items=deals.filter(d=>d.s===i),col=document.createElement('div');col.className='col';
+      col.innerHTML=`<h4>${st}<span>${items.length}</span></h4>`;
+      items.forEach(d=>{const c=document.createElement('button');c.className='kc';c.innerHTML=`${d.n}<span>${clp(d.v)}</span>`;c.onclick=()=>{d.s=(d.s+1)%4;draw()};col.appendChild(c)});
+      kb.appendChild(col);
+    });
+    const won=deals.filter(d=>d.s===3),open=deals.filter(d=>d.s<3);
+    q('n').textContent=deals.length;
+    q('p').textContent=clp(open.reduce((a,d)=>a+d.v,0));
+    q('g').textContent=clp(won.reduce((a,d)=>a+d.v,0));
+    q('c').textContent=Math.round(won.length/deals.length*100)+'%';
+  })();
 }
-drawKb();
-const months=[['Mayo',48],['Jun',62],['Jul',55],['Ago',78],['Sep',70],['Oct',92]];
-const bars=document.getElementById('bars');
-bars.innerHTML=months.map(m=>`<div class="bw"><div class="cbar" data-h="${m[1]}"></div><em>${m[0]}</em></div>`).join('');
-function drawBars(){bars.querySelectorAll(".cbar").forEach(b=>{b.style.height='0';requestAnimationFrame(()=>requestAnimationFrame(()=>b.style.height=b.dataset.h+'%'))})}
+function initBars(){
+  const m=[['Mayo',48],['Jun',62],['Jul',55],['Ago',78],['Sep',70],['Oct',92]];
+  body.querySelector('[data-k="bars"]').innerHTML=m.map(x=>`<div class="bw"><div class="cbar" style="height:${x[1]}%"></div><em>${x[0]}</em></div>`).join('');
+}
 document.getElementById('form').addEventListener('submit',e=>{
   e.preventDefault();
   const f=new FormData(e.target);
-  const body=`Hola Joe,\n\nMi nombre es ${f.get('nombre')} (${f.get('correo')}).\nServicio: ${f.get('servicio')}\n\n${f.get('mensaje')}`;
-  location.href=`mailto:jonathanarejoe5@gmail.com?subject=${encodeURIComponent('Cotización: '+f.get('servicio'))}&body=${encodeURIComponent(body)}`;
+  const b=`Hola Joe,\n\nMi nombre es ${f.get('nombre')} (${f.get('correo')}).\nServicio: ${f.get('servicio')}\n\n${f.get('mensaje')}`;
+  location.href=`mailto:jonathanarejoe5@gmail.com?subject=${encodeURIComponent('Cotización: '+f.get('servicio'))}&body=${encodeURIComponent(b)}`;
 });
 </script>
 </body>
