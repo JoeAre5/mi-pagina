@@ -10,115 +10,131 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f4f6fb; --surface:#ffffff; --line:rgba(10,25,70,.14);
-  --text:#0a1226; --muted:#55627f; --dim:#9aa5bf;
-  --accent:#1c3f9e; --accent-soft:rgba(28,63,158,.08); --on-accent:#fff;
-  --ok:#15803d; --warn:#a16207;
+  --bg:#eaf0fc; --glass:rgba(255,255,255,.62); --glass2:rgba(255,255,255,.85); --line:rgba(25,60,140,.16);
+  --text:#0a1430; --muted:#506089; --accent:#2350c8; --accent2:#1a3d9c; --accent-soft:rgba(35,80,200,.09); --on-accent:#fff;
+  --ok:#15803d; --warn:#a16207; --glow1:rgba(60,110,240,.28); --glow2:rgba(40,160,230,.2);
+  --shadow:0 12px 40px rgba(20,50,130,.12);
 }
 :root[data-theme="dark"]{
-  --bg:#02050d; --surface:#060c1b; --line:rgba(110,150,255,.13);
-  --text:#e9eefc; --muted:#8793b2; --dim:#46526f;
-  --accent:#3a63c8; --accent-soft:rgba(58,99,200,.14); --on-accent:#fff;
-  --ok:#4ade80; --warn:#facc15;
+  --bg:#040b1f; --glass:rgba(14,30,72,.45); --glass2:rgba(8,18,46,.82); --line:rgba(130,170,255,.18);
+  --text:#e8eefc; --muted:#94a3c9; --accent:#4474e8; --accent2:#2c55bf; --accent-soft:rgba(68,116,232,.15); --on-accent:#fff;
+  --ok:#4ade80; --warn:#facc15; --glow1:rgba(40,90,230,.38); --glow2:rgba(20,120,200,.22);
+  --shadow:0 12px 50px rgba(0,0,0,.45);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:auto;scroll-padding-top:80px}
+html{scroll-padding-top:90px}
 body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit}
 .mono{font-family:'JetBrains Mono',monospace}
-h1,h2,h3,h4{letter-spacing:-.03em;line-height:1.1;font-weight:700}
+h1,h2,h3,h4{letter-spacing:-.025em;line-height:1.15;font-weight:700}
 .wrap{width:min(1120px,100% - 40px);margin-inline:auto}
-section{padding:96px 0;border-top:1px solid var(--line)}
-.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:flex;justify-content:space-between;gap:16px}
-h2{font-size:clamp(2rem,5vw,3.6rem);margin-bottom:18px}
-.sub{color:var(--muted);max-width:60ch;margin-bottom:48px;font-size:1.05rem}
+section{padding:84px 0}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h2{font-size:clamp(1.8rem,3.8vw,2.7rem);margin-bottom:12px}
+.sub{color:var(--muted);max-width:62ch;margin-bottom:40px;font-size:1.02rem}
+
+/* fondo difuminado (estático) */
+.bg{position:fixed;inset:0;z-index:-1;background:var(--bg);overflow:hidden}
+.bg i{position:absolute;border-radius:50%;filter:blur(110px)}
+.bg i:nth-child(1){width:560px;height:560px;background:var(--glow1);top:-160px;left:-120px}
+.bg i:nth-child(2){width:520px;height:520px;background:var(--glow2);top:38%;right:-180px}
+.bg i:nth-child(3){width:560px;height:560px;background:var(--glow1);bottom:-220px;left:20%}
+
+.glass{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border-radius:18px;box-shadow:var(--shadow)}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 24px;border-radius:12px;font-weight:600;font-size:.94rem;line-height:1;border:1px solid transparent;cursor:pointer;white-space:nowrap}
+.btn.primary{background:linear-gradient(180deg,var(--accent),var(--accent2));color:var(--on-accent);border-color:rgba(255,255,255,.18);box-shadow:0 6px 20px -8px var(--accent)}
+.btn.primary:hover{filter:brightness(1.12)}
+.btn.ghost{background:var(--glass);border-color:var(--line);color:var(--text);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.btn.ghost:hover{border-color:var(--accent)}
+.btn.sm{height:38px;padding:0 18px;font-size:.86rem;border-radius:10px}
 
 /* header */
-header{position:fixed;top:0;left:0;right:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-header .in{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-weight:800;letter-spacing:-.02em;font-size:1.05rem}
+header{position:fixed;top:12px;left:0;right:0;z-index:50}
+header .in{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 12px 0 22px;width:min(1120px,100% - 28px);margin-inline:auto;border-radius:16px}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:1.02rem}
+.logo span{color:var(--accent)}
 .links{display:flex;gap:2px}
-.links a{padding:8px 13px;font-size:.88rem;color:var(--muted);border-radius:8px}
+.links a{padding:8px 13px;font-size:.88rem;color:var(--muted);border-radius:9px}
 .links a:hover{color:var(--text);background:var(--accent-soft)}
 .right{display:flex;gap:10px;align-items:center}
-.icon-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;display:grid;place-items:center}
+.icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--glass);cursor:pointer;display:grid;place-items:center;padding:0}
 .icon-btn:hover{border-color:var(--accent)}
 .icon-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
 #theme .sun{display:none}:root[data-theme="light"] #theme .sun{display:block}:root[data-theme="light"] #theme .moon{display:none}
 .menu-btn{display:none}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:.92rem;border:1px solid transparent;cursor:pointer}
-.btn.primary{background:var(--accent);color:var(--on-accent)}
-.btn.primary:hover{filter:brightness(1.15)}
-.btn.ghost{border-color:var(--line);background:transparent}
-.btn.ghost:hover{border-color:var(--accent)}
-.btn.sm{padding:8px 16px;font-size:.84rem}
 
 /* hero */
-.hero{padding:170px 0 90px;border-top:0}
-.hero .big{font-size:clamp(1.9rem,4.6vw,3.7rem);font-weight:600;letter-spacing:-.035em;line-height:1.14;max-width:22em;color:var(--muted)}
-.hero .big b{color:var(--text);font-weight:800}
-.hero .big em{font-style:normal;color:var(--text)}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px}
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;margin-top:80px;border-top:1px solid var(--line)}
-.facts div{padding:22px 0;border-bottom:1px solid var(--line)}
-.facts b{font-size:2rem;font-weight:800;display:block;letter-spacing:-.04em}
-.facts span{font-size:.82rem;color:var(--muted)}
+.hero{padding:150px 0 70px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+.pill-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-size:.8rem;color:var(--muted)}
+.dot{width:7px;height:7px;border-radius:50%;background:#22c55e}
+h1{font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:800;margin:20px 0 18px;letter-spacing:-.035em}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{font-size:1.08rem;color:var(--muted);max-width:50ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.facts{display:flex;gap:34px;flex-wrap:wrap;margin-top:40px}
+.facts b{font-size:1.7rem;font-weight:800;display:block;letter-spacing:-.03em;line-height:1.1}
+.facts span{font-size:.8rem;color:var(--muted)}
+.hp{padding:0;overflow:hidden}
+.hp .top{display:flex;gap:7px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);font-size:.75rem;color:var(--muted)}
+.hp .top i{width:10px;height:10px;border-radius:50%;background:#ff5f57}.hp .top i:nth-child(2){background:#febc2e}.hp .top i:nth-child(3){background:#28c840}
+.hp .top span{margin-left:8px}
+.hp .bd{padding:18px}
 
 /* servicios */
-.svc{display:grid;grid-template-columns:90px 1.1fr 1fr 40px;gap:24px;align-items:start;padding:32px 0;border-top:1px solid var(--line)}
-.svc:last-child{border-bottom:1px solid var(--line)}
-.svc .n{font-size:.82rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
-.svc h3{font-size:clamp(1.4rem,2.6vw,2rem);margin-bottom:8px}
-.svc p{color:var(--muted)}
-.svc ul{list-style:none;display:grid;gap:6px;color:var(--muted);font-size:.95rem}
-.svc ul li::before{content:"— ";color:var(--dim)}
-.svc .go{color:var(--dim);font-size:1.3rem}
-.svc:hover h3{color:var(--accent)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.svc{padding:26px}
+.svc:hover{border-color:var(--accent)}
+.ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);margin-bottom:16px}
+.ico svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-size:1.2rem;margin-bottom:6px}.svc p{color:var(--muted);font-size:.93rem}
+.svc ul{list-style:none;margin-top:14px;display:grid;gap:5px;font-size:.88rem;color:var(--muted)}
+.svc ul li::before{content:"✓ ";color:var(--accent)}
 
 /* tarjetas ejemplo/recurso */
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-.card{display:flex;flex-direction:column;text-align:left;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden}
+.card{display:flex;flex-direction:column;text-align:left;cursor:pointer;padding:0;overflow:hidden}
 .card:hover{border-color:var(--accent)}
-.thumb{height:150px;background:var(--accent-soft);border-bottom:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:7px;justify-content:center;overflow:hidden}
-.thumb i{display:block;height:9px;border-radius:5px;background:var(--line)}
-.thumb i.a{background:var(--accent);opacity:.8}
-.thumb .row{display:flex;gap:7px}.thumb .row i{flex:1;height:44px;border-radius:8px}
-.thumb .code{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);line-height:1.6;white-space:pre;overflow:hidden}
-.thumb .code b{color:var(--accent);font-weight:500}
-.card .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
-.tag{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-.card h3{font-size:1.4rem}
-.card p{color:var(--muted);font-size:.92rem;flex:1}
-.card .more{font-size:.85rem;font-weight:600;margin-top:6px}
-.count{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--muted)}
+.thumb{height:160px;background:var(--accent-soft);border-bottom:1px solid var(--line);padding:14px;display:grid;place-items:center}
+.thumb svg{width:100%;height:100%}
+.mini rect{fill:var(--glass2);stroke:var(--line)}.mini .h{fill:var(--accent);stroke:none}.mini .a{fill:var(--accent);stroke:none;opacity:.85}.mini .b{fill:var(--line);stroke:none}
+.mini line,.mini path{stroke:var(--accent);stroke-width:1.4;fill:none}
+.card .body{padding:18px 22px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.tag{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.card h3{font-size:1.28rem}
+.card p{color:var(--muted);font-size:.9rem;flex:1}
+.card .more{font-size:.85rem;font-weight:600;margin-top:6px;color:var(--accent)}
 .disc{margin-top:22px;font-size:.8rem;color:var(--muted)}
-.sub-h{font-size:clamp(1.6rem,3vw,2.2rem);margin:72px 0 24px;display:flex;justify-content:space-between;align-items:baseline;gap:16px}
 
 /* modal */
-dialog{border:1px solid var(--line);border-radius:18px;background:var(--bg);color:var(--text);width:min(960px,100% - 24px);max-height:calc(100vh - 32px);padding:0;margin:auto}
-dialog::backdrop{background:rgba(0,2,8,.78);backdrop-filter:blur(4px)}
-.mh{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:2}
+dialog{border:1px solid var(--line);border-radius:20px;background:var(--glass2);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);color:var(--text);width:min(960px,100% - 24px);max-height:calc(100vh - 32px);padding:0;margin:auto;box-shadow:var(--shadow)}
+dialog::backdrop{background:rgba(2,6,20,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.mh{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
 .mh .url{flex:1;background:var(--accent-soft);border-radius:8px;padding:5px 12px;font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mb{padding:24px;overflow:auto;max-height:calc(100vh - 110px)}
-.mb h3{font-size:1.5rem;margin-bottom:6px}.mb .hint{color:var(--muted);font-size:.88rem;margin-bottom:20px}
+.mb h3{font-size:1.5rem;margin-bottom:6px}.mb .hint{color:var(--muted);font-size:.9rem;margin-bottom:20px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:20px}
-.kpi{padding:14px;border-radius:12px;background:var(--accent-soft)}.kpi small{color:var(--muted);font-size:.75rem;display:block}.kpi b{font-size:1.4rem;letter-spacing:-.03em}
+.kpi{padding:14px;border-radius:12px;background:var(--accent-soft)}.kpi small{color:var(--muted);font-size:.75rem;display:block}.kpi b{font-size:1.35rem;letter-spacing:-.03em}
 .kbwrap{overflow-x:auto;padding-bottom:6px}
 .kb{display:grid;grid-template-columns:repeat(4,minmax(175px,1fr));gap:12px}
 .col{background:var(--accent-soft);border-radius:14px;padding:12px;min-height:210px}
 .col h4{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);display:flex;justify-content:space-between}
-.kc{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:8px;cursor:pointer;font-size:.85rem;text-align:left;width:100%}
+.kc{background:var(--glass2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:8px;cursor:pointer;font-size:.85rem;text-align:left;width:100%}
 .kc:hover{border-color:var(--accent)}.kc span{display:block;color:var(--muted);font-size:.78rem}
 .bars{display:flex;align-items:flex-end;gap:14px;height:170px;margin:6px 0 30px;padding:0 6px;border-bottom:1px solid var(--line)}
+.bars.sm{height:90px;margin:0 0 24px}
 .bw{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative}
-.cbar{width:100%;max-width:56px;border-radius:6px 6px 0 0;background:var(--accent)}
-.bw em{position:absolute;bottom:-22px;font-style:normal;font-size:.72rem;color:var(--muted)}
-.tblw{overflow-x:auto}.tbl{width:100%;border-collapse:collapse;font-size:.85rem}
+.cbar{width:100%;max-width:56px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,var(--accent),var(--accent2))}
+.bw em{position:absolute;bottom:-20px;font-style:normal;font-size:.7rem;color:var(--muted)}
+.tblw{overflow-x:auto}.tbl{width:100%;border-collapse:collapse;font-size:.86rem}
 .tbl th{text-align:left;color:var(--muted);font-weight:500;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
 .tbl th,.tbl td{padding:10px 8px;border-bottom:1px solid var(--line)}
+.tbl td.c,.tbl th.c{text-align:center}
+.yes{color:var(--ok);font-weight:700}.no{color:var(--muted);opacity:.5}
 .pill{font-size:.72rem;padding:3px 10px;border-radius:999px;font-weight:600;white-space:nowrap;background:var(--accent-soft)}
-.pill.ok{color:var(--ok)}.pill.wip{color:var(--warn)}.pill.todo{color:var(--accent)}
+.pill.ok{color:var(--ok)}.pill.wip{color:var(--warn)}.pill.todo{color:var(--accent)}.pill.err{color:#f87171}
 .site{border-radius:14px;overflow:hidden;background:#fbf6ee;color:#2b1d12;border:1px solid var(--line)}
 .site .sn{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;font-size:.85rem}
 .site .sn b{font-size:1.05rem}.site .sn span{display:flex;gap:18px;opacity:.7}
@@ -134,73 +150,71 @@ svg.dg{width:100%;height:auto;display:block}
 .er text,.ms text{fill:var(--text);font-size:12px;font-family:'JetBrains Mono',monospace}.er .ht{fill:#fff;font-weight:700}.er .k{fill:var(--accent)}
 .er line,.ms line,.ms path{stroke:var(--accent);stroke-width:1.6;fill:none}
 .ms text{font-family:Inter,sans-serif;font-size:13px}.ms .s{fill:var(--muted);font-size:11px}
-pre.code{margin-top:16px;padding:18px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.8rem;overflow-x:auto;color:var(--muted);line-height:1.7;white-space:pre;font-variant-ligatures:none}
-.copy{margin-top:14px}
+.ms .big{fill:var(--accent-soft);stroke:var(--accent);stroke-dasharray:5 5}
+.res{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .chk{list-style:none;display:grid;gap:10px}
-.chk li{display:flex;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface);font-size:.95rem}
+.chk li{display:flex;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--accent-soft);font-size:.95rem}
 .chk li::before{content:"□";color:var(--accent)}
 
 /* proceso */
-.proc{list-style:none;counter-reset:p}
-.proc li{counter-increment:p;display:grid;grid-template-columns:70px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line);font-size:clamp(1.15rem,2.4vw,1.7rem);font-weight:600;letter-spacing:-.025em}
-.proc li:last-child{border-bottom:1px solid var(--line)}
-.proc li::before{content:"0" counter(p);font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted);font-weight:400;padding-top:.5em}
-.proc li span{display:block;font-size:.95rem;color:var(--muted);font-weight:400;letter-spacing:0;margin-top:4px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.step{padding:24px}
+.step .n{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent)}
+.step h3{font-size:1.1rem;margin:8px 0 6px}.step p{color:var(--muted);font-size:.9rem}
 
 /* proyectos */
-.proj{display:grid;grid-template-columns:90px 1fr;gap:24px;padding:36px 0;border-top:1px solid var(--line)}
-.proj:last-child{border-bottom:1px solid var(--line)}
-.proj .n{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted)}
-.proj h3{font-size:clamp(1.4rem,2.6vw,2rem);margin-bottom:4px}.proj .org{color:var(--muted);font-size:.9rem;margin-bottom:14px}
+.proj{padding:30px;margin-bottom:16px;display:grid;grid-template-columns:64px 1fr;gap:18px}
+.proj .n{font-size:2.4rem;font-weight:800;color:var(--accent);line-height:1}
+.proj h3{font-size:1.35rem;margin-bottom:4px}.proj .org{color:var(--muted);font-size:.88rem;margin-bottom:14px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:.74rem;padding:4px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-family:'JetBrains Mono',monospace}
-.proj ul.pts{margin:18px 0 0 18px;color:var(--muted);font-size:.95rem}.proj ul.pts li{margin-bottom:6px}
+.chip{font-size:.74rem;padding:4px 11px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-family:'JetBrains Mono',monospace}
+.proj ul.pts{margin:16px 0 0 18px;color:var(--muted);font-size:.94rem}.proj ul.pts li{margin-bottom:6px}
 
 /* perfil */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.panel{padding:28px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
-.panel h3{margin-bottom:18px;font-size:1.3rem}
+.panel{padding:28px}
+.panel h3{margin-bottom:18px;font-size:1.25rem}
 .skill{margin-bottom:18px}.skill h4{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;font-weight:600}
 .certs{display:grid;gap:10px}
 .cert{padding:14px 16px;border-radius:12px;background:var(--accent-soft);font-size:.92rem}.cert b{display:block}.cert span{color:var(--muted);font-size:.8rem}
 
 /* contacto */
 .contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}
-.cinfo,form{padding:30px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
-.crow{display:flex;flex-direction:column;padding:16px 0;border-bottom:1px solid var(--line)}
-.crow:last-child{border-bottom:0}.crow small{color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.1em}.crow b{font-weight:600;font-size:1.05rem;word-break:break-all}
+.cinfo,form{padding:30px}
+.crow{display:flex;flex-direction:column;padding:15px 0;border-bottom:1px solid var(--line)}
+.crow:last-child{border-bottom:0}.crow small{color:var(--muted);font-size:.74rem;text-transform:uppercase;letter-spacing:.1em}.crow b{font-weight:600;font-size:1.02rem;word-break:break-all}
 a.crow:hover b{color:var(--accent)}
 form{display:grid;gap:14px}
 label{font-size:.82rem;color:var(--muted);font-weight:500;display:grid;gap:6px}
-input,select,textarea{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;outline:none;width:100%}
-select option{color:#0a1226}
+input,select,textarea{font:inherit;color:var(--text);background:var(--accent-soft);border:1px solid var(--line);border-radius:10px;padding:12px 14px;outline:none;width:100%}
+select option{color:#0a1430}
 input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 textarea{min-height:120px;resize:vertical}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .note{font-size:.78rem;color:var(--muted)}
-footer{padding:36px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+footer{padding:34px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.fab{position:fixed;right:20px;bottom:20px;z-index:40;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff}
+.fab{position:fixed;right:20px;bottom:20px;z-index:40;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.4)}
 .fab svg{width:27px;height:27px;fill:currentColor}
 
 @media(max-width:1000px){.nav-cta{display:none}}
 @media(max-width:860px){
-  .links{position:absolute;top:64px;left:0;right:0;flex-direction:column;padding:12px 20px;background:var(--bg);border-bottom:1px solid var(--line);display:none}
-  .links.open{display:flex}.links a{padding:12px 4px}
+  .links{position:absolute;top:68px;left:0;right:0;flex-direction:column;padding:10px 14px;display:none;background:var(--glass2);border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+  .links.open{display:flex}.links a{padding:12px}
   .menu-btn{display:grid}
-  .svc{grid-template-columns:1fr;gap:12px}.svc .go{display:none}
+  .hero-grid,.about,.contact{grid-template-columns:1fr}
+  .row2{grid-template-columns:1fr}
   .proj{grid-template-columns:1fr;gap:8px}
-  .about,.contact{grid-template-columns:1fr}.row2{grid-template-columns:1fr}
-  .proc li{grid-template-columns:40px 1fr}
-  section{padding:64px 0}.hero{padding:130px 0 60px}
+  section{padding:60px 0}.hero{padding:120px 0 50px}
 }
 </style>
 </head>
 <body>
+<div class="bg"><i></i><i></i><i></i></div>
 
 <header>
-  <div class="wrap in">
-    <a href="#inicio" class="logo">JOE ARELLANO</a>
+  <div class="in glass">
+    <a href="#inicio" class="logo">Joe Arellano<span>.</span></a>
     <nav class="links" id="links">
       <a href="#servicios">Servicios</a>
       <a href="#ejemplos">Ejemplos</a>
@@ -222,62 +236,78 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 <main>
 <section class="hero" id="inicio">
-  <div class="wrap">
-    <p class="big"><b>Joe Arellano R.</b> es ingeniero de software y construye <em>sistemas de gestión, páginas web, APIs y microservicios</em> para empresas que ya no caben en una plantilla. Primero entiendo la operación; después sale un sistema claro, seguro y hecho para durar.</p>
-    <div class="cta">
-      <a href="#contacto" class="btn primary">Solicitar cotización →</a>
-      <a href="#ejemplos" class="btn ghost">Ver ejemplos</a>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill-tag glass"><span class="dot"></span>Ingeniero en Computación e Informática · Arica, Chile</span>
+      <h1>Software a medida para tu <em>negocio</em>.</h1>
+      <p class="lead">Diseño y desarrollo sistemas de gestión, páginas web, APIs y microservicios. Primero entiendo cómo funciona tu operación; después construyo algo claro, seguro y hecho para durar.</p>
+      <div class="cta">
+        <a href="#contacto" class="btn primary">Solicitar cotización</a>
+        <a href="#ejemplos" class="btn ghost">Ver ejemplos</a>
+      </div>
+      <div class="facts">
+        <div><b>+3</b><span>años de experiencia</span></div>
+        <div><b>3</b><span>proyectos destacados</span></div>
+        <div><b>5</b><span>certificaciones</span></div>
+      </div>
     </div>
-    <div class="facts">
-      <div><b>+3</b><span>años de experiencia aplicada</span></div>
-      <div><b>3</b><span>proyectos de ingeniería destacados</span></div>
-      <div><b>5</b><span>certificaciones</span></div>
-      <div><b>Arica</b><span>Chile · trabajo remoto</span></div>
+    <div class="hp glass">
+      <div class="top"><i></i><i></i><i></i><span>Panel de ejemplo · datos ficticios</span></div>
+      <div class="bd">
+        <div class="kpis"><div class="kpi"><small>Ventas del mes</small><b>$18,4 M</b></div><div class="kpi"><small>Clientes</small><b>312</b></div><div class="kpi"><small>Conversión</small><b>27%</b></div></div>
+        <div class="bars sm" id="hbars"></div>
+        <div class="res" style="margin-top:6px"><span class="pill ok">● Sistema en línea</span><span class="pill todo">Respaldo diario</span><span class="pill wip">3 tareas en curso</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="servicios">
   <div class="wrap">
-    <p class="eyebrow"><span>Servicios</span><span class="count">06</span></p>
-    <h2>Lo que hago.</h2>
-
-    <div class="svc"><span class="n">01 / 06</span><div><h3>Sistemas de gestión y CRM</h3><p>Un solo lugar para toda la operación.</p></div><ul><li>Clientes y ventas</li><li>Inventario y bodegas</li><li>Reportes y paneles</li><li>Integraciones</li></ul><span class="go">→</span></div>
-    <div class="svc"><span class="n">02 / 06</span><div><h3>Páginas web y aplicaciones</h3><p>Sitios y apps que cargan rápido y se pueden mantener.</p></div><ul><li>Angular, React y Tailwind</li><li>Sitios, portales y catálogos</li><li>Diseño responsivo</li></ul><span class="go">→</span></div>
-    <div class="svc"><span class="n">03 / 06</span><div><h3>APIs y backend</h3><p>La lógica de tu negocio, ordenada y documentada.</p></div><ul><li>Node.js, Express y TypeScript</li><li>APIs REST</li><li>Integración con servicios externos</li></ul><span class="go">→</span></div>
-    <div class="svc"><span class="n">04 / 06</span><div><h3>Arquitectura y microservicios</h3><p>La arquitectura que tu negocio realmente necesita.</p></div><ul><li>Monolitos modulares</li><li>API Gateway y micro frontends</li><li>Resiliencia ante fallos</li></ul><span class="go">→</span></div>
-    <div class="svc"><span class="n">05 / 06</span><div><h3>Bases de datos</h3><p>Datos íntegros, consultas rápidas.</p></div><ul><li>Modelado relacional en MySQL</li><li>Prisma ORM</li><li>Optimización de consultas</li></ul><span class="go">→</span></div>
-    <div class="svc"><span class="n">06 / 06</span><div><h3>Seguridad, contenedores y redes</h3><p>Entornos reproducibles y accesos bajo control.</p></div><ul><li>JWT, RBAC y Bcrypt</li><li>Docker y Docker Compose</li><li>Redes (formación CCNA)</li></ul><span class="go">→</span></div>
+    <p class="eyebrow">Servicios</p>
+    <h2>Lo que puedo hacer por tu proyecto</h2>
+    <p class="sub">Desde la idea hasta el sistema funcionando: diseño, desarrollo, seguridad y despliegue.</p>
+    <div class="cards">
+      <article class="svc glass"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></div>
+        <h3>Sistemas de gestión y CRM</h3><p>Un solo lugar para toda la operación.</p><ul><li>Clientes y ventas</li><li>Inventario y bodegas</li><li>Reportes y paneles</li></ul></article>
+      <article class="svc glass"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div>
+        <h3>Páginas web y aplicaciones</h3><p>Sitios y apps que cargan rápido y se pueden mantener.</p><ul><li>Angular, React y Tailwind</li><li>Portales y catálogos</li><li>Diseño responsivo</li></ul></article>
+      <article class="svc glass"><div class="ico"><svg viewBox="0 0 24 24"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg></div>
+        <h3>APIs y backend</h3><p>La lógica de tu negocio, ordenada y documentada.</p><ul><li>Node.js, Express y TypeScript</li><li>APIs REST</li><li>Integración con servicios externos</li></ul></article>
+      <article class="svc glass"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M12 7.5v4M12 11.5l-6 4.5M12 11.5l6 4.5"/></svg></div>
+        <h3>Arquitectura y microservicios</h3><p>La arquitectura que tu negocio realmente necesita.</p><ul><li>Monolitos modulares</li><li>API Gateway y micro frontends</li><li>Resiliencia ante fallos</li></ul></article>
+      <article class="svc glass"><div class="ico"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+        <h3>Bases de datos</h3><p>Datos íntegros y consultas rápidas.</p><ul><li>Modelado relacional en MySQL</li><li>Prisma ORM</li><li>Optimización de consultas</li></ul></article>
+      <article class="svc glass"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Seguridad, contenedores y redes</h3><p>Entornos reproducibles y accesos bajo control.</p><ul><li>JWT, roles y Bcrypt</li><li>Docker y Docker Compose</li><li>Redes (formación CCNA)</li></ul></article>
+    </div>
   </div>
 </section>
 
 <section id="ejemplos">
   <div class="wrap">
-    <p class="eyebrow"><span>Ejemplos</span><span class="count">05 maquetas</span></p>
-    <h2>Así se ven las soluciones.</h2>
+    <p class="eyebrow">Ejemplos</p>
+    <h2>Así se ven las soluciones</h2>
     <p class="sub">Maquetas que construí con datos ficticios para mostrar el tipo de sistemas que puedo desarrollar. Haz clic en una para abrirla.</p>
     <div class="cards">
-      <button class="card" data-open="crm">
-        <div class="thumb"><div class="row"><i class="a"></i><i></i><i></i><i></i></div><div class="row"><i></i><i class="a"></i><i></i><i></i></div></div>
+      <button class="card glass" data-open="crm">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="6" y="8" width="42" height="94" rx="5"/><rect x="54" y="8" width="42" height="94" rx="5"/><rect x="102" y="8" width="42" height="94" rx="5"/><rect x="150" y="8" width="42" height="94" rx="5"/><rect class="a" x="11" y="16" width="32" height="16" rx="3"/><rect class="b" x="11" y="38" width="32" height="16" rx="3"/><rect class="b" x="59" y="16" width="32" height="16" rx="3"/><rect class="a" x="59" y="38" width="32" height="16" rx="3"/><rect class="b" x="107" y="16" width="32" height="16" rx="3"/><rect class="b" x="107" y="38" width="32" height="16" rx="3"/><rect class="a" x="155" y="16" width="32" height="16" rx="3"/></svg></div>
         <div class="body"><span class="tag">Gestión</span><h3>CRM</h3><p>Embudo de ventas con oportunidades que avanzan de etapa.</p><span class="more">Abrir →</span></div>
       </button>
-      <button class="card" data-open="gestion">
-        <div class="thumb"><i class="a" style="width:40%"></i><i style="width:90%"></i><i style="width:70%"></i><i style="width:80%"></i><i style="width:55%"></i></div>
+      <button class="card glass" data-open="gestion">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="6" y="6" width="56" height="26" rx="5"/><rect x="72" y="6" width="56" height="26" rx="5"/><rect x="138" y="6" width="56" height="26" rx="5"/><rect class="a" x="16" y="70" width="20" height="30" rx="2"/><rect class="a" x="44" y="58" width="20" height="42" rx="2"/><rect class="a" x="72" y="64" width="20" height="36" rx="2"/><rect class="a" x="100" y="48" width="20" height="52" rx="2"/><rect class="a" x="128" y="54" width="20" height="46" rx="2"/><rect class="a" x="156" y="40" width="20" height="60" rx="2"/></svg></div>
         <div class="body"><span class="tag">Gestión</span><h3>Panel de operaciones</h3><p>Indicadores, gráfico mensual y seguimiento de tareas.</p><span class="more">Abrir →</span></div>
       </button>
-      <button class="card" data-open="web">
-        <div class="thumb"><i class="a" style="width:100%;height:46px"></i><div class="row"><i></i><i></i><i></i></div></div>
+      <button class="card glass" data-open="web">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="6" y="6" width="188" height="98" rx="6"/><rect class="b" x="14" y="13" width="40" height="6" rx="3"/><rect class="a" x="14" y="28" width="172" height="34" rx="4"/><rect class="b" x="14" y="70" width="52" height="28" rx="4"/><rect class="b" x="74" y="70" width="52" height="28" rx="4"/><rect class="b" x="134" y="70" width="52" height="28" rx="4"/></svg></div>
         <div class="body"><span class="tag">Web</span><h3>Sitio corporativo</h3><p>Página responsiva para un negocio, rápida y a la medida de la marca.</p><span class="more">Abrir →</span></div>
       </button>
-      <button class="card" data-open="bd">
-        <div class="thumb"><div class="code"><b>roles</b> ──< <b>usuarios</b> ──1 <b>egresados</b>
-                              └──< <b>seguimientos</b></div></div>
-        <div class="body"><span class="tag">Base de datos</span><h3>Modelo relacional</h3><p>Diagrama entidad-relación y esquema Prisma.</p><span class="more">Abrir →</span></div>
+      <button class="card glass" data-open="bd">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="6" y="10" width="52" height="38" rx="4"/><rect class="h" x="6" y="10" width="52" height="9" rx="4"/><rect x="74" y="10" width="52" height="38" rx="4"/><rect class="h" x="74" y="10" width="52" height="9" rx="4"/><rect x="142" y="10" width="52" height="38" rx="4"/><rect class="h" x="142" y="10" width="52" height="9" rx="4"/><rect x="142" y="62" width="52" height="38" rx="4"/><rect class="h" x="142" y="62" width="52" height="9" rx="4"/><line x1="58" y1="30" x2="74" y2="30"/><line x1="126" y1="30" x2="142" y2="30"/><line x1="168" y1="48" x2="168" y2="62"/></svg></div>
+        <div class="body"><span class="tag">Base de datos</span><h3>Modelo relacional</h3><p>Diagrama entidad-relación de un sistema con usuarios y roles.</p><span class="more">Abrir →</span></div>
       </button>
-      <button class="card" data-open="ms">
-        <div class="thumb"><div class="code">cliente → <b>gateway</b> → auth
-                       → usuarios → <b>mysql</b>
-                       → correos</div></div>
+      <button class="card glass" data-open="ms">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="6" y="40" width="40" height="30" rx="5"/><rect class="a" x="66" y="40" width="40" height="30" rx="5"/><rect x="132" y="6" width="56" height="26" rx="5"/><rect x="132" y="42" width="56" height="26" rx="5"/><rect x="132" y="78" width="56" height="26" rx="5"/><line x1="46" y1="55" x2="66" y2="55"/><path d="M106 55 C120 55 120 19 132 19"/><line x1="106" y1="55" x2="132" y2="55"/><path d="M106 55 C120 55 120 91 132 91"/></svg></div>
         <div class="body"><span class="tag">Arquitectura</span><h3>Microservicios</h3><p>Servicios independientes detrás de un API Gateway.</p><span class="more">Abrir →</span></div>
       </button>
     </div>
@@ -287,33 +317,25 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 <section id="recursos">
   <div class="wrap">
-    <p class="eyebrow"><span>Recursos</span><span class="count">04 archivos</span></p>
-    <h2>Material que puedes usar.</h2>
-    <p class="sub">Plantillas y código de ejemplo que uso en mis proyectos. Ábrelos y cópialos.</p>
+    <p class="eyebrow">Recursos</p>
+    <h2>Material de referencia</h2>
+    <p class="sub">Esquemas y plantillas que uso al planificar un proyecto, listos para consultar.</p>
     <div class="cards">
-      <button class="card" data-open="r-docker">
-        <div class="thumb"><div class="code"><b>services:</b>
-  db:  mysql:8
-  api: build ./api
-  <b>depends_on:</b> db</div></div>
-        <div class="body"><span class="tag">Docker</span><h3>Docker Compose</h3><p>API en Node y MySQL con healthcheck y variables de entorno.</p><span class="more">Abrir →</span></div>
+      <button class="card glass" data-open="r-docker">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="40" y="6" width="154" height="98" rx="8" style="stroke-dasharray:4 4"/><rect class="a" x="52" y="20" width="56" height="30" rx="5"/><rect x="52" y="62" width="56" height="30" rx="5"/><rect x="128" y="62" width="56" height="30" rx="5"/><rect x="6" y="20" width="26" height="30" rx="5"/><line x1="32" y1="35" x2="52" y2="35"/><line x1="80" y1="50" x2="80" y2="62"/><line x1="108" y1="77" x2="128" y2="77"/></svg></div>
+        <div class="body"><span class="tag">Docker</span><h3>Entorno con contenedores</h3><p>Cómo quedan la API y la base de datos corriendo juntas.</p><span class="more">Abrir →</span></div>
       </button>
-      <button class="card" data-open="r-prisma">
-        <div class="thumb"><div class="code"><b>model</b> Usuario {
-  id    Int @id
-  rol   Rol @relation
-}</div></div>
-        <div class="body"><span class="tag">Base de datos</span><h3>Esquema Prisma</h3><p>Usuarios y roles listos para un sistema con control de acceso.</p><span class="more">Abrir →</span></div>
+      <button class="card glass" data-open="r-roles">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="6" y="8" width="188" height="94" rx="6"/><rect class="h" x="6" y="8" width="188" height="16" rx="6"/><rect class="a" x="70" y="34" width="10" height="10" rx="5"/><rect class="a" x="100" y="34" width="10" height="10" rx="5"/><rect class="a" x="130" y="34" width="10" height="10" rx="5"/><rect class="a" x="160" y="34" width="10" height="10" rx="5"/><rect class="a" x="70" y="56" width="10" height="10" rx="5"/><rect class="a" x="100" y="56" width="10" height="10" rx="5"/><rect class="a" x="130" y="56" width="10" height="10" rx="5"/><rect class="a" x="70" y="78" width="10" height="10" rx="5"/></svg></div>
+        <div class="body"><span class="tag">Seguridad</span><h3>Roles y permisos</h3><p>Matriz de quién puede ver, crear, editar y eliminar.</p><span class="more">Abrir →</span></div>
       </button>
-      <button class="card" data-open="r-rbac">
-        <div class="thumb"><div class="code"><b>requireRole</b>('admin')
-  → verifica JWT
-  → 401 / 403 / next()</div></div>
-        <div class="body"><span class="tag">Seguridad</span><h3>Middleware JWT + roles</h3><p>Protege rutas de Express según el rol del usuario.</p><span class="more">Abrir →</span></div>
+      <button class="card glass" data-open="r-auth">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="4" y="40" width="38" height="30" rx="5"/><rect x="54" y="40" width="38" height="30" rx="5"/><rect x="104" y="40" width="38" height="30" rx="5"/><rect class="a" x="154" y="40" width="42" height="30" rx="5"/><line x1="42" y1="55" x2="54" y2="55"/><line x1="92" y1="55" x2="104" y2="55"/><line x1="142" y1="55" x2="154" y2="55"/></svg></div>
+        <div class="body"><span class="tag">Seguridad</span><h3>Flujo de autenticación</h3><p>El recorrido de un usuario desde el login hasta el acceso.</p><span class="more">Abrir →</span></div>
       </button>
-      <button class="card" data-open="r-check">
-        <div class="thumb"><i class="a" style="width:30%"></i><i style="width:80%"></i><i style="width:65%"></i><i style="width:75%"></i></div>
-        <div class="body"><span class="tag">Proceso</span><h3>Checklist antes de encargar un sistema</h3><p>Preguntas clave para definir el alcance antes de empezar.</p><span class="more">Abrir →</span></div>
+      <button class="card glass" data-open="r-check">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect class="a" x="14" y="12" width="12" height="12" rx="3"/><rect class="b" x="36" y="15" width="120" height="6" rx="3"/><rect class="a" x="14" y="38" width="12" height="12" rx="3"/><rect class="b" x="36" y="41" width="100" height="6" rx="3"/><rect x="14" y="64" width="12" height="12" rx="3"/><rect class="b" x="36" y="67" width="130" height="6" rx="3"/><rect x="14" y="90" width="12" height="12" rx="3"/><rect class="b" x="36" y="93" width="90" height="6" rx="3"/></svg></div>
+        <div class="body"><span class="tag">Proceso</span><h3>Checklist de proyecto</h3><p>Preguntas clave para definir el alcance antes de empezar.</p><span class="more">Abrir →</span></div>
       </button>
     </div>
   </div>
@@ -321,26 +343,27 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 <section id="proceso">
   <div class="wrap">
-    <p class="eyebrow"><span>Cómo trabajo</span></p>
-    <h2>Escuchar primero.</h2>
-    <ol class="proc">
-      <li>Entiendo el negocio antes de proponer nada.<span>Reunión inicial y levantamiento de lo que necesitas.</span></li>
-      <li>Defino un alcance claro.<span>Es lo que permite cumplir plazos.</span></li>
-      <li>Ves el sistema antes de que exista.<span>Maquetas y prototipos para validar contigo.</span></li>
-      <li>Cada entrega es algo que ya se puede usar.<span>Iteraciones cortas bajo metodología Scrum.</span></li>
-      <li>Lo ajusto con quienes lo usan todos los días.<span>Feedback real, cambios rápidos.</span></li>
-      <li>Después seguimos.<span>Soporte, mejoras y nuevas etapas.</span></li>
-    </ol>
+    <p class="eyebrow">Cómo trabajo</p>
+    <h2>De la idea al sistema funcionando</h2>
+    <p class="sub">Un proceso ágil y transparente, con entregas que ya se pueden usar.</p>
+    <div class="steps">
+      <div class="step glass"><span class="n">01</span><h3>Escuchar</h3><p>Entiendo el negocio antes de proponer nada.</p></div>
+      <div class="step glass"><span class="n">02</span><h3>Definir</h3><p>Un alcance claro es lo que permite cumplir plazos.</p></div>
+      <div class="step glass"><span class="n">03</span><h3>Diseñar</h3><p>Ves el sistema en maquetas antes de que exista.</p></div>
+      <div class="step glass"><span class="n">04</span><h3>Construir</h3><p>Iteraciones cortas con Scrum; cada entrega es utilizable.</p></div>
+      <div class="step glass"><span class="n">05</span><h3>Ajustar</h3><p>Lo afino con quienes lo usan todos los días.</p></div>
+      <div class="step glass"><span class="n">06</span><h3>Acompañar</h3><p>Soporte, mejoras y nuevas etapas.</p></div>
+    </div>
   </div>
 </section>
 
 <section id="proyectos">
   <div class="wrap">
-    <p class="eyebrow"><span>Proyectos</span><span class="count">03</span></p>
-    <h2>Experiencia real.</h2>
+    <p class="eyebrow">Proyectos</p>
+    <h2>Experiencia real</h2>
     <p class="sub">Sistemas desarrollados para la Universidad de Tarapacá y proyectos de arquitectura distribuida.</p>
 
-    <article class="proj"><span class="n">01</span><div>
+    <article class="proj glass"><span class="n">01</span><div>
       <h3>Sistema de Progresión Estudiantil (SDPE)</h3><p class="org">Universidad de Tarapacá</p>
       <div class="chips"><span class="chip">Angular</span><span class="chip">Node.js · TypeScript</span><span class="chip">Prisma ORM</span><span class="chip">JWT</span><span class="chip">Scrum</span></div>
       <ul class="pts">
@@ -349,7 +372,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <li>Autentiqué la plataforma con flujos JWT y políticas de Control de Acceso Basado en Roles (RBAC).</li>
       </ul></div></article>
 
-    <article class="proj"><span class="n">02</span><div>
+    <article class="proj glass"><span class="n">02</span><div>
       <h3>Sistema de Gestión de Posgrados</h3><p class="org">Universidad de Tarapacá</p>
       <div class="chips"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">MySQL</span><span class="chip">Bcrypt</span><span class="chip">Docker Compose</span></div>
       <ul class="pts">
@@ -358,7 +381,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <li>Configuré middlewares para proteger rutas y validar accesos jerárquicos de forma segura.</li>
       </ul></div></article>
 
-    <article class="proj"><span class="n">03</span><div>
+    <article class="proj glass"><span class="n">03</span><div>
       <h3>Plataforma de Microservicios Distribuidos</h3><p class="org">Arquitectura de microservicios</p>
       <div class="chips"><span class="chip">React · Vite</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Axios</span><span class="chip">CORS</span></div>
       <ul class="pts">
@@ -371,18 +394,18 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 <section id="perfil">
   <div class="wrap">
-    <p class="eyebrow"><span>Perfil</span></p>
-    <h2>Ingeniería con enfoque práctico.</h2>
+    <p class="eyebrow">Perfil</p>
+    <h2>Ingeniería con enfoque práctico</h2>
     <p class="sub">Ingeniero de Ejecución en Computación e Informática y Licenciado en Ciencias de la Ingeniería, con más de 3 años de experiencia en el ciclo de vida completo del desarrollo de software. Sólidos conocimientos en seguridad, redes e integración continua bajo metodologías ágiles.</p>
     <div class="about">
-      <div class="panel">
+      <div class="panel glass">
         <h3>Habilidades técnicas</h3>
         <div class="skill"><h4>Lenguajes y frameworks</h4><div class="chips"><span class="chip">JavaScript ES6+</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Angular</span><span class="chip">React</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">Tailwind CSS</span></div></div>
         <div class="skill"><h4>Bases de datos y API</h4><div class="chips"><span class="chip">MySQL</span><span class="chip">Prisma ORM</span><span class="chip">JWT</span><span class="chip">Bcrypt</span><span class="chip">Axios</span><span class="chip">REST APIs</span></div></div>
         <div class="skill"><h4>DevOps y metodologías</h4><div class="chips"><span class="chip">Docker</span><span class="chip">Docker Compose</span><span class="chip">Git/GitHub</span><span class="chip">SCRUM</span></div></div>
         <div class="skill"><h4>Idiomas</h4><div class="chips"><span class="chip">Español · Nativo</span><span class="chip">Inglés · Intermedio (lectura técnica)</span></div></div>
       </div>
-      <div class="panel">
+      <div class="panel glass">
         <h3>Certificaciones</h3>
         <div class="certs">
           <div class="cert"><b>CCNA: Routing &amp; Switching</b><span>Cisco Networking Academy</span></div>
@@ -398,17 +421,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 <section id="contacto">
   <div class="wrap">
-    <p class="eyebrow"><span>Contacto</span></p>
-    <h2>Conversemos sobre tu proyecto.</h2>
+    <p class="eyebrow">Contacto</p>
+    <h2>Conversemos sobre tu proyecto</h2>
     <p class="sub">Cuéntame qué necesitas resolver y te respondo con una propuesta clara.</p>
     <div class="contact">
-      <div class="cinfo">
+      <div class="cinfo glass">
         <a class="crow" href="mailto:jonathanarejoe5@gmail.com"><small>Correo</small><b>jonathanarejoe5@gmail.com</b></a>
         <a class="crow" href="tel:+56941094590"><small>Teléfono</small><b>+56 9 4109 4590</b></a>
         <a class="crow" href="https://wa.me/56941094590?text=Hola%20Joe%2C%20vi%20tu%20p%C3%A1gina%20y%20quisiera%20cotizar%20un%20proyecto." target="_blank" rel="noopener"><small>WhatsApp</small><b>Escríbeme directo →</b></a>
         <div class="crow"><small>Ubicación</small><b>Arica, Chile · Trabajo remoto</b></div>
       </div>
-      <form id="form">
+      <form class="glass" id="form">
         <div class="row2">
           <label>Nombre<input name="nombre" required placeholder="Tu nombre"></label>
           <label>Correo<input name="correo" type="email" required placeholder="tu@correo.com"></label>
@@ -425,7 +448,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
           </select>
         </label>
         <label>Cuéntame tu idea<textarea name="mensaje" required placeholder="Describe brevemente qué necesitas, plazos y presupuesto estimado..."></textarea></label>
-        <button class="btn primary" type="submit">Enviar por correo →</button>
+        <button class="btn primary" type="submit">Enviar por correo</button>
         <p class="note">Al enviar se abrirá tu aplicación de correo con el mensaje listo para mandar.</p>
       </form>
     </div>
@@ -468,7 +491,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </div>
 </template>
 <template id="t-bd">
-  <h3>Diseño de base de datos relacional</h3><p class="hint">Modelo entidad-relación con llaves, relaciones e integridad (MySQL + Prisma).</p>
+  <h3>Diseño de base de datos relacional</h3><p class="hint">Modelo entidad-relación con llaves, relaciones e integridad de datos.</p>
   <svg class="dg er" viewBox="0 0 740 330" role="img" aria-label="Diagrama entidad relación de ejemplo">
     <g><rect x="10" y="20" width="190" height="100" rx="8"/><rect class="hd" x="10" y="20" width="190" height="28" rx="8"/><text class="ht" x="22" y="39">roles</text><text x="22" y="68"><tspan class="k">PK</tspan> id</text><text x="22" y="92">nombre</text></g>
     <g><rect x="270" y="20" width="200" height="124" rx="8"/><rect class="hd" x="270" y="20" width="200" height="28" rx="8"/><text class="ht" x="282" y="39">usuarios</text><text x="282" y="68"><tspan class="k">PK</tspan> id</text><text x="282" y="92">nombre, correo</text><text x="282" y="116"><tspan class="k">FK</tspan> rol_id</text></g>
@@ -488,90 +511,52 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <rect x="480" y="20" width="160" height="56" rx="10"/><text x="500" y="46">Auth Server</text><text class="s" x="500" y="64">JWT · Bcrypt</text>
     <rect x="480" y="120" width="160" height="56" rx="10"/><text x="500" y="146">Servicio Usuarios</text><text class="s" x="500" y="164">Node · Express</text>
     <rect x="480" y="220" width="160" height="56" rx="10"/><text x="500" y="246">Servicio Correos</text><text class="s" x="500" y="264">Notificaciones</text>
-    <rect x="690" y="120" width="130" height="56" rx="10"/><text x="710" y="146">MySQL</text><text class="s" x="710" y="164">Docker Compose</text>
+    <rect x="690" y="120" width="130" height="56" rx="10"/><text x="710" y="146">MySQL</text><text class="s" x="710" y="164">Base de datos</text>
     <line x1="180" y1="148" x2="250" y2="148"/>
     <path d="M410 148 C445 148 445 48 480 48"/><line x1="410" y1="148" x2="480" y2="148"/><path d="M410 148 C445 148 445 248 480 248"/>
     <path d="M640 48 C665 48 665 135 690 135"/><line x1="640" y1="148" x2="690" y2="148"/>
   </svg>
 </template>
 <template id="t-r-docker">
-  <h3>Docker Compose · API + MySQL</h3><p class="hint">Archivo docker-compose.yml. Las contraseñas van en un archivo .env, nunca en el código.</p>
-<pre class="code" data-copy>services:
-  db:
-    image: mysql:8
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_DATABASE: app
-    volumes:
-      - db_data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      retries: 5
-
-  api:
-    build: ./api
-    environment:
-      DATABASE_URL: mysql://root:${DB_ROOT_PASSWORD}@db:3306/app
-      JWT_SECRET: ${JWT_SECRET}
-    ports:
-      - "3000:3000"
-    depends_on:
-      db:
-        condition: service_healthy
-
-volumes:
-  db_data:</pre>
+  <h3>Entorno con contenedores</h3><p class="hint">Con Docker Compose, un solo comando levanta la API y la base de datos conectadas entre sí.</p>
+  <svg class="dg ms" viewBox="0 0 760 290" role="img" aria-label="Diagrama de contenedores">
+    <rect class="big" x="200" y="12" width="548" height="266" rx="16"/><text class="s" x="220" y="38">Servidor con Docker</text>
+    <rect x="12" y="104" width="130" height="56" rx="10"/><text x="30" y="130">Cliente</text><text class="s" x="30" y="148">Navegador / app</text>
+    <rect x="230" y="104" width="170" height="70" rx="10"/><text x="248" y="132">Contenedor API</text><text class="s" x="248" y="152">Node.js · puerto 3000</text>
+    <rect x="530" y="104" width="190" height="70" rx="10"/><text x="548" y="132">Contenedor MySQL</text><text class="s" x="548" y="152">Base de datos</text>
+    <rect x="530" y="206" width="190" height="50" rx="10"/><text x="548" y="228">Volumen de datos</text><text class="s" x="548" y="244">Los datos persisten</text>
+    <rect x="230" y="206" width="170" height="50" rx="10"/><text x="248" y="228">Archivo .env</text><text class="s" x="248" y="244">Claves fuera del código</text>
+    <line x1="142" y1="132" x2="230" y2="132"/><line x1="400" y1="139" x2="530" y2="139"/><line x1="625" y1="174" x2="625" y2="206"/><line x1="315" y1="174" x2="315" y2="206"/>
+  </svg>
+  <div class="res"><span class="pill ok">✓ Base de datos saludable</span><span class="pill ok">✓ API conectada</span><span class="pill ok">✓ Datos persistentes</span><span class="pill todo">Mismo entorno en cualquier equipo</span></div>
 </template>
-<template id="t-r-prisma">
-  <h3>Esquema Prisma · Usuarios y roles</h3><p class="hint">Archivo schema.prisma para MySQL con relación uno a muchos.</p>
-<pre class="code" data-copy>generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
-}
-
-model Rol {
-  id       Int       @id @default(autoincrement())
-  nombre   String    @unique
-  usuarios Usuario[]
-}
-
-model Usuario {
-  id       Int      @id @default(autoincrement())
-  nombre   String
-  correo   String   @unique
-  password String
-  rol      Rol      @relation(fields: [rolId], references: [id])
-  rolId    Int
-  creadoEn DateTime @default(now())
-}</pre>
+<template id="t-r-roles">
+  <h3>Roles y permisos</h3><p class="hint">Cada rol ve y hace solo lo que le corresponde. Ejemplo de matriz de acceso para un sistema de seguimiento.</p>
+  <div class="tblw"><table class="tbl">
+    <tr><th>Rol</th><th class="c">Ver</th><th class="c">Crear</th><th class="c">Editar</th><th class="c">Eliminar</th><th class="c">Reportes</th></tr>
+    <tr><td><b>Administrador</b></td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td></tr>
+    <tr><td><b>Coordinador</b></td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c no">—</td><td class="c yes">✓</td></tr>
+    <tr><td><b>Docente</b></td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c no">—</td><td class="c no">—</td><td class="c no">—</td></tr>
+    <tr><td><b>Visitante</b></td><td class="c yes">✓</td><td class="c no">—</td><td class="c no">—</td><td class="c no">—</td><td class="c no">—</td></tr>
+  </table></div>
+  <div class="res"><span class="pill ok">200 · Acceso permitido</span><span class="pill err">403 · Sin permisos para este rol</span></div>
 </template>
-<template id="t-r-rbac">
-  <h3>Middleware JWT con roles</h3><p class="hint">Express + jsonwebtoken. Uso: <span class="mono">router.delete('/usuarios/:id', requireRole('admin'), handler)</span></p>
-<pre class="code" data-copy>import jwt from 'jsonwebtoken';
-
-export const requireRole = (...roles) => (req, res, next) => {
-  const token = req.headers.authorization?.split(' ')[1];
-  if (!token) return res.status(401).json({ error: 'No autenticado' });
-
-  try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
-    if (!roles.includes(payload.rol)) {
-      return res.status(403).json({ error: 'Sin permisos' });
-    }
-    req.user = payload;
-    next();
-  } catch {
-    res.status(401).json({ error: 'Token inválido o vencido' });
-  }
-};</pre>
+<template id="t-r-auth">
+  <h3>Flujo de autenticación</h3><p class="hint">Cómo pasa un usuario del inicio de sesión al acceso seguro, con renovación de sesión.</p>
+  <svg class="dg ms" viewBox="0 0 840 230" role="img" aria-label="Flujo de autenticación">
+    <rect x="10" y="70" width="150" height="60" rx="10"/><text x="28" y="96">1. Inicia sesión</text><text class="s" x="28" y="114">Correo y contraseña</text>
+    <rect x="200" y="70" width="150" height="60" rx="10"/><text x="218" y="96">2. Verificación</text><text class="s" x="218" y="114">Contraseña cifrada</text>
+    <rect x="390" y="70" width="150" height="60" rx="10"/><text x="408" y="96">3. Recibe token</text><text class="s" x="408" y="114">Acceso + renovación</text>
+    <rect x="580" y="70" width="150" height="60" rx="10"/><text x="598" y="96">4. Revisión de rol</text><text class="s" x="598" y="114">Cada petición</text>
+    <line x1="160" y1="100" x2="200" y2="100"/><line x1="350" y1="100" x2="390" y2="100"/><line x1="540" y1="100" x2="580" y2="100"/>
+    <path d="M730 100 C780 100 780 40 780 40"/><path d="M730 100 C780 100 780 170 780 170"/>
+    <text x="745" y="36">Acceso</text><text x="745" y="190">Denegado</text>
+    <path d="M465 130 C465 190 285 190 285 130" style="stroke-dasharray:5 5"/><text class="s" x="300" y="206">Si el token vence, se renueva sin volver a iniciar sesión</text>
+  </svg>
+  <div class="res"><span class="pill ok">200 · Acceso permitido</span><span class="pill wip">401 · Sesión vencida: se renueva</span><span class="pill err">403 · Sin permisos</span></div>
 </template>
 <template id="t-r-check">
-  <h3>Checklist antes de encargar un sistema</h3><p class="hint">Si puedes responder esto, el proyecto parte con un alcance claro.</p>
+  <h3>Checklist de proyecto</h3><p class="hint">Si puedes responder esto, el proyecto parte con un alcance claro.</p>
   <ul class="chk">
     <li>¿Qué problema concreto quieres resolver y cómo lo resuelves hoy?</li>
     <li>¿Quiénes lo usarán y con qué roles o permisos?</li>
@@ -597,22 +582,22 @@ document.getElementById('menu').onclick=()=>links.classList.toggle('open');
 links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
 document.getElementById('y').textContent=new Date().getFullYear();
 
+const barsHtml=m=>m.map(x=>`<div class="bw"><div class="cbar" style="height:${x[1]}%"></div><em>${x[0]}</em></div>`).join('');
+const months=[['May',48],['Jun',62],['Jul',55],['Ago',78],['Sep',70],['Oct',92]];
+document.getElementById('hbars').innerHTML=barsHtml(months);
+
 /* modal de ejemplos y recursos */
 const dlg=document.getElementById('dlg'),body=document.getElementById('dlgbody'),urlEl=document.getElementById('dlgurl');
-const names={crm:'demo.ejemplo.cl/crm',gestion:'demo.ejemplo.cl/panel',web:'demo.ejemplo.cl/sitio',bd:'demo.ejemplo.cl/modelo-datos',ms:'demo.ejemplo.cl/arquitectura','r-docker':'recursos/docker-compose.yml','r-prisma':'recursos/schema.prisma','r-rbac':'recursos/requireRole.js','r-check':'recursos/checklist.md'};
+const names={crm:'demo.ejemplo.cl/crm',gestion:'demo.ejemplo.cl/panel',web:'demo.ejemplo.cl/sitio',bd:'demo.ejemplo.cl/modelo-datos',ms:'demo.ejemplo.cl/arquitectura','r-docker':'recursos/entorno-contenedores','r-roles':'recursos/roles-y-permisos','r-auth':'recursos/flujo-autenticacion','r-check':'recursos/checklist-proyecto'};
 const clp=n=>'$'+n.toLocaleString('es-CL');
-document.querySelectorAll('[data-open]').forEach(c=>c.onclick=()=>open(c.dataset.open));
+document.querySelectorAll('[data-open]').forEach(c=>c.onclick=()=>openDemo(c.dataset.open));
 document.getElementById('dlgx').onclick=()=>dlg.close();
 dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
-function open(id){
+function openDemo(id){
   body.innerHTML='';body.appendChild(document.getElementById('t-'+id).content.cloneNode(true));
   urlEl.textContent=names[id];
   if(id==='crm')initCrm();
-  if(id==='gestion')initBars();
-  const code=body.querySelector('[data-copy]');
-  if(code){const b=document.createElement('button');b.className='btn ghost sm copy';b.textContent='Copiar código';
-    b.onclick=()=>{navigator.clipboard.writeText(code.textContent).then(()=>b.textContent='¡Copiado!',()=>b.textContent='Selecciona y copia')};
-    code.after(b)}
+  if(id==='gestion')body.querySelector('[data-k="bars"]').innerHTML=barsHtml(months);
   dlg.showModal();body.scrollTop=0;
 }
 const stages=['Nuevo','Contactado','Propuesta','Ganado'];
@@ -633,10 +618,6 @@ function initCrm(){
     q('g').textContent=clp(won.reduce((a,d)=>a+d.v,0));
     q('c').textContent=Math.round(won.length/deals.length*100)+'%';
   })();
-}
-function initBars(){
-  const m=[['Mayo',48],['Jun',62],['Jul',55],['Ago',78],['Sep',70],['Oct',92]];
-  body.querySelector('[data-k="bars"]').innerHTML=m.map(x=>`<div class="bw"><div class="cbar" style="height:${x[1]}%"></div><em>${x[0]}</em></div>`).join('');
 }
 document.getElementById('form').addEventListener('submit',e=>{
   e.preventDefault();
