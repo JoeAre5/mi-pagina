@@ -155,6 +155,69 @@ textarea{min-height:120px;resize:vertical}
 .note{font-size:.78rem;color:var(--muted)}
 footer{padding:36px 0;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--glass-b)}
 
+/* ejemplos */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tabbtn{font:inherit;font-size:.88rem;font-weight:500;padding:9px 18px;border-radius:999px;border:1px solid var(--glass-b);background:var(--glass);color:var(--muted);cursor:pointer;transition:.2s;backdrop-filter:blur(10px)}
+.tabbtn:hover{color:var(--text);border-color:var(--accent)}
+.tabbtn.on{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--on-accent);border-color:transparent}
+.demo{padding:0;overflow:hidden}
+.demo-top{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--glass-b)}
+.demo-top i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.demo-top i:nth-child(2){background:#febc2e}.demo-top i:nth-child(3){background:#28c840}
+.demo-top .url{margin-left:12px;flex:1;background:var(--accent-soft);border-radius:8px;padding:4px 12px;font-size:.78rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pane{display:none;padding:22px}.pane.on{display:block;animation:fade .4s}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.pane h3{font-size:1.1rem;margin-bottom:4px}.pane .hint{color:var(--muted);font-size:.82rem;margin-bottom:16px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:18px}
+.kpi{padding:14px;border-radius:12px;background:var(--accent-soft)}.kpi small{color:var(--muted);font-size:.75rem;display:block}.kpi b{font-family:'Space Grotesk';font-size:1.4rem}
+.kbwrap{overflow-x:auto;padding-bottom:6px}
+.kb{display:grid;grid-template-columns:repeat(4,minmax(175px,1fr));gap:12px}
+.col{background:var(--accent-soft);border-radius:14px;padding:12px;min-height:210px}
+.col h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:flex;justify-content:space-between}
+.kc{background:var(--glass);border:1px solid var(--glass-b);border-radius:10px;padding:10px 12px;margin-top:8px;cursor:pointer;font-size:.85rem;transition:.2s;text-align:left;width:100%;color:var(--text);font-family:inherit}
+.kc:hover{border-color:var(--accent);transform:translateY(-2px)}.kc span{display:block;color:var(--muted);font-size:.78rem}
+.bars{display:flex;align-items:flex-end;gap:14px;height:170px;margin:6px 0 26px;padding:0 6px;border-bottom:1px solid var(--glass-b)}
+.bw{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative}
+.bar{width:100%;max-width:56px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--accent2),var(--accent));height:0;transition:height 1s cubic-bezier(.2,.8,.2,1)}
+.bw em{position:absolute;bottom:-22px;font-style:normal;font-size:.72rem;color:var(--muted)}
+.tbl{width:100%;border-collapse:collapse;font-size:.85rem}.tbl th{text-align:left;color:var(--muted);font-weight:500;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
+.tbl th,.tbl td{padding:10px 8px;border-bottom:1px solid var(--glass-b)}
+.tblw{overflow-x:auto}
+.pill{font-size:.72rem;padding:3px 10px;border-radius:999px;font-weight:600;white-space:nowrap}
+.pill.ok{background:rgba(34,197,94,.16);color:#22c55e}.pill.wip{background:rgba(250,204,21,.16);color:#ca8a04}.pill.todo{background:var(--accent-soft);color:var(--accent)}
+.site{border-radius:14px;overflow:hidden;background:#fbf6ee;color:#2b1d12;border:1px solid var(--glass-b)}
+.site nav{position:static;display:flex;justify-content:space-between;align-items:center;padding:14px 22px;font-size:.85rem}
+.site nav b{font-family:'Space Grotesk';font-size:1.05rem}.site nav span{display:flex;gap:18px;opacity:.7}
+.site .sh{padding:44px 24px;background:linear-gradient(120deg,#3b2414,#8a5a36);color:#fff}
+.site .sh h4{font-family:'Space Grotesk';font-size:clamp(1.4rem,3.5vw,2.2rem);margin-bottom:8px}.site .sh p{opacity:.8;font-size:.9rem;max-width:44ch}
+.site .sh i{display:inline-block;margin-top:16px;font-style:normal;background:#f3c98b;color:#3b2414;padding:9px 18px;border-radius:999px;font-weight:600;font-size:.82rem}
+.site .sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;padding:22px}
+.site .sg div{background:#fff;border-radius:12px;padding:14px;font-size:.82rem;box-shadow:0 4px 14px rgba(60,30,10,.08)}
+.site .sg div u{display:block;height:70px;border-radius:8px;margin-bottom:10px;text-decoration:none;background:linear-gradient(135deg,#d7a46b,#8a5a36)}
+.site .sg div:nth-child(2) u{background:linear-gradient(135deg,#c98b5a,#5a3720)}.site .sg div:nth-child(3) u{background:linear-gradient(135deg,#e8c9a0,#b07a46)}
+.er rect{fill:var(--accent-soft);stroke:var(--glass-b)}.er .hd{fill:var(--accent);stroke:none}
+.er text{fill:var(--text);font-size:12px;font-family:'JetBrains Mono',monospace}.er .ht{fill:var(--on-accent);font-weight:700}.er .k{fill:var(--accent2)}
+.er line,.ms line,.ms path{stroke:var(--accent);stroke-width:1.6;fill:none}
+.ms rect{fill:var(--accent-soft);stroke:var(--glass-b)}.ms text{fill:var(--text);font-size:13px;font-family:Inter,sans-serif}.ms .s{fill:var(--muted);font-size:11px}
+.ms .flow{stroke-dasharray:6 6;animation:dash 1s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-12}}
+svg.dg{width:100%;height:auto;display:block}
+pre.code{margin-top:16px;padding:16px;border-radius:12px;background:var(--accent-soft);font-family:'JetBrains Mono',monospace;font-size:.78rem;overflow-x:auto;color:var(--muted);line-height:1.7}
+.anis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.ani{border-radius:14px;background:var(--accent-soft);padding:18px;text-align:center;font-size:.78rem;color:var(--muted)}
+.ani .st{height:90px;display:grid;place-items:center;margin-bottom:10px}
+.spin{width:38px;height:38px;border-radius:50%;border:4px solid var(--glass-b);border-top-color:var(--accent);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pulse{width:44px;height:44px;border-radius:50%;background:var(--accent);animation:pl 1.8s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 var(--accent)}100%{box-shadow:0 0 0 24px transparent}}
+.shim{font-family:'Space Grotesk';font-weight:700;font-size:1.5rem;background:linear-gradient(90deg,var(--muted),var(--accent2),var(--accent),var(--muted));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 3s linear infinite}
+@keyframes sh{to{background-position:-300% 0}}
+.lift{width:90px;height:60px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));transition:.3s;box-shadow:0 6px 18px -6px var(--accent)}.ani:hover .lift{transform:translateY(-8px) rotate(-4deg);box-shadow:0 18px 30px -8px var(--accent)}
+.load{width:120px;height:8px;border-radius:99px;background:var(--glass-b);overflow:hidden}.load::after{content:"";display:block;height:100%;width:40%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2));animation:ld 1.4s ease-in-out infinite}
+@keyframes ld{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+.type{font-family:'JetBrains Mono';color:var(--text);font-size:.85rem;border-right:2px solid var(--accent);white-space:nowrap;overflow:hidden;width:0;animation:ty 3s steps(14) infinite alternate}
+@keyframes ty{to{width:14ch}}
+.disc{margin-top:18px;font-size:.8rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
 .rv.in{opacity:1;transform:none}
@@ -163,6 +226,7 @@ footer{padding:36px 0;text-align:center;color:var(--muted);font-size:.85rem;bord
 .fab:hover{transform:scale(1.1)}
 .fab svg{width:28px;height:28px;fill:currentColor}
 
+@media(max-width:1020px){.nav-cta{display:none}.links a{padding:8px 10px}}
 @media(max-width:860px){
   .hero-grid,.about,.contact{grid-template-columns:1fr}
   .links{position:absolute;top:64px;left:0;right:0;flex-direction:column;padding:12px;border-radius:20px;background:var(--glass);border:1px solid var(--glass-b);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:none;align-items:stretch}
@@ -185,6 +249,7 @@ footer{padding:36px 0;text-align:center;color:var(--muted);font-size:.85rem;bord
     <a href="#inicio" class="logo">JA<span>.</span>dev</a>
     <div class="links" id="links">
       <a href="#servicios">Servicios</a>
+      <a href="#ejemplos">Ejemplos</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#perfil">Perfil</a>
       <a href="#proceso">Proceso</a>
@@ -278,6 +343,121 @@ footer{padding:36px 0;text-align:center;color:var(--muted);font-size:.85rem;bord
         <ul><li class="tag">Docker</li><li class="tag">Compose</li><li class="tag">CCNA</li><li class="tag">Git/GitHub</li></ul>
       </article>
     </div>
+  </div>
+</section>
+
+<section id="ejemplos">
+  <div class="wrap">
+    <p class="eyebrow rv">Ejemplos</p>
+    <h2 class="rv">Así se ven las soluciones que ofrezco</h2>
+    <p class="sub rv">Maquetas interactivas que construí con datos ficticios para mostrar el tipo de sistemas que puedo desarrollar para tu negocio.</p>
+
+    <div class="tabs rv" role="tablist">
+      <button class="tabbtn on" data-t="crm" role="tab">CRM</button>
+      <button class="tabbtn" data-t="gestion" role="tab">Sistema de gestión</button>
+      <button class="tabbtn" data-t="web" role="tab">Página web</button>
+      <button class="tabbtn" data-t="bd" role="tab">Base de datos</button>
+      <button class="tabbtn" data-t="ms" role="tab">Microservicios</button>
+      <button class="tabbtn" data-t="anim" role="tab">Animaciones</button>
+    </div>
+
+    <div class="demo glass rv">
+      <div class="demo-top"><i></i><i></i><i></i><span class="url" id="demourl">demo.ejemplo.cl/crm</span></div>
+
+      <div class="pane on" id="p-crm">
+        <h3>CRM · Embudo de ventas</h3>
+        <p class="hint">Haz clic en una oportunidad para avanzarla de etapa.</p>
+        <div class="kpis">
+          <div class="kpi"><small>Oportunidades</small><b id="k-n">0</b></div>
+          <div class="kpi"><small>En pipeline</small><b id="k-p">$0</b></div>
+          <div class="kpi"><small>Ganado</small><b id="k-g">$0</b></div>
+          <div class="kpi"><small>Conversión</small><b id="k-c">0%</b></div>
+        </div>
+        <div class="kbwrap"><div class="kb" id="kb"></div></div>
+      </div>
+
+      <div class="pane" id="p-gestion">
+        <h3>Panel de gestión · Operaciones</h3>
+        <p class="hint">Indicadores, gráficos y seguimiento de tareas en un solo lugar.</p>
+        <div class="kpis">
+          <div class="kpi"><small>Tickets abiertos</small><b>24</b></div>
+          <div class="kpi"><small>Resueltos (mes)</small><b>138</b></div>
+          <div class="kpi"><small>Tiempo medio</small><b>3,2 h</b></div>
+          <div class="kpi"><small>Satisfacción</small><b>94%</b></div>
+        </div>
+        <div class="bars" id="bars"></div>
+        <div class="tblw"><table class="tbl">
+          <tr><th>Tarea</th><th>Responsable</th><th>Entrega</th><th>Estado</th></tr>
+          <tr><td>Migrar inventario a nueva BD</td><td>Equipo TI</td><td>12 nov</td><td><span class="pill wip">En curso</span></td></tr>
+          <tr><td>Módulo de reportes mensuales</td><td>Desarrollo</td><td>20 nov</td><td><span class="pill todo">Pendiente</span></td></tr>
+          <tr><td>Respaldo automático diario</td><td>Infraestructura</td><td>05 nov</td><td><span class="pill ok">Completado</span></td></tr>
+          <tr><td>Control de acceso por roles</td><td>Desarrollo</td><td>28 nov</td><td><span class="pill wip">En curso</span></td></tr>
+        </table></div>
+      </div>
+
+      <div class="pane" id="p-web">
+        <h3>Página web corporativa</h3>
+        <p class="hint">Diseño responsivo, rápido y a la medida de tu marca (negocio ficticio).</p>
+        <div class="site">
+          <nav><b>Café Andino</b><span><a>Inicio</a><a>Carta</a><a>Nosotros</a><a>Contacto</a></span></nav>
+          <div class="sh"><h4>Café de origen,<br>tostado en Arica.</h4><p>Granos seleccionados y entrega a todo Chile.</p><i>Ver productos</i></div>
+          <div class="sg"><div><u></u><b>Espresso</b><br>Notas a chocolate</div><div><u></u><b>Filtrado</b><br>Notas frutales</div><div><u></u><b>Cold brew</b><br>Suave y dulce</div></div>
+        </div>
+      </div>
+
+      <div class="pane" id="p-bd">
+        <h3>Diseño de base de datos relacional</h3>
+        <p class="hint">Modelo entidad-relación con llaves, relaciones e integridad de datos (MySQL + Prisma).</p>
+        <svg class="dg er" viewBox="0 0 740 330" role="img" aria-label="Diagrama entidad relación de ejemplo">
+          <g><rect x="10" y="20" width="190" height="100" rx="8"/><rect class="hd" x="10" y="20" width="190" height="28" rx="8"/><text class="ht" x="22" y="39">roles</text><text x="22" y="68"><tspan class="k">PK</tspan> id</text><text x="22" y="92">nombre</text></g>
+          <g><rect x="270" y="20" width="200" height="124" rx="8"/><rect class="hd" x="270" y="20" width="200" height="28" rx="8"/><text class="ht" x="282" y="39">usuarios</text><text x="282" y="68"><tspan class="k">PK</tspan> id</text><text x="282" y="92">nombre, correo</text><text x="282" y="116"><tspan class="k">FK</tspan> rol_id</text></g>
+          <g><rect x="540" y="20" width="190" height="124" rx="8"/><rect class="hd" x="540" y="20" width="190" height="28" rx="8"/><text class="ht" x="552" y="39">egresados</text><text x="552" y="68"><tspan class="k">PK</tspan> id</text><text x="552" y="92"><tspan class="k">FK</tspan> usuario_id</text><text x="552" y="116">carrera, anio</text></g>
+          <g><rect x="540" y="204" width="190" height="100" rx="8"/><rect class="hd" x="540" y="204" width="190" height="28" rx="8"/><text class="ht" x="552" y="223">seguimientos</text><text x="552" y="252"><tspan class="k">FK</tspan> egresado_id</text><text x="552" y="276">empleo, fecha</text></g>
+          <line x1="200" y1="70" x2="270" y2="70"/><line x1="470" y1="70" x2="540" y2="70"/><line x1="635" y1="144" x2="635" y2="204"/>
+          <text x="204" y="62" style="font-size:10px">1</text><text x="256" y="62" style="font-size:10px">N</text>
+          <text x="474" y="62" style="font-size:10px">1</text><text x="526" y="62" style="font-size:10px">1</text>
+          <text x="642" y="162" style="font-size:10px">1</text><text x="642" y="198" style="font-size:10px">N</text>
+        </svg>
+<pre class="code">model Usuario {
+  id     Int      @id @default(autoincrement())
+  correo String   @unique
+  rol    Rol      @relation(fields: [rolId], references: [id])
+  rolId  Int
+}</pre>
+      </div>
+
+      <div class="pane" id="p-ms">
+        <h3>Arquitectura de microservicios</h3>
+        <p class="hint">Servicios independientes detrás de un API Gateway, con autenticación centralizada.</p>
+        <svg class="dg ms" viewBox="0 0 840 300" role="img" aria-label="Diagrama de microservicios de ejemplo">
+          <rect x="20" y="120" width="160" height="56" rx="10"/><text x="40" y="146">Micro Frontend</text><text class="s" x="40" y="164">React · Vite</text>
+          <rect x="250" y="120" width="160" height="56" rx="10"/><text x="270" y="146">API Gateway</text><text class="s" x="270" y="164">Enrutamiento · CORS</text>
+          <rect x="480" y="20" width="160" height="56" rx="10"/><text x="500" y="46">Auth Server</text><text class="s" x="500" y="64">JWT · Bcrypt</text>
+          <rect x="480" y="120" width="160" height="56" rx="10"/><text x="500" y="146">Servicio Usuarios</text><text class="s" x="500" y="164">Node · Express</text>
+          <rect x="480" y="220" width="160" height="56" rx="10"/><text x="500" y="246">Servicio Correos</text><text class="s" x="500" y="264">Notificaciones</text>
+          <rect x="690" y="120" width="130" height="56" rx="10"/><text x="710" y="146">MySQL</text><text class="s" x="710" y="164">Docker Compose</text>
+          <line class="flow" x1="180" y1="148" x2="250" y2="148"/>
+          <path class="flow" d="M410 148 C445 148 445 48 480 48"/><line class="flow" x1="410" y1="148" x2="480" y2="148"/><path class="flow" d="M410 148 C445 148 445 248 480 248"/>
+          <path class="flow" d="M640 48 C665 48 665 135 690 135"/><line class="flow" x1="640" y1="148" x2="690" y2="148"/>
+        </svg>
+      </div>
+
+      <div class="pane" id="p-anim">
+        <h3>Animaciones e interacciones</h3>
+        <p class="hint">Detalles de interfaz con CSS puro: ligeros, fluidos y accesibles. Pasa el cursor sobre las tarjetas.</p>
+        <div class="anis">
+          <div class="ani"><div class="st"><div class="spin"></div></div>Cargando</div>
+          <div class="ani"><div class="st"><div class="pulse"></div></div>Notificación</div>
+          <div class="ani"><div class="st"><div class="shim">Brillo</div></div>Texto con gradiente</div>
+          <div class="ani"><div class="st"><div class="lift"></div></div>Tarjeta con hover</div>
+          <div class="ani"><div class="st"><div class="load"></div></div>Barra de progreso</div>
+          <div class="ani"><div class="st"><div class="type">Hola, mundo</div></div>Efecto de tipeo</div>
+        </div>
+<pre class="code">@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin .9s linear infinite; }</pre>
+      </div>
+    </div>
+    <p class="disc rv">ⓘ Ejemplos ilustrativos creados con datos ficticios. No corresponden a sistemas ni clientes reales.</p>
   </div>
 </section>
 
@@ -448,6 +628,38 @@ links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('ope
 document.getElementById('y').textContent=new Date().getFullYear();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+/* ejemplos */
+const urls={crm:'crm',gestion:'panel',web:'sitio',bd:'modelo-datos',ms:'arquitectura',anim:'animaciones'};
+const clp=n=>'$'+n.toLocaleString('es-CL');
+document.querySelectorAll('.tabbtn').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tabbtn').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+b.dataset.t));
+  document.getElementById('demourl').textContent='demo.ejemplo.cl/'+urls[b.dataset.t];
+  if(b.dataset.t==='gestion')drawBars();
+});
+const stages=['Nuevo','Contactado','Propuesta','Ganado'];
+const deals=[['Altiplano Logística',4800000,0],['Norte Salud SpA',2500000,0],['Pampa Retail',7200000,1],['Costa Verde Hotel',3900000,1],['Andes Educa',5600000,2],['Tamarugal Agro',1800000,3],['Puerto Sur Ltda.',6400000,2]].map(d=>({n:d[0],v:d[1],s:d[2]}));
+function drawKb(){
+  const kb=document.getElementById('kb');kb.innerHTML='';
+  stages.forEach((st,i)=>{
+    const items=deals.filter(d=>d.s===i);
+    const col=document.createElement('div');col.className='col';
+    col.innerHTML=`<h4>${st}<span>${items.length}</span></h4>`;
+    items.forEach(d=>{const c=document.createElement('button');c.className='kc';c.innerHTML=`${d.n}<span>${clp(d.v)}</span>`;
+      c.onclick=()=>{d.s=(d.s+1)%4;drawKb()};col.appendChild(c)});
+    kb.appendChild(col);
+  });
+  const won=deals.filter(d=>d.s===3),open=deals.filter(d=>d.s<3);
+  document.getElementById('k-n').textContent=deals.length;
+  document.getElementById('k-p').textContent=clp(open.reduce((a,d)=>a+d.v,0));
+  document.getElementById('k-g').textContent=clp(won.reduce((a,d)=>a+d.v,0));
+  document.getElementById('k-c').textContent=Math.round(won.length/deals.length*100)+'%';
+}
+drawKb();
+const months=[['Mayo',48],['Jun',62],['Jul',55],['Ago',78],['Sep',70],['Oct',92]];
+const bars=document.getElementById('bars');
+bars.innerHTML=months.map(m=>`<div class="bw"><div class="bar" data-h="${m[1]}"></div><em>${m[0]}</em></div>`).join('');
+function drawBars(){bars.querySelectorAll('.bar').forEach(b=>{b.style.height='0';requestAnimationFrame(()=>requestAnimationFrame(()=>b.style.height=b.dataset.h+'%'))})}
 document.getElementById('form').addEventListener('submit',e=>{
   e.preventDefault();
   const f=new FormData(e.target);
