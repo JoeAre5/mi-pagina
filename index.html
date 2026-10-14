@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Joe Arellano R. · Ingeniero en Computación e Informática</title>
 <meta name="description" content="Desarrollo de software a medida: sistemas de gestión, páginas web, APIs, microservicios y bases de datos. Arica, Chile.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232c55bf'/%3E%3Ctext x='16' y='21.5' text-anchor='middle' font-family='Arial' font-weight='800' font-size='14' fill='white'%3EJA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -13,13 +14,13 @@
   --bg:#eaf0fc; --glass:rgba(255,255,255,.62); --glass2:rgba(255,255,255,.85); --line:rgba(25,60,140,.16);
   --text:#0a1430; --muted:#506089; --accent:#2350c8; --accent2:#1a3d9c; --accent-soft:rgba(35,80,200,.09); --on-accent:#fff;
   --ok:#15803d; --warn:#a16207; --glow1:rgba(60,110,240,.28); --glow2:rgba(40,160,230,.2);
-  --shadow:0 12px 40px rgba(20,50,130,.12);
+  --shadow:0 12px 40px rgba(20,50,130,.12); --menu:rgba(244,247,254,.98);
 }
 :root[data-theme="dark"]{
   --bg:#040b1f; --glass:rgba(14,30,72,.45); --glass2:rgba(8,18,46,.82); --line:rgba(130,170,255,.18);
   --text:#e8eefc; --muted:#94a3c9; --accent:#4474e8; --accent2:#2c55bf; --accent-soft:rgba(68,116,232,.15); --on-accent:#fff;
   --ok:#4ade80; --warn:#facc15; --glow1:rgba(40,90,230,.38); --glow2:rgba(20,120,200,.22);
-  --shadow:0 12px 50px rgba(0,0,0,.45);
+  --shadow:0 12px 50px rgba(0,0,0,.45); --menu:rgba(5,13,34,.98);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-padding-top:90px}
@@ -54,8 +55,8 @@ h2{font-size:clamp(1.8rem,3.8vw,2.7rem);margin-bottom:12px}
 /* header */
 header{position:fixed;top:12px;left:0;right:0;z-index:50}
 header .in{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 12px 0 22px;width:min(1120px,100% - 28px);margin-inline:auto;border-radius:16px}
-.logo{font-weight:800;letter-spacing:-.02em;font-size:1.02rem}
-.logo span{color:var(--accent)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:1.02rem}
+.logo svg{flex:none}
 .links{display:flex;gap:2px}
 .links a{padding:8px 13px;font-size:.88rem;color:var(--muted);border-radius:9px}
 .links a:hover{color:var(--text);background:var(--accent-soft)}
@@ -273,7 +274,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 @media(max-width:1000px){.nav-cta{display:none}}
 @media(max-width:860px){
-  .links{position:absolute;top:68px;left:0;right:0;flex-direction:column;padding:10px 14px;display:none;background:var(--glass2);border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+  .links{position:absolute;top:68px;left:0;right:0;flex-direction:column;padding:10px 14px;display:none;background:var(--menu);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
   .links.open{display:flex}.links a{padding:12px}
   .menu-btn{display:grid}
   .hero-grid,.about,.contact{grid-template-columns:1fr}
@@ -288,7 +289,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 <header>
   <div class="in glass">
-    <a href="#inicio" class="logo">Joe Arellano<span>.</span></a>
+    <a href="#inicio" class="logo" aria-label="Joe Arellano · Inicio"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b8cff"/><stop offset="1" stop-color="#1f3fa8"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg)"/><text x="16" y="21.5" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="14" fill="#fff">JA</text></svg><span class="lt">Joe Arellano</span></a>
     <nav class="links" id="links">
       <a href="#servicios">Servicios</a>
       <a href="#ejemplos">Ejemplos</a>
@@ -326,7 +327,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       </div>
     </div>
     <div class="hp glass">
-      <div class="top"><i></i><i></i><i></i><span>Panel de ejemplo · datos ficticios</span></div>
+      <div class="top"><i></i><i></i><i></i><span>Panel de ejemplo</span></div>
       <div class="bd">
         <div class="kpis"><div class="kpi"><small>Ventas del mes</small><b>$18,4 M</b></div><div class="kpi"><small>Clientes</small><b>312</b></div><div class="kpi"><small>Conversión</small><b>27%</b></div></div>
         <div class="bars sm" id="hbars"></div>
@@ -385,7 +386,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <div class="body"><span class="tag">Arquitectura</span><h3>Microservicios</h3><p>Servicios independientes detrás de un API Gateway.</p><span class="more">Probar →</span></div>
       </button>
     </div>
-    <p class="disc">ⓘ Ejemplos ilustrativos con datos ficticios. No corresponden a sistemas ni clientes reales.</p>
   </div>
 </section>
 
@@ -599,6 +599,11 @@ document.getElementById('theme').onclick=()=>{
   const t=root.dataset.theme==='dark'?'light':'dark';
   root.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}
 };
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const t=document.querySelector(a.getAttribute('href'));if(!t)return;
+  e.preventDefault();
+  window.scrollTo({top:Math.max(0,t.getBoundingClientRect().top+scrollY-76),behavior:'smooth'});
+}));
 const links=document.getElementById('links');
 document.getElementById('menu').onclick=()=>links.classList.toggle('open');
 links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
