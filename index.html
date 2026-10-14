@@ -109,7 +109,7 @@ h1 em{font-style:normal;color:var(--accent)}
 .disc{margin-top:22px;font-size:.8rem;color:var(--muted)}
 
 /* modal */
-dialog{border:1px solid var(--line);border-radius:20px;background:var(--glass2);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);color:var(--text);width:min(960px,100% - 24px);max-height:calc(100vh - 32px);padding:0;margin:auto;box-shadow:var(--shadow)}
+dialog{border:1px solid var(--line);border-radius:20px;background:var(--glass2);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);color:var(--text);width:min(1100px,100% - 24px);max-height:calc(100vh - 32px);padding:0;margin:auto;box-shadow:var(--shadow)}
 dialog::backdrop{background:rgba(2,6,20,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .mh{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
 .mh .url{flex:1;background:var(--accent-soft);border-radius:8px;padding:5px 12px;font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -155,6 +155,80 @@ svg.dg{width:100%;height:auto;display:block}
 .chk{list-style:none;display:grid;gap:10px}
 .chk li{display:flex;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--accent-soft);font-size:.95rem}
 .chk li::before{content:"□";color:var(--accent)}
+
+/* mini-aplicaciones de ejemplo (cada una con su paleta) */
+.mb.appmode{padding:14px}
+.app{--ap-bg:#fff;--ap-panel:#f3f4f6;--ap-tx:#111;--ap-mu:#667085;--ap-ln:rgba(0,0,0,.1);--ap-a:#16a34a;--ap-a2:rgba(22,163,74,.12);--ap-on:#fff;display:grid;grid-template-columns:190px 1fr;background:var(--ap-bg);color:var(--ap-tx);border:1px solid var(--ap-ln);border-radius:14px;overflow:hidden;min-height:500px;font-size:.9rem;line-height:1.5}
+.a-crm{--ap-bg:#f7faf8;--ap-panel:#ebf4ee;--ap-tx:#10261a;--ap-mu:#587063;--ap-ln:rgba(16,80,40,.14);--ap-a:#15803d;--ap-a2:rgba(21,128,61,.12);--ap-on:#fff}
+.a-ges{--ap-bg:#17120d;--ap-panel:#221a12;--ap-tx:#f6ecdf;--ap-mu:#a8967e;--ap-ln:rgba(255,190,100,.16);--ap-a:#f59e0b;--ap-a2:rgba(245,158,11,.14);--ap-on:#1a1206}
+.a-web{--ap-bg:#fbf6ee;--ap-panel:#f1e6d4;--ap-tx:#2b1d12;--ap-mu:#7d6650;--ap-ln:rgba(90,55,25,.16);--ap-a:#8a5a36;--ap-a2:rgba(138,90,54,.13);--ap-on:#fff}
+.a-bd{--ap-bg:#faf8ff;--ap-panel:#efeafc;--ap-tx:#1d1538;--ap-mu:#6b5f91;--ap-ln:rgba(80,50,180,.15);--ap-a:#6d3fe0;--ap-a2:rgba(109,63,224,.12);--ap-on:#fff}
+.a-ms{--ap-bg:#14060f;--ap-panel:#200c19;--ap-tx:#fbe8f2;--ap-mu:#b98aa5;--ap-ln:rgba(255,100,170,.18);--ap-a:#ec4899;--ap-a2:rgba(236,72,153,.14);--ap-on:#fff}
+.ap-side{background:var(--ap-panel);border-right:1px solid var(--ap-ln);padding:16px 10px;display:flex;flex-direction:column;gap:4px}
+.ap-brand{font-weight:800;padding:4px 10px 14px;font-size:1rem;color:var(--ap-a)}
+.ap-nav{background:none;border:0;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;color:var(--ap-mu);font-weight:500;font-size:.88rem;white-space:nowrap}
+.ap-nav:hover{background:var(--ap-a2);color:var(--ap-tx)}
+.ap-nav.on{background:var(--ap-a);color:var(--ap-on)}
+.ap-main{padding:22px;overflow:auto;max-height:72vh}
+.app.top{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+.app.top .ap-side{flex-direction:row;align-items:center;border-right:0;border-bottom:1px solid var(--ap-ln);padding:10px 16px;overflow-x:auto}
+.app.top .ap-brand{padding:0 14px 0 0;margin-right:auto;white-space:nowrap}
+.ap-h{font-size:1.25rem;font-weight:700;margin-bottom:4px;letter-spacing:-.02em}
+.ap-sub{color:var(--ap-mu);margin-bottom:16px;font-size:.85rem}
+.ap-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.ap-kpi{background:var(--ap-panel);border:1px solid var(--ap-ln);border-radius:12px;padding:12px 14px}
+.ap-kpi small{display:block;color:var(--ap-mu);font-size:.72rem}.ap-kpi b{font-size:1.25rem;letter-spacing:-.02em}
+.ap-card{background:var(--ap-panel);border:1px solid var(--ap-ln);border-radius:12px;padding:14px 16px;color:var(--ap-tx)}
+.ap-btn{background:var(--ap-a);color:var(--ap-on);border:0;border-radius:9px;padding:9px 16px;font-weight:600;cursor:pointer;font-size:.85rem;font-family:inherit;line-height:1.2}
+.ap-btn:hover{filter:brightness(1.1)}
+.ap-btn.alt{background:var(--ap-a2);color:var(--ap-a)}
+.ap-chip{border:1px solid var(--ap-ln);background:transparent;color:var(--ap-mu);padding:6px 13px;border-radius:999px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.ap-chip:hover{border-color:var(--ap-a)}
+.ap-chip.on{background:var(--ap-a);color:var(--ap-on);border-color:transparent}
+.ap-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.ap-tbl{width:100%;border-collapse:collapse;font-size:.85rem}
+.ap-tbl th{text-align:left;color:var(--ap-mu);font-weight:500;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em}
+.ap-tbl th,.ap-tbl td{padding:10px 8px;border-bottom:1px solid var(--ap-ln)}
+.ap-tbl .mono{white-space:nowrap}
+.ap-tbl tr.clk{cursor:pointer}.ap-tbl tr.clk:hover td{background:var(--ap-a2)}
+.ap-pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.72rem;font-weight:600;background:var(--ap-a2);color:var(--ap-a);border:0;font-family:inherit}
+.ap-pbtn{cursor:pointer}.ap-pbtn.s1{background:rgba(250,204,21,.18);color:#d9a600}.ap-pbtn.s2{background:rgba(74,222,128,.16);color:#22a05a}
+.ap-in{background:var(--ap-bg);color:var(--ap-tx);border:1px solid var(--ap-ln);border-radius:9px;padding:9px 12px;font:inherit;outline:none;width:100%}
+.ap-in:focus{border-color:var(--ap-a)}
+.ap-form{display:grid;gap:12px;max-width:460px}.ap-form label{color:var(--ap-mu);font-size:.8rem;display:grid;gap:5px;font-weight:500}
+.ap-ok{background:var(--ap-a2);border:1px solid var(--ap-a);color:var(--ap-tx);border-radius:12px;padding:14px 16px;margin-top:14px}
+.ap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.ap-list{list-style:none;margin-top:8px;display:grid;gap:6px;color:var(--ap-mu);font-size:.86rem}
+.ap-kb{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:10px;overflow-x:auto;padding-bottom:6px}
+.ap-col{background:var(--ap-a2);border-radius:12px;padding:10px;min-height:220px}
+.ap-col h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ap-mu);display:flex;justify-content:space-between;margin-bottom:6px}
+.ap-deal{display:block;width:100%;text-align:left;cursor:pointer;margin-top:8px;padding:10px 12px;font-family:inherit}
+.ap-deal:hover{border-color:var(--ap-a)}.ap-deal b{display:block}.ap-deal span{display:block;color:var(--ap-mu);font-size:.78rem}
+.ap-bars{display:flex;align-items:flex-end;gap:10px;height:190px;padding:20px 4px 22px;border-bottom:1px solid var(--ap-ln);margin-bottom:6px}
+.ap-bw{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative}
+.ap-bw span{font-size:.7rem;color:var(--ap-mu);margin-bottom:3px}
+.ap-bar{width:100%;max-width:44px;background:var(--ap-a);border-radius:5px 5px 0 0}
+.ap-bw em{position:absolute;bottom:-20px;font-style:normal;font-size:.68rem;color:var(--ap-mu)}
+.ap-meter{height:6px;border-radius:99px;background:var(--ap-ln);margin-top:10px;overflow:hidden}.ap-meter i{display:block;height:100%;background:var(--ap-a)}
+.web-hero{border-radius:14px;padding:36px 28px;background:linear-gradient(120deg,#3b2414,#8a5a36);color:#fff}
+.web-hero h2{font-size:clamp(1.5rem,3.4vw,2.2rem);margin-bottom:8px}.web-hero p{opacity:.85;max-width:44ch}
+.web-cta{background:#f3c98b;color:#3b2414}
+.web-img{height:80px;border-radius:9px;margin-bottom:10px;background:linear-gradient(135deg,hsl(var(--h) 45% 62%),hsl(var(--h) 40% 32%))}
+.web-line{display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:center;margin-bottom:8px}
+.web-qty{display:flex;align-items:center;gap:10px}.web-qty button{width:28px;height:28px;border-radius:8px;border:1px solid var(--ap-ln);background:var(--ap-bg);color:var(--ap-tx);cursor:pointer;font-size:1rem;line-height:1}
+.dgb{width:100%;height:auto;display:block}
+.dgb .tb{cursor:pointer}.dgb .tb rect{fill:var(--ap-bg);stroke:var(--ap-ln);stroke-width:1.5}.dgb .tb .hd{fill:var(--ap-a);stroke:none}
+.dgb .tb.rel rect:first-child{stroke:var(--ap-a)}.dgb .tb.sel rect:first-child{stroke:var(--ap-a);stroke-width:3;fill:var(--ap-a2)}
+.dgb text{fill:var(--ap-tx);font-size:12px;font-family:'JetBrains Mono',monospace}.dgb .ht{fill:var(--ap-on);font-weight:700}.dgb .k{fill:var(--ap-a);font-weight:700}.dgb .n{font-size:10px;fill:var(--ap-mu)}
+.dgb line{stroke:var(--ap-a);stroke-width:1.6}
+.ms2 .ed{fill:none;stroke:var(--ap-ln);stroke-width:1.8}.ms2 .ed.on{stroke:var(--ap-a);stroke-width:3}
+.ms2 .nd rect{fill:var(--ap-panel);stroke:var(--ap-ln)}.ms2 .nd.on rect{fill:var(--ap-a2);stroke:var(--ap-a);stroke-width:2}
+.ms2 .nd.bad rect{stroke:#f87171;stroke-width:2.4}
+.ms2 .nd text{font-family:Inter,sans-serif;font-size:13px;font-weight:600;fill:var(--ap-tx)}.ms2 .nd text.s{font-size:11px;font-weight:400;fill:var(--ap-mu)}
+.ap-steps{list-style:none;display:grid;gap:8px;margin-bottom:12px}.ap-steps li{display:flex;gap:10px;align-items:flex-start}
+.ap-steps i{font-style:normal;font-weight:700;color:var(--ap-a);width:18px}.ap-steps li.bad i{color:#f87171}
+.st-ok{background:rgba(74,222,128,.16);color:#4ade80}.st-warn{background:rgba(250,204,21,.16);color:#facc15}.st-err{background:rgba(248,113,113,.16);color:#f87171}
+@media(max-width:760px){.app,.app.top{grid-template-columns:1fr}.ap-side{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--ap-ln)}.ap-brand{display:none}.ap-main{padding:16px}}
 
 /* proceso */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
@@ -288,27 +362,27 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="wrap">
     <p class="eyebrow">Ejemplos</p>
     <h2>Así se ven las soluciones</h2>
-    <p class="sub">Maquetas que construí con datos ficticios para mostrar el tipo de sistemas que puedo desarrollar. Haz clic en una para abrirla.</p>
+    <p class="sub">Maquetas que construí con datos ficticios para mostrar el tipo de sistemas que puedo desarrollar. Cada ejemplo es una mini-aplicación con su propia paleta: navega, haz clic y pruébala.</p>
     <div class="cards">
       <button class="card glass" data-open="crm">
         <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="6" y="8" width="42" height="94" rx="5"/><rect x="54" y="8" width="42" height="94" rx="5"/><rect x="102" y="8" width="42" height="94" rx="5"/><rect x="150" y="8" width="42" height="94" rx="5"/><rect class="a" x="11" y="16" width="32" height="16" rx="3"/><rect class="b" x="11" y="38" width="32" height="16" rx="3"/><rect class="b" x="59" y="16" width="32" height="16" rx="3"/><rect class="a" x="59" y="38" width="32" height="16" rx="3"/><rect class="b" x="107" y="16" width="32" height="16" rx="3"/><rect class="b" x="107" y="38" width="32" height="16" rx="3"/><rect class="a" x="155" y="16" width="32" height="16" rx="3"/></svg></div>
-        <div class="body"><span class="tag">Gestión</span><h3>CRM</h3><p>Embudo de ventas con oportunidades que avanzan de etapa.</p><span class="more">Abrir →</span></div>
+        <div class="body"><span class="tag">Gestión</span><h3>CRM</h3><p>Embudo de ventas con oportunidades que avanzan de etapa.</p><span class="more">Probar →</span></div>
       </button>
       <button class="card glass" data-open="gestion">
         <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="6" y="6" width="56" height="26" rx="5"/><rect x="72" y="6" width="56" height="26" rx="5"/><rect x="138" y="6" width="56" height="26" rx="5"/><rect class="a" x="16" y="70" width="20" height="30" rx="2"/><rect class="a" x="44" y="58" width="20" height="42" rx="2"/><rect class="a" x="72" y="64" width="20" height="36" rx="2"/><rect class="a" x="100" y="48" width="20" height="52" rx="2"/><rect class="a" x="128" y="54" width="20" height="46" rx="2"/><rect class="a" x="156" y="40" width="20" height="60" rx="2"/></svg></div>
-        <div class="body"><span class="tag">Gestión</span><h3>Panel de operaciones</h3><p>Indicadores, gráfico mensual y seguimiento de tareas.</p><span class="more">Abrir →</span></div>
+        <div class="body"><span class="tag">Gestión</span><h3>Panel de operaciones</h3><p>Indicadores, gráfico mensual y seguimiento de tareas.</p><span class="more">Probar →</span></div>
       </button>
       <button class="card glass" data-open="web">
         <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="6" y="6" width="188" height="98" rx="6"/><rect class="b" x="14" y="13" width="40" height="6" rx="3"/><rect class="a" x="14" y="28" width="172" height="34" rx="4"/><rect class="b" x="14" y="70" width="52" height="28" rx="4"/><rect class="b" x="74" y="70" width="52" height="28" rx="4"/><rect class="b" x="134" y="70" width="52" height="28" rx="4"/></svg></div>
-        <div class="body"><span class="tag">Web</span><h3>Sitio corporativo</h3><p>Página responsiva para un negocio, rápida y a la medida de la marca.</p><span class="more">Abrir →</span></div>
+        <div class="body"><span class="tag">Web</span><h3>Sitio corporativo</h3><p>Página responsiva para un negocio, rápida y a la medida de la marca.</p><span class="more">Probar →</span></div>
       </button>
       <button class="card glass" data-open="bd">
         <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="6" y="10" width="52" height="38" rx="4"/><rect class="h" x="6" y="10" width="52" height="9" rx="4"/><rect x="74" y="10" width="52" height="38" rx="4"/><rect class="h" x="74" y="10" width="52" height="9" rx="4"/><rect x="142" y="10" width="52" height="38" rx="4"/><rect class="h" x="142" y="10" width="52" height="9" rx="4"/><rect x="142" y="62" width="52" height="38" rx="4"/><rect class="h" x="142" y="62" width="52" height="9" rx="4"/><line x1="58" y1="30" x2="74" y2="30"/><line x1="126" y1="30" x2="142" y2="30"/><line x1="168" y1="48" x2="168" y2="62"/></svg></div>
-        <div class="body"><span class="tag">Base de datos</span><h3>Modelo relacional</h3><p>Diagrama entidad-relación de un sistema con usuarios y roles.</p><span class="more">Abrir →</span></div>
+        <div class="body"><span class="tag">Base de datos</span><h3>Modelo relacional</h3><p>Diagrama entidad-relación de un sistema con usuarios y roles.</p><span class="more">Probar →</span></div>
       </button>
       <button class="card glass" data-open="ms">
         <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="6" y="40" width="40" height="30" rx="5"/><rect class="a" x="66" y="40" width="40" height="30" rx="5"/><rect x="132" y="6" width="56" height="26" rx="5"/><rect x="132" y="42" width="56" height="26" rx="5"/><rect x="132" y="78" width="56" height="26" rx="5"/><line x1="46" y1="55" x2="66" y2="55"/><path d="M106 55 C120 55 120 19 132 19"/><line x1="106" y1="55" x2="132" y2="55"/><path d="M106 55 C120 55 120 91 132 91"/></svg></div>
-        <div class="body"><span class="tag">Arquitectura</span><h3>Microservicios</h3><p>Servicios independientes detrás de un API Gateway.</p><span class="more">Abrir →</span></div>
+        <div class="body"><span class="tag">Arquitectura</span><h3>Microservicios</h3><p>Servicios independientes detrás de un API Gateway.</p><span class="more">Probar →</span></div>
       </button>
     </div>
     <p class="disc">ⓘ Ejemplos ilustrativos con datos ficticios. No corresponden a sistemas ni clientes reales.</p>
@@ -465,58 +539,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="mb" id="dlgbody"></div>
 </dialog>
 
-<template id="t-crm">
-  <h3>CRM · Embudo de ventas</h3><p class="hint">Haz clic en una oportunidad para avanzarla de etapa.</p>
-  <div class="kpis"><div class="kpi"><small>Oportunidades</small><b data-k="n">0</b></div><div class="kpi"><small>En pipeline</small><b data-k="p">$0</b></div><div class="kpi"><small>Ganado</small><b data-k="g">$0</b></div><div class="kpi"><small>Conversión</small><b data-k="c">0%</b></div></div>
-  <div class="kbwrap"><div class="kb" data-k="kb"></div></div>
-</template>
-<template id="t-gestion">
-  <h3>Panel de gestión · Operaciones</h3><p class="hint">Indicadores, gráfico y seguimiento de tareas en un solo lugar.</p>
-  <div class="kpis"><div class="kpi"><small>Tickets abiertos</small><b>24</b></div><div class="kpi"><small>Resueltos (mes)</small><b>138</b></div><div class="kpi"><small>Tiempo medio</small><b>3,2 h</b></div><div class="kpi"><small>Satisfacción</small><b>94%</b></div></div>
-  <div class="bars" data-k="bars"></div>
-  <div class="tblw"><table class="tbl">
-    <tr><th>Tarea</th><th>Responsable</th><th>Entrega</th><th>Estado</th></tr>
-    <tr><td>Migrar inventario a nueva BD</td><td>Equipo TI</td><td>12 nov</td><td><span class="pill wip">En curso</span></td></tr>
-    <tr><td>Módulo de reportes mensuales</td><td>Desarrollo</td><td>20 nov</td><td><span class="pill todo">Pendiente</span></td></tr>
-    <tr><td>Respaldo automático diario</td><td>Infraestructura</td><td>05 nov</td><td><span class="pill ok">Completado</span></td></tr>
-    <tr><td>Control de acceso por roles</td><td>Desarrollo</td><td>28 nov</td><td><span class="pill wip">En curso</span></td></tr>
-  </table></div>
-</template>
-<template id="t-web">
-  <h3>Sitio corporativo</h3><p class="hint">Diseño responsivo y a la medida de la marca (negocio ficticio).</p>
-  <div class="site">
-    <div class="sn"><b>Café Andino</b><span><a>Inicio</a><a>Carta</a><a>Nosotros</a><a>Contacto</a></span></div>
-    <div class="sh"><h4>Café de origen,<br>tostado en Arica.</h4><p>Granos seleccionados y entrega a todo Chile.</p><i>Ver productos</i></div>
-    <div class="sg"><div><u></u><b>Espresso</b><br>Notas a chocolate</div><div><u></u><b>Filtrado</b><br>Notas frutales</div><div><u></u><b>Cold brew</b><br>Suave y dulce</div></div>
-  </div>
-</template>
-<template id="t-bd">
-  <h3>Diseño de base de datos relacional</h3><p class="hint">Modelo entidad-relación con llaves, relaciones e integridad de datos.</p>
-  <svg class="dg er" viewBox="0 0 740 330" role="img" aria-label="Diagrama entidad relación de ejemplo">
-    <g><rect x="10" y="20" width="190" height="100" rx="8"/><rect class="hd" x="10" y="20" width="190" height="28" rx="8"/><text class="ht" x="22" y="39">roles</text><text x="22" y="68"><tspan class="k">PK</tspan> id</text><text x="22" y="92">nombre</text></g>
-    <g><rect x="270" y="20" width="200" height="124" rx="8"/><rect class="hd" x="270" y="20" width="200" height="28" rx="8"/><text class="ht" x="282" y="39">usuarios</text><text x="282" y="68"><tspan class="k">PK</tspan> id</text><text x="282" y="92">nombre, correo</text><text x="282" y="116"><tspan class="k">FK</tspan> rol_id</text></g>
-    <g><rect x="540" y="20" width="190" height="124" rx="8"/><rect class="hd" x="540" y="20" width="190" height="28" rx="8"/><text class="ht" x="552" y="39">egresados</text><text x="552" y="68"><tspan class="k">PK</tspan> id</text><text x="552" y="92"><tspan class="k">FK</tspan> usuario_id</text><text x="552" y="116">carrera, anio</text></g>
-    <g><rect x="540" y="204" width="190" height="100" rx="8"/><rect class="hd" x="540" y="204" width="190" height="28" rx="8"/><text class="ht" x="552" y="223">seguimientos</text><text x="552" y="252"><tspan class="k">FK</tspan> egresado_id</text><text x="552" y="276">empleo, fecha</text></g>
-    <line x1="200" y1="70" x2="270" y2="70"/><line x1="470" y1="70" x2="540" y2="70"/><line x1="635" y1="144" x2="635" y2="204"/>
-    <text x="204" y="62" style="font-size:10px">1</text><text x="256" y="62" style="font-size:10px">N</text>
-    <text x="474" y="62" style="font-size:10px">1</text><text x="526" y="62" style="font-size:10px">1</text>
-    <text x="642" y="162" style="font-size:10px">1</text><text x="642" y="198" style="font-size:10px">N</text>
-  </svg>
-</template>
-<template id="t-ms">
-  <h3>Arquitectura de microservicios</h3><p class="hint">Servicios independientes detrás de un API Gateway, con autenticación centralizada.</p>
-  <svg class="dg ms" viewBox="0 0 840 300" role="img" aria-label="Diagrama de microservicios de ejemplo">
-    <rect x="20" y="120" width="160" height="56" rx="10"/><text x="40" y="146">Micro Frontend</text><text class="s" x="40" y="164">React · Vite</text>
-    <rect x="250" y="120" width="160" height="56" rx="10"/><text x="270" y="146">API Gateway</text><text class="s" x="270" y="164">Enrutamiento · CORS</text>
-    <rect x="480" y="20" width="160" height="56" rx="10"/><text x="500" y="46">Auth Server</text><text class="s" x="500" y="64">JWT · Bcrypt</text>
-    <rect x="480" y="120" width="160" height="56" rx="10"/><text x="500" y="146">Servicio Usuarios</text><text class="s" x="500" y="164">Node · Express</text>
-    <rect x="480" y="220" width="160" height="56" rx="10"/><text x="500" y="246">Servicio Correos</text><text class="s" x="500" y="264">Notificaciones</text>
-    <rect x="690" y="120" width="130" height="56" rx="10"/><text x="710" y="146">MySQL</text><text class="s" x="710" y="164">Base de datos</text>
-    <line x1="180" y1="148" x2="250" y2="148"/>
-    <path d="M410 148 C445 148 445 48 480 48"/><line x1="410" y1="148" x2="480" y2="148"/><path d="M410 148 C445 148 445 248 480 248"/>
-    <path d="M640 48 C665 48 665 135 690 135"/><line x1="640" y1="148" x2="690" y2="148"/>
-  </svg>
-</template>
 <template id="t-r-docker">
   <h3>Entorno con contenedores</h3><p class="hint">Con Docker Compose, un solo comando levanta la API y la base de datos conectadas entre sí.</p>
   <svg class="dg ms" viewBox="0 0 760 290" role="img" aria-label="Diagrama de contenedores">
@@ -588,36 +610,282 @@ document.getElementById('hbars').innerHTML=barsHtml(months);
 
 /* modal de ejemplos y recursos */
 const dlg=document.getElementById('dlg'),body=document.getElementById('dlgbody'),urlEl=document.getElementById('dlgurl');
-const names={crm:'demo.ejemplo.cl/crm',gestion:'demo.ejemplo.cl/panel',web:'demo.ejemplo.cl/sitio',bd:'demo.ejemplo.cl/modelo-datos',ms:'demo.ejemplo.cl/arquitectura','r-docker':'recursos/entorno-contenedores','r-roles':'recursos/roles-y-permisos','r-auth':'recursos/flujo-autenticacion','r-check':'recursos/checklist-proyecto'};
+const names={'r-docker':'recursos/entorno-contenedores','r-roles':'recursos/roles-y-permisos','r-auth':'recursos/flujo-autenticacion','r-check':'recursos/checklist-proyecto'};
 const clp=n=>'$'+n.toLocaleString('es-CL');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 document.querySelectorAll('[data-open]').forEach(c=>c.onclick=()=>openDemo(c.dataset.open));
 document.getElementById('dlgx').onclick=()=>dlg.close();
 dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
-function openDemo(id){
-  body.innerHTML='';body.appendChild(document.getElementById('t-'+id).content.cloneNode(true));
-  urlEl.textContent=names[id];
-  if(id==='crm')initCrm();
-  if(id==='gestion')body.querySelector('[data-k="bars"]').innerHTML=barsHtml(months);
-  dlg.showModal();body.scrollTop=0;
+
+/* base de las mini-aplicaciones */
+function mkApp(cls,slug,brand,items,views,start,top){
+  const el=document.createElement('div');el.className='app '+cls+(top?' top':'');
+  el.innerHTML=`<aside class="ap-side"><div class="ap-brand">${brand}</div>${items.map(i=>`<button class="ap-nav" data-v="${i[0]}">${i[1]}</button>`).join('')}</aside><div class="ap-main"></div>`;
+  const main=el.querySelector('.ap-main');
+  const ctx={el,main,go,setNav(v,t){el.querySelector('[data-v="'+v+'"]').textContent=t},wire(){main.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go))}};
+  function go(v){
+    el.querySelectorAll('.ap-nav').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+    main.innerHTML='';views[v](ctx);ctx.wire();main.scrollTop=0;
+    urlEl.textContent='demo.ejemplo.cl/'+slug+'/'+v;
+  }
+  el.querySelectorAll('.ap-nav').forEach(b=>b.onclick=()=>go(b.dataset.v));
+  go(start);return el;
 }
-const stages=['Nuevo','Contactado','Propuesta','Ganado'];
-const deals=[['Altiplano Logística',4800000,0],['Norte Salud SpA',2500000,0],['Pampa Retail',7200000,1],['Costa Verde Hotel',3900000,1],['Andes Educa',5600000,2],['Tamarugal Agro',1800000,3],['Puerto Sur Ltda.',6400000,2]].map(d=>({n:d[0],v:d[1],s:d[2]}));
-function initCrm(){
-  const q=k=>body.querySelector('[data-k="'+k+'"]'),kb=q('kb');
-  (function draw(){
-    kb.innerHTML='';
-    stages.forEach((st,i)=>{
-      const items=deals.filter(d=>d.s===i),col=document.createElement('div');col.className='col';
-      col.innerHTML=`<h4>${st}<span>${items.length}</span></h4>`;
-      items.forEach(d=>{const c=document.createElement('button');c.className='kc';c.innerHTML=`${d.n}<span>${clp(d.v)}</span>`;c.onclick=()=>{d.s=(d.s+1)%4;draw()};col.appendChild(c)});
-      kb.appendChild(col);
-    });
-    const won=deals.filter(d=>d.s===3),open=deals.filter(d=>d.s<3);
-    q('n').textContent=deals.length;
-    q('p').textContent=clp(open.reduce((a,d)=>a+d.v,0));
-    q('g').textContent=clp(won.reduce((a,d)=>a+d.v,0));
-    q('c').textContent=Math.round(won.length/deals.length*100)+'%';
-  })();
+const chips=(opts,cur)=>opts.map(o=>`<button class="ap-chip${o===cur?' on':''}" data-c="${esc(o)}">${esc(o)}</button>`).join('');
+
+/* ---------- CRM (verde) ---------- */
+function buildCrm(){
+  const stages=['Nuevo','Contactado','Propuesta','Ganado'];
+  const deals=[['Altiplano Logística','Marcela Rojas',4800000,0],['Norte Salud SpA','Andrés Peña',2500000,0],['Pampa Retail','Carla Díaz',7200000,1],['Costa Verde Hotel','Tomás Vega',3900000,1],['Andes Educa','Paula Molina',5600000,2],['Tamarugal Agro','Iván Soto',1800000,3],['Puerto Sur Ltda.','Rosa Campos',6400000,2]].map(d=>({n:d[0],c:d[1],v:d[2],s:d[3]}));
+  const log=['Se cargó la cartera de ejemplo'];
+  const sum=l=>l.reduce((a,d)=>a+d.v,0);
+  const advance=d=>{d.s=(d.s+1)%4;log.push(d.s===3?`🎉 Ganado: ${d.n}`:`${d.n} pasó a «${stages[d.s]}»`)};
+  const views={
+    resumen(c){
+      const won=deals.filter(d=>d.s===3),open=deals.filter(d=>d.s<3);
+      c.main.innerHTML=`<div class="ap-h">Resumen comercial</div><p class="ap-sub">Estado de tu cartera de clientes.</p>
+      <div class="ap-kpis"><div class="ap-kpi"><small>Clientes</small><b>${deals.length}</b></div><div class="ap-kpi"><small>En pipeline</small><b>${clp(sum(open))}</b></div><div class="ap-kpi"><small>Ganado</small><b>${clp(sum(won))}</b></div><div class="ap-kpi"><small>Conversión</small><b>${Math.round(won.length/deals.length*100)}%</b></div></div>
+      <div class="ap-row"><button class="ap-btn" data-go="embudo">Ir al embudo →</button><button class="ap-btn alt" data-go="nuevo">+ Agregar cliente</button></div>
+      <div class="ap-card"><b>Actividad reciente</b><ul class="ap-list">${log.slice(-5).reverse().map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>`;
+    },
+    embudo(c){
+      c.main.innerHTML=`<div class="ap-h">Embudo de ventas</div><p class="ap-sub">Haz clic en una oportunidad para avanzarla de etapa.</p><div class="ap-kb" id="kb"></div>`;
+      const kb=c.main.querySelector('#kb');
+      (function draw(){
+        kb.innerHTML='';
+        stages.forEach((st,i)=>{
+          const items=deals.filter(d=>d.s===i),col=document.createElement('div');col.className='ap-col';
+          col.innerHTML=`<h4>${st}<span>${items.length}</span></h4>`;
+          items.forEach(d=>{const b=document.createElement('button');b.className='ap-card ap-deal';b.innerHTML=`<b>${esc(d.n)}</b><span>${esc(d.c)}</span><span>${clp(d.v)}</span>`;b.onclick=()=>{advance(d);draw()};col.appendChild(b)});
+          kb.appendChild(col);
+        });
+      })();
+    },
+    clientes(c){
+      let q='',f='Todas';
+      c.main.innerHTML=`<div class="ap-h">Clientes</div><p class="ap-sub">Busca, filtra y abre la ficha de cada cliente.</p>
+      <div class="ap-row"><input class="ap-in" id="q" placeholder="Buscar empresa o contacto…" style="max-width:260px"><span id="ch">${chips(['Todas',...stages],f)}</span></div>
+      <div class="tblw"><table class="ap-tbl"><thead><tr><th>Empresa</th><th>Contacto</th><th>Monto</th><th>Etapa</th></tr></thead><tbody id="tb"></tbody></table></div><div id="det"></div>`;
+      const tb=c.main.querySelector('#tb'),det=c.main.querySelector('#det');
+      function draw(){
+        const rows=deals.filter(d=>(f==='Todas'||stages[d.s]===f)&&(d.n+d.c).toLowerCase().includes(q));
+        tb.innerHTML=rows.length?'':'<tr><td colspan="4">Sin resultados.</td></tr>';
+        rows.forEach(d=>{const tr=document.createElement('tr');tr.className='clk';tr.innerHTML=`<td><b>${esc(d.n)}</b></td><td>${esc(d.c)}</td><td>${clp(d.v)}</td><td><span class="ap-pill">${stages[d.s]}</span></td>`;
+          tr.onclick=()=>{det.innerHTML=`<div class="ap-card" style="margin-top:14px"><b>${esc(d.n)}</b><p class="ap-sub" style="margin:4px 0 12px">Contacto: ${esc(d.c)} · Oportunidad: ${clp(d.v)} · Etapa: ${stages[d.s]}</p><div class="ap-row" style="margin:0"><button class="ap-btn" id="adv">Avanzar etapa</button><button class="ap-btn alt" data-go="embudo">Ver en el embudo</button></div></div>`;
+            det.querySelector('#adv').onclick=()=>{advance(d);draw();tr.click()};c.wire()};
+          tb.appendChild(tr)});
+      }
+      c.main.querySelector('#q').oninput=e=>{q=e.target.value.toLowerCase();draw()};
+      c.main.querySelector('#ch').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;f=b.dataset.c;c.main.querySelector('#ch').innerHTML=chips(['Todas',...stages],f);draw()};
+      draw();
+    },
+    nuevo(c){
+      c.main.innerHTML=`<div class="ap-h">Nuevo cliente</div><p class="ap-sub">Se agrega al embudo en la etapa «Nuevo».</p>
+      <form class="ap-form" id="f"><label>Empresa<input class="ap-in" name="n" required placeholder="Nombre de la empresa"></label><label>Contacto<input class="ap-in" name="c" required placeholder="Nombre del contacto"></label><label>Monto estimado (CLP)<input class="ap-in" name="v" type="number" min="0" required placeholder="2500000"></label><button class="ap-btn" type="submit">Guardar cliente</button></form><div id="ok"></div>`;
+      c.main.querySelector('#f').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);
+        deals.push({n:f.get('n'),c:f.get('c'),v:+f.get('v'),s:0});log.push(`Nuevo cliente: ${f.get('n')}`);e.target.reset();
+        c.main.querySelector('#ok').innerHTML=`<div class="ap-ok">✓ Cliente guardado. Ya aparece en el embudo.<div class="ap-row" style="margin:10px 0 0"><button class="ap-btn" data-go="embudo">Ver en el embudo →</button></div></div>`;c.wire()};
+    }
+  };
+  return mkApp('a-crm','crm','Nexo CRM',[['resumen','Resumen'],['embudo','Embudo'],['clientes','Clientes'],['nuevo','+ Nuevo cliente']],views,'resumen');
+}
+
+/* ---------- Panel de operaciones (ámbar oscuro) ---------- */
+function buildGestion(){
+  const est=['Abierto','En curso','Resuelto'];
+  const tk=[['T-101','Error al exportar reporte','Camila','Alta',0],['T-102','Actualizar inventario de bodega','Diego','Media',1],['T-103','Nuevo usuario con rol Supervisor','Camila','Baja',2],['T-104','Lentitud en listado de pedidos','Marco','Alta',1],['T-105','Agregar filtro por fecha','Diego','Media',0],['T-106','Respaldo diario falló una vez','Marco','Alta',2],['T-107','Corregir correo de bienvenida','Camila','Baja',0],['T-108','Integración con facturación','Marco','Media',1]].map(t=>({id:t[0],t:t[1],o:t[2],p:t[3],s:t[4]}));
+  const team=[['Camila','Backend'],['Diego','Frontend'],['Marco','Infraestructura']];
+  const m6=[['May',48],['Jun',62],['Jul',55],['Ago',78],['Sep',70],['Oct',92]];
+  const m12=[['Nov',40],['Dic',46],['Ene',38],['Feb',52],['Mar',58],['Abr',50],...m6];
+  const views={
+    resumen(c){
+      let per='6 meses';
+      const cnt=s=>tk.filter(t=>t.s===s).length;
+      c.main.innerHTML=`<div class="ap-h">Resumen de operaciones</div><p class="ap-sub">Indicadores en tiempo real de tu equipo.</p>
+      <div class="ap-kpis"><div class="ap-kpi"><small>Abiertos</small><b>${cnt(0)}</b></div><div class="ap-kpi"><small>En curso</small><b>${cnt(1)}</b></div><div class="ap-kpi"><small>Resueltos</small><b>${cnt(2)}</b></div><div class="ap-kpi"><small>Tasa de resolución</small><b>${Math.round(cnt(2)/tk.length*100)}%</b></div></div>
+      <div class="ap-card"><div class="ap-row" style="justify-content:space-between;margin-bottom:6px"><b>Tickets resueltos por mes</b><span id="ch">${chips(['6 meses','12 meses'],per)}</span></div><div class="ap-bars" id="bars"></div></div>
+      <div class="ap-row" style="margin-top:14px"><button class="ap-btn" data-go="tickets">Ver tickets →</button><button class="ap-btn alt" data-go="equipo">Ver equipo</button></div>`;
+      const bars=c.main.querySelector('#bars');
+      const draw=()=>{const d=per==='6 meses'?m6:m12;bars.innerHTML=d.map(x=>`<div class="ap-bw" title="${x[0]}: ${x[1]} resueltos"><span>${x[1]}</span><div class="ap-bar" style="height:${x[1]}%"></div><em>${x[0]}</em></div>`).join('')};
+      c.main.querySelector('#ch').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;per=b.dataset.c;c.main.querySelector('#ch').innerHTML=chips(['6 meses','12 meses'],per);draw()};
+      draw();
+    },
+    tickets(c){
+      let f='Todos';
+      c.main.innerHTML=`<div class="ap-h">Tickets</div><p class="ap-sub">Haz clic en el estado de un ticket para avanzarlo.</p><div class="ap-row" id="ch">${chips(['Todos',...est],f)}</div>
+      <div class="tblw"><table class="ap-tbl"><thead><tr><th>ID</th><th>Tarea</th><th>Responsable</th><th>Prioridad</th><th>Estado</th></tr></thead><tbody id="tb"></tbody></table></div>`;
+      const tb=c.main.querySelector('#tb');
+      const draw=()=>{tb.innerHTML='';tk.filter(t=>f==='Todos'||est[t.s]===f).forEach(t=>{const tr=document.createElement('tr');tr.innerHTML=`<td class="mono">${t.id}</td><td>${esc(t.t)}</td><td>${t.o}</td><td>${t.p}</td><td><button class="ap-pill ap-pbtn s${t.s}">${est[t.s]} ↻</button></td>`;tr.querySelector('button').onclick=()=>{t.s=(t.s+1)%3;draw()};tb.appendChild(tr)})};
+      c.main.querySelector('#ch').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;f=b.dataset.c;c.main.querySelector('#ch').innerHTML=chips(['Todos',...est],f);draw()};
+      draw();
+    },
+    equipo(c){
+      c.main.innerHTML=`<div class="ap-h">Equipo</div><p class="ap-sub">Carga de trabajo actual. Haz clic en una persona para ver sus tickets.</p><div class="ap-grid" id="g"></div><div id="det"></div>`;
+      const g=c.main.querySelector('#g'),det=c.main.querySelector('#det');
+      team.forEach(m=>{const act=tk.filter(t=>t.o===m[0]&&t.s<2).length;const b=document.createElement('button');b.className='ap-card ap-deal';
+        b.innerHTML=`<b>${m[0]}</b><span>${m[1]}</span><span>${act} ticket${act===1?'':'s'} activo${act===1?'':'s'}</span><div class="ap-meter"><i style="width:${Math.min(100,act*34)}%"></i></div>`;
+        b.onclick=()=>{det.innerHTML=`<div class="ap-card" style="margin-top:14px"><b>Tickets de ${m[0]}</b><ul class="ap-list">${tk.filter(t=>t.o===m[0]).map(t=>`<li>${t.id} · ${esc(t.t)} <span class="ap-pill">${est[t.s]}</span></li>`).join('')}</ul></div>`};
+        g.appendChild(b)});
+    }
+  };
+  return mkApp('a-ges','panel','Panel Ops',[['resumen','Resumen'],['tickets','Tickets'],['equipo','Equipo']],views,'resumen');
+}
+
+/* ---------- Sitio web: Café Andino (café y crema) ---------- */
+function buildWeb(){
+  const prods=[['Espresso','Espresso',2200],['Americano','Espresso',2500],['Cappuccino','Espresso',3200],['V60','Filtrado',3600],['Chemex','Filtrado',4200],['Cold brew','Frío',3400],['Iced latte','Frío',3600],['Croissant','Pastelería',2400],['Alfajor','Pastelería',1800]];
+  const cart={};let ctx0;
+  const count=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+  const upd=()=>ctx0.setNav('carrito','Carrito ('+count()+')');
+  const views={
+    inicio(c){
+      ctx0=c;
+      c.main.innerHTML=`<div class="web-hero"><h2>Café de origen,<br>tostado en Arica.</h2><p>Granos seleccionados, tostado fresco y envío a todo Chile.</p><div class="ap-row" style="margin:18px 0 0"><button class="ap-btn web-cta" data-go="carta">Ver la carta</button><button class="ap-btn alt" data-go="contacto">Contacto</button></div></div>
+      <div class="ap-grid" style="margin-top:16px"><div class="ap-card"><b>Origen seleccionado</b><p class="ap-sub" style="margin:4px 0 0">Granos de pequeños productores.</p></div><div class="ap-card"><b>Tostado en Arica</b><p class="ap-sub" style="margin:4px 0 0">Fresco, en lotes pequeños.</p></div><div class="ap-card"><b>Envío a todo Chile</b><p class="ap-sub" style="margin:4px 0 0">Despacho en 2 a 4 días.</p></div></div>`;
+    },
+    carta(c){
+      let f='Todos';
+      c.main.innerHTML=`<div class="ap-h">Nuestra carta</div><p class="ap-sub">Agrega productos y revisa tu pedido en el carrito.</p><div class="ap-row" id="ch">${chips(['Todos','Espresso','Filtrado','Frío','Pastelería'],f)}</div><div class="ap-grid" id="g"></div>`;
+      const g=c.main.querySelector('#g');
+      const draw=()=>{g.innerHTML='';prods.forEach((p,i)=>{if(f!=='Todos'&&p[1]!==f)return;const d=document.createElement('div');d.className='ap-card';
+        d.innerHTML=`<div class="web-img" style="--h:${20+i*7}"></div><b>${p[0]}</b><div class="ap-sub" style="margin:2px 0 10px">${p[1]} · ${clp(p[2])}</div><button class="ap-btn">Agregar</button>`;
+        d.querySelector('button').onclick=e=>{cart[p[0]]=(cart[p[0]]||0)+1;upd();const b=e.target;b.textContent='✓ Agregado';setTimeout(()=>b.textContent='Agregar',900)};g.appendChild(d)})};
+      c.main.querySelector('#ch').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;f=b.dataset.c;c.main.querySelector('#ch').innerHTML=chips(['Todos','Espresso','Filtrado','Frío','Pastelería'],f);draw()};
+      draw();
+    },
+    carrito(c){
+      const lines=Object.keys(cart).filter(k=>cart[k]>0);
+      if(!lines.length){c.main.innerHTML=`<div class="ap-h">Tu carrito</div><p class="ap-sub">Aún no has agregado productos.</p><button class="ap-btn" data-go="carta">Ir a la carta →</button>`;return}
+      const total=()=>lines.reduce((a,k)=>a+cart[k]*prods.find(p=>p[0]===k)[2],0);
+      c.main.innerHTML=`<div class="ap-h">Tu carrito</div><p class="ap-sub">Ajusta cantidades y confirma tu pedido.</p><div id="ls"></div><div class="ap-row" style="justify-content:space-between;margin-top:14px"><b id="tot"></b><button class="ap-btn" id="ok">Confirmar pedido</button></div><div id="msg"></div>`;
+      const ls=c.main.querySelector('#ls');
+      const draw=()=>{ls.innerHTML='';lines.forEach(k=>{const p=prods.find(x=>x[0]===k);const r=document.createElement('div');r.className='ap-card web-line';
+        r.innerHTML=`<span><b>${k}</b><br><small>${clp(p[2])} c/u</small></span><span class="web-qty"><button>−</button><b>${cart[k]}</b><button>+</button></span><b>${clp(p[2]*cart[k])}</b>`;
+        const [m,pl]=r.querySelectorAll('button');m.onclick=()=>{cart[k]=Math.max(0,cart[k]-1);upd();cart[k]===0?c.go('carrito'):draw()};pl.onclick=()=>{cart[k]++;upd();draw()};ls.appendChild(r)});
+        c.main.querySelector('#tot').textContent='Total: '+clp(total())};
+      draw();
+      c.main.querySelector('#ok').onclick=()=>{const n=1000+Math.floor(Math.random()*9000);Object.keys(cart).forEach(k=>delete cart[k]);upd();
+        c.main.innerHTML=`<div class="ap-ok"><b>✓ ¡Pedido confirmado!</b><p style="margin:6px 0 0">Tu pedido #${n} está en preparación. Te avisaremos por correo cuando salga a despacho.</p><div class="ap-row" style="margin:12px 0 0"><button class="ap-btn" data-go="carta">Seguir comprando</button></div></div>`;c.wire()};
+    },
+    contacto(c){
+      c.main.innerHTML=`<div class="ap-h">Contacto</div><p class="ap-sub">Escríbenos y te respondemos pronto.</p><form class="ap-form" id="f"><label>Nombre<input class="ap-in" name="n" required></label><label>Correo<input class="ap-in" name="e" type="email" required></label><label>Mensaje<textarea class="ap-in" name="m" rows="3" required></textarea></label><button class="ap-btn" type="submit">Enviar mensaje</button></form><div id="ok"></div>`;
+      c.main.querySelector('#f').onsubmit=e=>{e.preventDefault();const n=new FormData(e.target).get('n');e.target.reset();c.main.querySelector('#ok').innerHTML=`<div class="ap-ok">✓ ¡Gracias, ${esc(n)}! Recibimos tu mensaje y te responderemos pronto.</div>`};
+    }
+  };
+  return mkApp('a-web','cafe-andino','☕ Café Andino',[['inicio','Inicio'],['carta','Carta'],['carrito','Carrito (0)'],['contacto','Contacto']],views,'inicio',true);
+}
+
+/* ---------- Base de datos (violeta) ---------- */
+function buildBd(){
+  const T={
+    roles:{x:10,y:20,w:190,cols:[['PK','id'],['','nombre']],d:'Define los perfiles del sistema (administrador, coordinador, docente). Cada rol agrupa a muchos usuarios.',r:'Un rol tiene muchos usuarios.',rel:['usuarios'],
+      h:['id','nombre'],rows:[[1,'Administrador'],[2,'Coordinador'],[3,'Docente']]},
+    usuarios:{x:270,y:20,w:200,cols:[['PK','id'],['','nombre'],['','correo'],['FK','rol_id']],d:'Personas que inician sesión. Cada usuario pertenece a un único rol.',r:'Pertenece a un rol y puede tener un perfil de egresado.',rel:['roles','egresados'],
+      h:['id','nombre','correo','rol_id'],rows:[[1,'Ana Pizarro','ana@ejemplo.cl',1],[2,'Luis Cáceres','luis@ejemplo.cl',2],[3,'Marta Soto','marta@ejemplo.cl',3],[4,'Diego Vera','diego@ejemplo.cl',3]]},
+    egresados:{x:540,y:20,w:190,cols:[['PK','id'],['FK','usuario_id'],['','carrera'],['','anio']],d:'Perfil académico de cada egresado: carrera y año de egreso.',r:'Asociado a un usuario y con muchos seguimientos.',rel:['usuarios','seguimientos'],
+      h:['id','usuario_id','carrera','anio'],rows:[[1,3,'Pedagogía en Ed. Diferencial',2022],[2,4,'Pedagogía en Ed. Diferencial',2023]]},
+    seguimientos:{x:540,y:210,w:190,cols:[['PK','id'],['FK','egresado_id'],['','empleo'],['','fecha']],d:'Historial laboral del egresado a lo largo del tiempo.',r:'Cada seguimiento pertenece a un egresado.',rel:['egresados'],
+      h:['id','egresado_id','empleo','fecha'],rows:[[1,1,'Colegio Sol del Norte','2024-03-01'],[2,2,'Escuela Arica Sur','2024-05-15'],[3,1,'Jefa de UTP','2025-01-10']]}
+  };
+  const hh=t=>28+T[t].cols.length*22+10;
+  let sel='usuarios';
+  const queries={
+    'Usuarios por rol':{d:'Cada usuario junto al nombre de su rol.',h:['Usuario','Rol'],rows:[['Ana Pizarro','Administrador'],['Luis Cáceres','Coordinador'],['Marta Soto','Docente'],['Diego Vera','Docente']]},
+    'Egresados por año':{d:'Cantidad de egresados agrupados por año de egreso.',h:['Año','Egresados'],rows:[[2022,1],[2023,1]]},
+    'Seguimiento laboral':{d:'Dónde trabaja cada egresado, con su nombre y la fecha del registro.',h:['Egresado','Empleo','Fecha'],rows:[['Marta Soto','Colegio Sol del Norte','2024-03-01'],['Diego Vera','Escuela Arica Sur','2024-05-15'],['Marta Soto','Jefa de UTP','2025-01-10']]}
+  };
+  const tbl=(h,rows)=>`<div class="tblw"><table class="ap-tbl"><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  const views={
+    diagrama(c){
+      c.main.innerHTML=`<div class="ap-h">Diagrama del modelo</div><p class="ap-sub">Haz clic en una tabla para ver qué guarda y con qué se relaciona.</p><svg class="dgb" viewBox="0 0 740 350" id="sv"></svg><div id="info"></div>`;
+      const sv=c.main.querySelector('#sv'),info=c.main.querySelector('#info');
+      const draw=()=>{
+        let s=`<line x1="200" y1="62" x2="270" y2="62"/><line x1="470" y1="62" x2="540" y2="62"/><line x1="635" y1="${20+hh('egresados')}" x2="635" y2="210"/>`;
+        s+=`<text x="204" y="54" class="n">1</text><text x="254" y="54" class="n">N</text><text x="474" y="54" class="n">1</text><text x="524" y="54" class="n">1</text><text x="642" y="${20+hh('egresados')+18}" class="n">1</text><text x="642" y="200" class="n">N</text>`;
+        Object.keys(T).forEach(k=>{const t=T[k],h=hh(k);const cls='tb'+(k===sel?' sel':T[sel].rel.includes(k)?' rel':'');
+          s+=`<g class="${cls}" data-t="${k}"><rect x="${t.x}" y="${t.y}" width="${t.w}" height="${h}" rx="9"/><rect class="hd" x="${t.x}" y="${t.y}" width="${t.w}" height="28" rx="9"/><text class="ht" x="${t.x+12}" y="${t.y+19}">${k}</text>`;
+          t.cols.forEach((col,i)=>{s+=`<text x="${t.x+12}" y="${t.y+50+i*22}"><tspan class="k">${col[0]?col[0]+' ':''}</tspan>${col[1]}</text>`});s+='</g>'});
+        sv.innerHTML=s;
+        sv.querySelectorAll('.tb').forEach(g=>g.onclick=()=>{sel=g.dataset.t;draw()});
+        const t=T[sel];
+        info.innerHTML=`<div class="ap-card" style="margin-top:12px"><b>${sel}</b><p class="ap-sub" style="margin:4px 0 6px">${t.d}</p><p style="margin:0 0 12px"><b>Relaciones:</b> ${t.r}</p><button class="ap-btn" data-go="datos">Ver datos de esta tabla →</button></div>`;c.wire();
+      };
+      draw();
+    },
+    datos(c){
+      c.main.innerHTML=`<div class="ap-h">Datos de ejemplo</div><p class="ap-sub">Registros ficticios de cada tabla.</p><div class="ap-row" id="ch">${chips(Object.keys(T),sel)}</div><div id="tb"></div>`;
+      const draw=()=>{c.main.querySelector('#tb').innerHTML=tbl(T[sel].h,T[sel].rows)+`<p class="ap-sub" style="margin-top:10px">${T[sel].rows.length} registros · ${T[sel].r}</p>`};
+      c.main.querySelector('#ch').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;sel=b.dataset.c;c.main.querySelector('#ch').innerHTML=chips(Object.keys(T),sel);draw()};
+      draw();
+    },
+    consultas(c){
+      const ks=Object.keys(queries);let cur=null;
+      c.main.innerHTML=`<div class="ap-h">Consultas</div><p class="ap-sub">Elige una pregunta y mira el resultado que entrega la base de datos.</p><div class="ap-row" id="ch">${chips(ks,cur)}</div><div id="rs"></div>`;
+      c.main.querySelector('#ch').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;cur=b.dataset.c;const q=queries[cur];c.main.querySelector('#ch').innerHTML=chips(ks,cur);
+        c.main.querySelector('#rs').innerHTML=`<div class="ap-card"><p class="ap-sub" style="margin:0 0 10px">${q.d}</p>${tbl(q.h,q.rows)}<p class="ap-sub" style="margin:10px 0 0">✓ ${q.rows.length} filas encontradas</p></div>`};
+    }
+  };
+  return mkApp('a-bd','base-datos','Modelo de datos',[['diagrama','Diagrama'],['datos','Datos'],['consultas','Consultas']],views,'diagrama');
+}
+
+/* ---------- Microservicios (rosa oscuro) ---------- */
+function buildMs(){
+  const N={cli:['Micro Frontend','React · Vite',20,120,160],gw:['API Gateway','Enrutamiento · CORS',250,120,160],auth:['Autenticación','JWT · Bcrypt',480,20,160],usr:['Servicio Usuarios','Node · Express',480,120,160],mail:['Servicio Correos','Notificaciones',480,220,160],db:['MySQL','Base de datos',690,120,130],mir:['Endpoint espejo','Respaldo de correos',690,220,130]};
+  const E={cg:'M180 148 L250 148',ga:'M410 148 C445 148 445 48 480 48',gu:'M410 148 L480 148',gc:'M410 148 C445 148 445 248 480 248',ad:'M640 48 C665 48 665 135 690 135',ud:'M640 148 L690 148',ge:'M330 176 V292 H755 V276'};
+  const down={auth:false,usr:false,mail:false,db:false};
+  const label={auth:'Autenticación',usr:'Servicio Usuarios',mail:'Servicio Correos',db:'Base de datos'};
+  const SC={
+    'Iniciar sesión':[['El cliente envía correo y contraseña','cli',null],['El API Gateway recibe y enruta la petición','gw','cg'],['Autenticación compara la contraseña cifrada','auth','ga'],['Se consulta la base de datos MySQL','db','ad'],['Se entrega un token de acceso',null,null]],
+    'Listar usuarios':[['El cliente pide el listado con su token','cli',null],['El Gateway recibe la petición','gw','cg'],['Autenticación valida el token y el rol','auth','ga'],['El Servicio de Usuarios arma el listado','usr','gu'],['Se consulta MySQL','db','ud'],['Se devuelve el listado al cliente',null,null]],
+    'Recuperar contraseña':[['El cliente solicita recuperar su contraseña','cli',null],['El Gateway recibe la petición','gw','cg'],['El Servicio de Correos envía el mensaje','mail','gc'],['Se confirma el envío al cliente',null,null]]
+  };
+  const diagram=()=>{let s='';Object.keys(E).forEach(k=>s+=`<path class="ed" data-e="${k}" d="${E[k]}"/>`);
+    Object.keys(N).forEach(k=>{const n=N[k];s+=`<g class="nd" data-n="${k}"><rect x="${n[2]}" y="${n[3]}" width="${n[4]}" height="56" rx="10"/><text x="${n[2]+16}" y="${n[3]+25}">${n[0]}</text><text class="s" x="${n[2]+16}" y="${n[3]+43}">${n[1]}</text></g>`});
+    return `<svg class="dgb ms2" viewBox="0 0 840 300" id="sv">${s}</svg>`};
+  const paint=(sv,nodes,edges,fails)=>{
+    sv.querySelectorAll('.nd').forEach(g=>{const k=g.dataset.n;g.classList.toggle('on',nodes.includes(k));g.classList.toggle('bad',!!fails.includes(k)||(down[k]&&k!=='mir'))});
+    sv.querySelectorAll('.ed').forEach(p=>p.classList.toggle('on',edges.includes(p.dataset.e)));
+  };
+  const views={
+    simulador(c){
+      c.main.innerHTML=`<div class="ap-h">Simulador de peticiones</div><p class="ap-sub">Elige una acción y mira el recorrido que hace por los servicios.</p>
+      <div class="ap-row" id="ch">${chips(Object.keys(SC),null)}</div>${diagram()}<div id="rs"></div>
+      <div class="ap-row" style="margin-top:12px"><button class="ap-btn alt" data-go="estado">Ver estado de los servicios →</button></div>`;
+      const sv=c.main.querySelector('#sv');paint(sv,[],[],[]);
+      c.main.querySelector('#ch').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;const name=b.dataset.c;c.main.querySelector('#ch').innerHTML=chips(Object.keys(SC),name);
+        let steps=SC[name].map(s=>s.slice());
+        if(name==='Recuperar contraseña'&&down.mail)steps=[steps[0],steps[1],['El Servicio de Correos no responde','mail','gc'],['El Gateway usa el endpoint espejo','mir','ge'],['El mensaje se envía por la ruta alternativa',null,null]];
+        const nodes=[],edges=[],fails=[],out=[];let status='200 · Operación exitosa',cls='ok';
+        for(const s of steps){
+          if(s[1]){nodes.push(s[1]);if(s[2])edges.push(s[2])}
+          const isMailFail=name==='Recuperar contraseña'&&down.mail&&s[1]==='mail';
+          if(isMailFail){fails.push('mail');out.push(['✗',s[0]]);status='200 · Enviado por el endpoint espejo (resiliencia)';cls='warn';continue}
+          if(s[1]&&down[s[1]]){fails.push(s[1]);out.push(['✗',`${label[s[1]]} no responde`]);status='503 · Servicio no disponible';cls='err';break}
+          out.push(['✓',s[0]]);
+        }
+        paint(sv,nodes,edges,fails);
+        c.main.querySelector('#rs').innerHTML=`<div class="ap-card" style="margin-top:12px"><ul class="ap-steps">${out.map(o=>`<li class="${o[0]==='✗'?'bad':''}"><i>${o[0]}</i>${esc(o[1])}</li>`).join('')}</ul><span class="ap-pill st-${cls}">${status}</span></div>`;
+      };
+    },
+    estado(c){
+      c.main.innerHTML=`<div class="ap-h">Estado de los servicios</div><p class="ap-sub">Simula una caída y vuelve al simulador para ver cómo responde el sistema.</p><div class="ap-grid" id="g"></div>
+      <div class="ap-row" style="margin-top:14px"><button class="ap-btn" data-go="simulador">Probar en el simulador →</button></div>`;
+      const g=c.main.querySelector('#g');
+      const draw=()=>{g.innerHTML='';Object.keys(down).forEach(k=>{const d=document.createElement('div');d.className='ap-card';
+        d.innerHTML=`<b>${label[k]}</b><p class="ap-sub" style="margin:4px 0 10px">${k==='mail'?'Tiene endpoint espejo de respaldo.':'Sin respaldo en este ejemplo.'}</p><span class="ap-pill ${down[k]?'st-err':'st-ok'}">${down[k]?'Caído':'En línea'}</span> <button class="ap-btn alt" style="margin-left:8px">${down[k]?'Restablecer':'Simular caída'}</button>`;
+        d.querySelector('button').onclick=()=>{down[k]=!down[k];draw()};g.appendChild(d)})};
+      draw();
+    }
+  };
+  return mkApp('a-ms','microservicios','Servicios',[['simulador','Simulador'],['estado','Estado']],views,'simulador');
+}
+
+const builders={crm:buildCrm,gestion:buildGestion,web:buildWeb,bd:buildBd,ms:buildMs};
+function openDemo(id){
+  body.innerHTML='';
+  if(builders[id]){body.className='mb appmode';body.appendChild(builders[id]())}
+  else{body.className='mb';body.appendChild(document.getElementById('t-'+id).content.cloneNode(true));urlEl.textContent=names[id]}
+  dlg.showModal();body.scrollTop=0;
 }
 document.getElementById('form').addEventListener('submit',e=>{
   e.preventDefault();
