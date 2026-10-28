@@ -316,15 +316,15 @@ header.scrolled .in{background:var(--glass2);box-shadow:0 10px 40px -10px rgba(0
 .glass{position:relative}
 .glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(110,160,255,.2),transparent 60%)}
 .glass:hover::before{opacity:1}
-.hero .pill-tag{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
-.hero h1{animation:rise .9s .1s cubic-bezier(.2,.8,.2,1) both}
-.hero .lead{animation:rise .9s .22s cubic-bezier(.2,.8,.2,1) both}
-.hero .cta{animation:rise .9s .34s cubic-bezier(.2,.8,.2,1) both}
-.hero .promise{animation:rise .9s .44s cubic-bezier(.2,.8,.2,1) both}
-.hero .facts{animation:rise .9s .54s cubic-bezier(.2,.8,.2,1) both}
-.hp{animation:rise 1s .4s cubic-bezier(.2,.8,.2,1) both,floaty 7s 1.6s ease-in-out infinite}
+.hero .pill-tag{animation:rise .9s var(--sp,0s) cubic-bezier(.2,.8,.2,1) both}
+.hero h1{animation:rise .9s calc(var(--sp,0s) + .1s) cubic-bezier(.2,.8,.2,1) both}
+.hero .lead{animation:rise .9s calc(var(--sp,0s) + .22s) cubic-bezier(.2,.8,.2,1) both}
+.hero .cta{animation:rise .9s calc(var(--sp,0s) + .34s) cubic-bezier(.2,.8,.2,1) both}
+.hero .promise{animation:rise .9s calc(var(--sp,0s) + .44s) cubic-bezier(.2,.8,.2,1) both}
+.hero .facts{animation:rise .9s calc(var(--sp,0s) + .54s) cubic-bezier(.2,.8,.2,1) both}
+.hp{animation:rise 1s calc(var(--sp,0s) + .4s) cubic-bezier(.2,.8,.2,1) both,floaty 7s calc(var(--sp,0s) + 1.6s) ease-in-out infinite}
 .hp .cbar{transform-origin:bottom;animation:grow .9s cubic-bezier(.2,.8,.2,1) both}
-.hp .bw:nth-child(1) .cbar{animation-delay:.9s}.hp .bw:nth-child(2) .cbar{animation-delay:1s}.hp .bw:nth-child(3) .cbar{animation-delay:1.1s}.hp .bw:nth-child(4) .cbar{animation-delay:1.2s}.hp .bw:nth-child(5) .cbar{animation-delay:1.3s}.hp .bw:nth-child(6) .cbar{animation-delay:1.4s}
+.hp .bw:nth-child(1) .cbar{animation-delay:calc(var(--sp,0s) + .9s)}.hp .bw:nth-child(2) .cbar{animation-delay:calc(var(--sp,0s) + 1s)}.hp .bw:nth-child(3) .cbar{animation-delay:calc(var(--sp,0s) + 1.1s)}.hp .bw:nth-child(4) .cbar{animation-delay:calc(var(--sp,0s) + 1.2s)}.hp .bw:nth-child(5) .cbar{animation-delay:calc(var(--sp,0s) + 1.3s)}.hp .bw:nth-child(6) .cbar{animation-delay:calc(var(--sp,0s) + 1.4s)}
 .dot{box-shadow:0 0 0 0 #22c55e;animation:pulse 2s infinite}
 h1 em{display:inline-block;background:linear-gradient(90deg,var(--accent),#7cc4ff,var(--accent2),var(--accent));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:grad 7s linear infinite;transition:opacity .35s,transform .35s}
 h1 em.out{opacity:0;transform:translateY(10px)}
@@ -375,6 +375,28 @@ dialog[open]::backdrop{animation:fadeIn .35s}
 .marq .track{display:flex;gap:14px;width:max-content;padding-right:14px;animation:marq 34s linear infinite}
 .marq:hover .track{animation-play-state:paused}
 .marq span{padding:8px 18px;border-radius:999px;border:1px solid var(--line);background:var(--accent-soft);font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted);white-space:nowrap}
+/* ===== presentacion de entrada ===== */
+@keyframes letter{from{opacity:0;transform:translateY(54px) rotateX(-70deg);filter:blur(12px)}}
+@keyframes markin{from{opacity:0;transform:scale(.3) rotate(-25deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}}
+@keyframes cue{50%{transform:scaleY(.4);transform-origin:top;opacity:.4}}
+header{animation:fadeIn .9s 1.2s both}
+.intro{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;pointer-events:none;padding:0 20px}
+.intro-mark{width:clamp(60px,8vw,92px);animation:markin 1s cubic-bezier(.2,.8,.2,1) both}
+.intro-mark svg{width:100%;height:auto;display:block;filter:drop-shadow(0 12px 40px var(--accent))}
+.intro-name{display:flex;flex-wrap:wrap;justify-content:center;font-size:clamp(2.2rem,8.5vw,6rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;perspective:800px}
+.intro-name b{display:inline-block;font-weight:800;animation:letter .9s calc(.5s + var(--i)*.045s) cubic-bezier(.2,.8,.2,1) both}
+.intro-name b:nth-last-child(-n+2){color:var(--accent)}
+.intro-name i.sp{display:inline-block;width:.32em}
+.intro-sub{font-size:clamp(.9rem,1.8vw,1.2rem);color:var(--muted);animation:fadeUp .9s 1.5s both}
+.intro-cue{position:absolute;bottom:34px;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);animation:fadeUp .9s 2s both}
+.intro-cue i{width:1px;height:36px;background:linear-gradient(var(--accent),transparent);animation:cue 1.6s ease-in-out infinite}
+.splash{position:fixed;inset:0;z-index:100;background:var(--bg);transition:opacity .8s}
+.splash.gone{opacity:0;pointer-events:none}
+.splash .intro-cue{display:none}
+.hero-pin .pin-stage{align-items:center;padding-top:64px}
+.hero-pin .pill-tag,.hero-pin h1,.hero-pin .lead,.hero-pin .cta,.hero-pin .promise,.hero-pin .facts,.hero-pin .hp{animation:none!important;opacity:0}
+.hero-pin .hp .cbar{animation:none!important;transform:scaleY(0)}
 /* ===== secciones fijas con animacion segun el scroll ===== */
 .pinned{padding:0}
 .pin-track{position:relative}
@@ -1031,6 +1053,12 @@ document.getElementById('form').addEventListener('submit',e=>{
 
 /* efectos */
 const PIN=matchMedia('(min-width:900px) and (min-height:520px)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
+const introHTML=()=>'<div class="intro" aria-hidden="true"><div class="intro-mark"><svg viewBox="0 0 32 32"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b8cff"/><stop offset="1" stop-color="#1f3fa8"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#lg2)"/><text x="16" y="21.5" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="14" fill="#fff">JA</text></svg></div><div class="intro-name">'+'JOE ARELLANO R.'.split('').map((c,i)=>c===' '?'<i class="sp"></i>':'<b style="--i:'+i+'">'+c+'</b>').join('')+'</div><div class="intro-sub">Ingeniero en Computación e Informática</div><div class="intro-cue"><span>Desliza para comenzar</span><i></i></div></div>';
+if(!PIN&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const sp=document.createElement('div');sp.className='splash';sp.innerHTML=introHTML();document.body.appendChild(sp);
+  document.documentElement.style.setProperty('--sp','2.6s');document.body.style.overflow='hidden';
+  setTimeout(()=>{sp.classList.add('gone');document.body.style.overflow=''},2600);setTimeout(()=>sp.remove(),3500);
+}
 (function(){
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const prog=document.getElementById('prog'),hdr=document.querySelector('header');
@@ -1063,11 +1091,12 @@ const PIN=matchMedia('(min-width:900px) and (min-height:520px)').matches&&!match
       });
     };
     addEventListener('scroll',update,{passive:true});addEventListener('resize',update);update();
-    document.querySelectorAll('.facts b[data-to]').forEach(b=>{
+    window.__startCount=()=>document.querySelectorAll('.facts b[data-to]').forEach(b=>{
       const to=+b.dataset.to,pre=b.dataset.pre||'';let t0;
       const step=t=>{t0=t0||t;const p=Math.min(1,(t-t0)/1400);b.textContent=pre+Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};
       b.textContent=pre+'0';requestAnimationFrame(step);setTimeout(()=>{b.textContent=pre+to},1700);
     });
+    if(!PIN)window.__startCount();
     const rot=document.getElementById('rot'),words=['negocio','empresa','institución','emprendimiento'];let wi=0;
     setInterval(()=>{rot.classList.add('out');setTimeout(()=>{wi=(wi+1)%words.length;rot.textContent=words[wi];rot.classList.remove('out')},380)},2800);
   }
@@ -1083,17 +1112,49 @@ const PIN=matchMedia('(min-width:900px) and (min-height:520px)').matches&&!match
   const mq=matchMedia('(min-width:900px) and (min-height:520px)');
   const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),pad=n=>String(n).padStart(2,'0');
   const secs=[];
-  const mk=(id,ph)=>{
+  const mk=(id,ph,noCnt)=>{
     const sec=document.getElementById(id),w=sec.querySelector('.wrap');
     sec.classList.add('pinned');
     const track=document.createElement('div'),stage=document.createElement('div'),cnt=document.createElement('span');
     track.className='pin-track';stage.className='pin-stage';cnt.className='pin-count mono';
-    sec.insertBefore(track,w);track.appendChild(stage);stage.appendChild(w);w.appendChild(cnt);
+    sec.insertBefore(track,w);track.appendChild(stage);stage.appendChild(w);if(!noCnt)w.appendChild(cnt);
     const P={sec,track,stage,w,cnt,
       p(){const r=track.getBoundingClientRect();return clamp(-r.top/Math.max(1,r.height-innerHeight))},
       size(){track.style.height=ph+'vh'},
       fit(){w.style.transform='';const f=Math.min(1,(innerHeight-84-12)/w.offsetHeight);w.style.transform=f<1?'scale('+f.toFixed(3)+')':''}};
     secs.push(P);return P;
+  };
+
+  /* Portada: presentacion de entrada y luego aparece todo al hacer scroll */
+  const HP=mk('inicio',440,true);
+  HP.sec.classList.add('hero-pin');
+  HP.stage.insertAdjacentHTML('beforeend',introHTML());
+  const intro=HP.stage.querySelector('.intro');
+  const hw=HP.w;
+  const hItems=['.pill-tag','h1','.lead','.cta','.promise','.facts','.hp'].map(q=>hw.querySelector(q));
+  const hBars=[...hw.querySelectorAll('.hp .cbar')];
+  let counted=false;
+  HP.update=()=>{
+    const p=HP.p(),e=clamp((p-.05)/.13);
+    intro.style.opacity=1-e;
+    intro.style.transform='translateY('+(-60*e)+'px) scale('+(1+.18*e)+')';
+    intro.style.filter=e>0?'blur('+10*e+'px)':'';
+    intro.style.visibility=e>=1?'hidden':'visible';
+    hItems.forEach((el,i)=>{
+      const t=clamp((p-.17-i*.07)/.12),k=1-t;
+      el.style.opacity=t;
+      let tr='';
+      if(t<1){
+        if(i===0)tr='translateX('+(-80*k)+'px)';
+        else if(i===6)tr='translateX('+120*k+'px) rotate('+6*k+'deg) scale('+(.9+.1*t)+')';
+        else tr='translateY('+46*k+'px) scale('+(.96+.04*t)+')';
+      }
+      el.style.transform=tr;
+      el.style.filter=t<1&&(i===1||i===2)?'blur('+10*k+'px)':'';
+    });
+    const tb=clamp((p-.17-6*.07-.05)/.12);
+    hBars.forEach((b,i)=>{b.style.transform='scaleY('+clamp(tb*1.5-i*.12)+')'});
+    if(!counted&&p>.45){counted=true;if(window.__startCount)window.__startCount()}
   };
 
   /* Servicios: las tarjetas aparecen una a una */
