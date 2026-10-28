@@ -390,6 +390,7 @@ dialog[open]::backdrop{animation:fadeIn .35s}
 .projs{position:relative;margin-top:8px}
 .proj.stk{position:absolute;left:0;right:0;top:0;margin:0;background:var(--glass2);will-change:transform}
 .proj.stk:hover{border-color:var(--line)}
+@media(max-height:720px){#perfil .sub{font-size:.9rem;margin-bottom:14px}#perfil .panel{padding:18px 20px}#perfil .panel h3{margin-bottom:10px;font-size:1.1rem}#perfil .skill{margin-bottom:8px}#perfil .skill h4{margin-bottom:5px}#perfil .chip{font-size:.66rem;padding:2px 8px}#perfil .certs{gap:6px}#perfil .cert{padding:8px 12px;font-size:.85rem}#contacto .cinfo,#contacto form{padding:16px 22px}#contacto .crow{padding:8px 0}#contacto .crow b{font-size:.95rem}#contacto form{gap:9px}#contacto textarea{min-height:70px}#contacto label{gap:4px}}
 @media(max-height:720px){#servicios .sub{display:none}.pinned h2{margin-bottom:12px}.pinned .svc{padding:16px 18px}.pinned .svc .ico{width:36px;height:36px;margin-bottom:10px}.pinned .svc .ico svg{width:19px;height:19px}.pinned .svc ul{margin-top:8px;gap:2px;font-size:.82rem}.pinned .svc p{font-size:.86rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1!important}}
 
@@ -1039,7 +1040,7 @@ const PIN=matchMedia('(min-width:900px) and (min-height:520px)').matches&&!match
     const items=[];
     const fxOf=(el,i)=>el.matches('.eyebrow')?'left':el.matches('h2')?'wipe':el.matches('.sub')?'blur':el.matches('.svc')?'flip':el.matches('.card')?(i%2?'zoom2':'zoom'):el.matches('.step')?'pop':el.matches('.proj,.panel')?(i%2?'right':'left'):el.matches('.cinfo')?'left':el.matches('form')?'right':'up';
     document.querySelectorAll('main section:not(.hero) :is(.eyebrow,h2,.sub,.svc,.card,.step,.proj,.panel,.cinfo,form)').forEach(el=>{
-      if(PIN&&el.matches('.svc,.card,.step,.proj')&&['servicios','ejemplos','recursos','proceso','proyectos'].includes(el.closest('section').id))return;
+      if(PIN&&({servicios:'.svc',ejemplos:'.card',recursos:'.card',proceso:'.step',proyectos:'.proj',perfil:'.sub,.panel',contacto:'.cinfo,form'})[el.closest('section').id]&&el.matches(({servicios:'.svc',ejemplos:'.card',recursos:'.card',proceso:'.step',proyectos:'.proj',perfil:'.sub,.panel',contacto:'.cinfo,form'})[el.closest('section').id]))return;
       const i=[...el.parentElement.children].indexOf(el);
       el.style.setProperty('--d',(i%3)*.1+'s');
       el.dataset.fx=fxOf(el,i);
@@ -1160,6 +1161,25 @@ const PIN=matchMedia('(min-width:900px) and (min-height:520px)').matches&&!match
     });
     P.cnt.textContent=pad(clamp(Math.round(r)+1,1,n))+' / '+pad(n);
   };
+
+  /* Perfil y contacto: los bloques entran uno a uno al seguir el scroll */
+  const seq=(id,ph,sel,dirs)=>{
+    const Q=mk(id,ph);Q.cards=[...Q.w.querySelectorAll(sel)];
+    Q.update=()=>{
+      const n=Q.cards.length,r=clamp(Q.p()/.85)*n;
+      Q.cards.forEach((c,i)=>{
+        const t=clamp(r-i),d=dirs[i]||'up',k=1-t;
+        c.style.opacity=t;
+        c.style.transform=t<1?(d==='left'?'translateX('+(-90*k)+'px)':d==='right'?'translateX('+90*k+'px)':'translateY('+50*k+'px)')+' scale('+(.94+.06*t)+')':'';
+        c.style.filter=t<1?'blur('+10*k+'px)':'';
+        c.style.transition=t<1?'none':'';
+      });
+      Q.cnt.textContent=pad(clamp(Math.ceil(r),0,n))+' / '+pad(n);
+    };
+    return Q;
+  };
+  seq('perfil',260,'.sub,.panel',['up','left','right']);
+  seq('contacto',220,'.cinfo,form',['left','right']);
 
   const layout=()=>{secs.forEach(x=>{x.size();x.fit()})};
   const all=()=>secs.forEach(x=>x.update());
