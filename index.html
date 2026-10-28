@@ -397,6 +397,27 @@ header{animation:fadeIn .9s 1.2s both}
 .hero-pin .pin-stage{align-items:center;padding-top:64px}
 .hero-pin .pill-tag,.hero-pin h1,.hero-pin .lead,.hero-pin .cta,.hero-pin .promise,.hero-pin .facts,.hero-pin .hp{animation:none!important;opacity:0}
 .hero-pin .hp .cbar{animation:none!important;transform:scaleY(0)}
+/* ===== iconos ===== */
+i.ci{width:36px;height:36px;flex:none;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-style:normal;border:1px solid var(--line)}
+i.ci svg,svg.mi{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+i.ci svg{width:19px;height:19px}
+svg.mi{width:17px;height:17px;flex:none;color:var(--accent)}
+.cert{display:flex;gap:12px;align-items:center}
+.cert:hover i.ci{background:var(--accent);color:#fff}
+i.ci{transition:background .25s,color .25s,transform .3s}
+.cert:hover i.ci,.crow:hover i.ci,.step:hover i.ci,.fi:hover i.ci{transform:rotate(-8deg) scale(1.08)}
+.crow:hover i.ci,.step:hover i.ci,.fi:hover i.ci{background:var(--accent);color:#fff}
+.skill h4{display:flex;align-items:center;gap:8px}
+.skill h4 svg.mi{width:15px;height:15px}
+.panel h3{display:flex;align-items:center;gap:10px}
+.panel h3 svg.mi{width:22px;height:22px}
+.proj h3{display:flex;align-items:center;gap:10px}
+.proj h3 svg.mi{width:22px;height:22px}
+.crow{flex-direction:row;align-items:center;gap:14px}
+.crow .ct{display:flex;flex-direction:column;min-width:0}
+.step .sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.fi{display:flex;align-items:center;gap:12px}
+.fi b{line-height:1.1}
 /* ===== secciones fijas con animacion segun el scroll ===== */
 .pinned{padding:0}
 .pin-track{position:relative}
@@ -468,9 +489,9 @@ header{animation:fadeIn .9s 1.2s both}
       </div>
       <p class="promise"><span>✓ Cotización sin costo</span><span>✓ Respuesta en 24 horas</span></p>
       <div class="facts">
-        <div><b data-to="3" data-pre="+">+3</b><span>años de experiencia</span></div>
-        <div><b data-to="3">3</b><span>proyectos destacados</span></div>
-        <div><b data-to="5">5</b><span>certificaciones</span></div>
+        <div class="fi"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></i><div><b data-to="3" data-pre="+">+3</b><span>años de experiencia</span></div></div>
+        <div class="fi"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></i><div><b data-to="3">3</b><span>proyectos destacados</span></div></div>
+        <div class="fi"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></i><div><b data-to="5">5</b><span>certificaciones</span></div></div>
       </div>
     </div>
     <div class="hp glass">
@@ -570,12 +591,12 @@ header{animation:fadeIn .9s 1.2s both}
     <h2>De la idea al sistema funcionando</h2>
     <p class="sub">Un proceso ágil y transparente, con entregas que ya se pueden usar.</p>
     <div class="steps">
-      <div class="step glass"><span class="n">01</span><h3>Escuchar</h3><p>Entiendo el negocio antes de proponer nada.</p></div>
-      <div class="step glass"><span class="n">02</span><h3>Definir</h3><p>Un alcance claro es lo que permite cumplir plazos.</p></div>
-      <div class="step glass"><span class="n">03</span><h3>Diseñar</h3><p>Ves el sistema en maquetas antes de que exista.</p></div>
-      <div class="step glass"><span class="n">04</span><h3>Construir</h3><p>Iteraciones cortas con Scrum; cada entrega es utilizable.</p></div>
-      <div class="step glass"><span class="n">05</span><h3>Ajustar</h3><p>Lo afino con quienes lo usan todos los días.</p></div>
-      <div class="step glass"><span class="n">06</span><h3>Acompañar</h3><p>Soporte, mejoras y nuevas etapas.</p></div>
+      <div class="step glass"><div class="sh"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg></i><span class="n">01</span></div><h3>Escuchar</h3><p>Entiendo el negocio antes de proponer nada.</p></div>
+      <div class="step glass"><div class="sh"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></i><span class="n">02</span></div><h3>Definir</h3><p>Un alcance claro es lo que permite cumplir plazos.</p></div>
+      <div class="step glass"><div class="sh"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/></svg></i><span class="n">03</span></div><h3>Diseñar</h3><p>Ves el sistema en maquetas antes de que exista.</p></div>
+      <div class="step glass"><div class="sh"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></i><span class="n">04</span></div><h3>Construir</h3><p>Iteraciones cortas con Scrum; cada entrega es utilizable.</p></div>
+      <div class="step glass"><div class="sh"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></i><span class="n">05</span></div><h3>Ajustar</h3><p>Lo afino con quienes lo usan todos los días.</p></div>
+      <div class="step glass"><div class="sh"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/></svg></i><span class="n">06</span></div><h3>Acompañar</h3><p>Soporte, mejoras y nuevas etapas.</p></div>
     </div>
   </div>
 </section>
@@ -587,7 +608,7 @@ header{animation:fadeIn .9s 1.2s both}
     <p class="sub">Sistemas desarrollados para la Universidad de Tarapacá y proyectos de arquitectura distribuida.</p>
 
     <article class="proj glass"><span class="n">01</span><div>
-      <h3>Sistema de Progresión Estudiantil (SDPE)</h3><p class="org">Universidad de Tarapacá</p>
+      <h3><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5M22 9v6"/></svg>Sistema de Progresión Estudiantil (SDPE)</h3><p class="org">Universidad de Tarapacá</p>
       <div class="chips"><span class="chip">Angular</span><span class="chip">Node.js · TypeScript</span><span class="chip">Prisma ORM</span><span class="chip">JWT</span><span class="chip">Scrum</span></div>
       <ul class="pts">
         <li>Diseñé e implementé la arquitectura de la plataforma de seguimiento académico y laboral para egresados de Pedagogía en Educación Diferencial.</li>
@@ -596,7 +617,7 @@ header{animation:fadeIn .9s 1.2s both}
       </ul></div></article>
 
     <article class="proj glass"><span class="n">02</span><div>
-      <h3>Sistema de Gestión de Posgrados</h3><p class="org">Universidad de Tarapacá</p>
+      <h3><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>Sistema de Gestión de Posgrados</h3><p class="org">Universidad de Tarapacá</p>
       <div class="chips"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">MySQL</span><span class="chip">Bcrypt</span><span class="chip">Docker Compose</span></div>
       <ul class="pts">
         <li>Orquesté el backend y las bases de datos MySQL mediante Docker y Docker Compose para garantizar portabilidad.</li>
@@ -605,7 +626,7 @@ header{animation:fadeIn .9s 1.2s both}
       </ul></div></article>
 
     <article class="proj glass"><span class="n">03</span><div>
-      <h3>Plataforma de Microservicios Distribuidos</h3><p class="org">Arquitectura de microservicios</p>
+      <h3><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M12 7.5v4M12 11.5l-6 4.5M12 11.5l6 4.5"/></svg>Plataforma de Microservicios Distribuidos</h3><p class="org">Arquitectura de microservicios</p>
       <div class="chips"><span class="chip">React · Vite</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Axios</span><span class="chip">CORS</span></div>
       <ul class="pts">
         <li>Diseñé un sistema distribuido que integra un Micro Frontend (Vite/Tailwind) con un API Gateway centralizado.</li>
@@ -622,20 +643,20 @@ header{animation:fadeIn .9s 1.2s both}
     <p class="sub">Ingeniero de Ejecución en Computación e Informática y Licenciado en Ciencias de la Ingeniería, con más de 3 años de experiencia en el ciclo de vida completo del desarrollo de software. Sólidos conocimientos en seguridad, redes e integración continua bajo metodologías ágiles.</p>
     <div class="about">
       <div class="panel glass">
-        <h3>Habilidades técnicas</h3>
-        <div class="skill"><h4>Lenguajes y frameworks</h4><div class="chips"><span class="chip">JavaScript ES6+</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Angular</span><span class="chip">React</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">Tailwind CSS</span></div></div>
-        <div class="skill"><h4>Bases de datos y API</h4><div class="chips"><span class="chip">MySQL</span><span class="chip">Prisma ORM</span><span class="chip">JWT</span><span class="chip">Bcrypt</span><span class="chip">Axios</span><span class="chip">REST APIs</span></div></div>
-        <div class="skill"><h4>DevOps y metodologías</h4><div class="chips"><span class="chip">Docker</span><span class="chip">Docker Compose</span><span class="chip">Git/GitHub</span><span class="chip">SCRUM</span></div></div>
-        <div class="skill"><h4>Idiomas</h4><div class="chips"><span class="chip">Español · Nativo</span><span class="chip">Inglés · Intermedio (lectura técnica)</span></div></div>
+        <h3><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg>Habilidades técnicas</h3>
+        <div class="skill"><h4><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg>Lenguajes y frameworks</h4><div class="chips"><span class="chip">JavaScript ES6+</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Angular</span><span class="chip">React</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">Tailwind CSS</span></div></div>
+        <div class="skill"><h4><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>Bases de datos y API</h4><div class="chips"><span class="chip">MySQL</span><span class="chip">Prisma ORM</span><span class="chip">JWT</span><span class="chip">Bcrypt</span><span class="chip">Axios</span><span class="chip">REST APIs</span></div></div>
+        <div class="skill"><h4><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M13 15h4"/></svg>DevOps y metodologías</h4><div class="chips"><span class="chip">Docker</span><span class="chip">Docker Compose</span><span class="chip">Git/GitHub</span><span class="chip">SCRUM</span></div></div>
+        <div class="skill"><h4><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h12v8H9l-3 3v-3H4z"/><path d="M16 9h4v8h-2v2l-3-2h-3"/></svg>Idiomas</h4><div class="chips"><span class="chip">Español · Nativo</span><span class="chip">Inglés · Intermedio (lectura técnica)</span></div></div>
       </div>
       <div class="panel glass">
-        <h3>Certificaciones</h3>
+        <h3><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg>Certificaciones</h3>
         <div class="certs">
-          <div class="cert"><b>CCNA: Routing &amp; Switching</b><span>Cisco Networking Academy</span></div>
-          <div class="cert"><b>CCNAv7: Redes</b><span>Cisco Networking Academy</span></div>
-          <div class="cert"><b>Bachiller en Ciencias de la Ingeniería</b><span>Universidad de Tarapacá</span></div>
-          <div class="cert"><b>Diseño y Programación Web Full-Stack</b><span>AIEP / Sence / Fundación Telefónica</span></div>
-          <div class="cert"><b>Fundamentos de Videojuegos</b><span>Huawei / YODO / UGame Studio</span></div>
+          <div class="cert"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 17h.01M11 17h.01M12 14V9M8.5 6.5a5 5 0 0 1 7 0M6 4a8.5 8.5 0 0 1 12 0"/></svg></i><div><b>CCNA: Routing &amp; Switching</b><span>Cisco Networking Academy</span></div></div>
+          <div class="cert"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></i><div><b>CCNAv7: Redes</b><span>Cisco Networking Academy</span></div></div>
+          <div class="cert"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5M22 9v6"/></svg></i><div><b>Bachiller en Ciencias de la Ingeniería</b><span>Universidad de Tarapacá</span></div></div>
+          <div class="cert"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9.5 13l-2 2 2 2M14.5 13l2 2-2 2"/></svg></i><div><b>Diseño y Programación Web Full-Stack</b><span>AIEP / Sence / Fundación Telefónica</span></div></div>
+          <div class="cert"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="4"/><path d="M7 10.5v4M5 12.5h4M15.5 11.5h.01M18 13.5h.01"/></svg></i><div><b>Fundamentos de Videojuegos</b><span>Huawei / YODO / UGame Studio</span></div></div>
         </div>
       </div>
     </div>
@@ -649,13 +670,13 @@ header{animation:fadeIn .9s 1.2s both}
     <p class="sub">Cuéntame qué necesitas resolver. Cotización sin costo y respuesta en 24 horas.</p>
     <div class="contact">
       <div class="cinfo glass">
-        <a class="crow" href="mailto:jonathanarejoe5@gmail.com"><small>Correo</small><b>jonathanarejoe5@gmail.com</b></a>
-        <a class="crow" href="tel:+56941094590"><small>Teléfono</small><b>+56 9 4109 4590</b></a>
-        <a class="crow" href="https://wa.me/56941094590?text=Hola%20Joe%2C%20vi%20tu%20p%C3%A1gina%20y%20quisiera%20cotizar%20un%20proyecto." target="_blank" rel="noopener"><small>WhatsApp</small><b>Escríbeme directo →</b></a>
-        <a class="crow" href="https://www.linkedin.com/in/jonathan-arellano-124ab2317/" target="_blank" rel="noopener"><small>LinkedIn</small><b>Jonathan Arellano →</b></a>
-        <a class="crow" href="https://github.com/JoeAre5" target="_blank" rel="noopener"><small>GitHub</small><b>github.com/JoeAre5 →</b></a>
-        <a class="crow" href="cv-joe-arellano.pdf" download><small>Currículum</small><b>Descargar CV en PDF ↓</b></a>
-        <div class="crow"><small>Ubicación</small><b>Arica, Chile · Trabajo remoto</b></div>
+        <a class="crow" href="mailto:jonathanarejoe5@gmail.com"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></i><span class="ct"><small>Correo</small><b>jonathanarejoe5@gmail.com</b></span></a>
+        <a class="crow" href="tel:+56941094590"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></i><span class="ct"><small>Teléfono</small><b>+56 9 4109 4590</b></span></a>
+        <a class="crow" href="https://wa.me/56941094590?text=Hola%20Joe%2C%20vi%20tu%20p%C3%A1gina%20y%20quisiera%20cotizar%20un%20proyecto." target="_blank" rel="noopener"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg></i><span class="ct"><small>WhatsApp</small><b>Escríbeme directo →</b></span></a>
+        <a class="crow" href="https://www.linkedin.com/in/jonathan-arellano-124ab2317/" target="_blank" rel="noopener"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v6M8 7.5v.01M12 16v-6M12 12.5a2.5 2.5 0 0 1 5 0V16"/></svg></i><span class="ct"><small>LinkedIn</small><b>Jonathan Arellano →</b></span></a>
+        <a class="crow" href="https://github.com/JoeAre5" target="_blank" rel="noopener"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></i><span class="ct"><small>GitHub</small><b>github.com/JoeAre5 →</b></span></a>
+        <a class="crow" href="cv-joe-arellano.pdf" download><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6m-3-3 3 3 3-3"/></svg></i><span class="ct"><small>Currículum</small><b>Descargar CV en PDF ↓</b></span></a>
+        <div class="crow"><i class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></i><span class="ct"><small>Ubicación</small><b>Arica, Chile · Trabajo remoto</b></span></div>
       </div>
       <form class="glass" id="form">
         <div class="row2">
