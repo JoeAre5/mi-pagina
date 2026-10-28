@@ -378,7 +378,7 @@ dialog[open]::backdrop{animation:fadeIn .35s}
 /* ===== secciones fijas con animacion segun el scroll ===== */
 .pinned{padding:0}
 .pin-track{position:relative}
-.pin-stage{position:sticky;top:0;height:100vh;display:flex;align-items:flex-start;overflow:hidden;padding-top:88px}
+.pin-stage{position:sticky;top:0;height:100vh;display:flex;align-items:flex-start;overflow:hidden;padding-top:84px}
 .pinned .wrap{position:relative;transform-origin:50% 0}
 .pin-count{position:absolute;right:0;top:0;font-size:.8rem;color:var(--muted);letter-spacing:.12em}
 .pinned .svc{padding:20px 22px}
@@ -390,6 +390,7 @@ dialog[open]::backdrop{animation:fadeIn .35s}
 .projs{position:relative;margin-top:8px}
 .proj.stk{position:absolute;left:0;right:0;top:0;margin:0;background:var(--glass2);will-change:transform}
 .proj.stk:hover{border-color:var(--line)}
+@media(max-height:720px){#servicios .sub{display:none}.pinned h2{margin-bottom:12px}.pinned .svc{padding:16px 18px}.pinned .svc .ico{width:36px;height:36px;margin-bottom:10px}.pinned .svc .ico svg{width:19px;height:19px}.pinned .svc ul{margin-top:8px;gap:2px;font-size:.82rem}.pinned .svc p{font-size:.86rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1!important}}
 
 @media(max-width:1000px){.nav-cta{display:none}}
@@ -1028,7 +1029,7 @@ document.getElementById('form').addEventListener('submit',e=>{
 });
 
 /* efectos */
-const PIN=matchMedia('(min-width:900px) and (min-height:700px)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
+const PIN=matchMedia('(min-width:900px) and (min-height:520px)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
 (function(){
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const prog=document.getElementById('prog'),hdr=document.querySelector('header');
@@ -1078,7 +1079,7 @@ const PIN=matchMedia('(min-width:900px) and (min-height:700px)').matches&&!match
 /* secciones fijas: el contenido avanza con el scroll */
 (function(){
   if(!PIN)return;
-  const mq=matchMedia('(min-width:900px) and (min-height:700px)');
+  const mq=matchMedia('(min-width:900px) and (min-height:520px)');
   const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),pad=n=>String(n).padStart(2,'0');
   const secs=[];
   const mk=(id,ph)=>{
@@ -1090,7 +1091,7 @@ const PIN=matchMedia('(min-width:900px) and (min-height:700px)').matches&&!match
     const P={sec,track,stage,w,cnt,
       p(){const r=track.getBoundingClientRect();return clamp(-r.top/Math.max(1,r.height-innerHeight))},
       size(){track.style.height=ph+'vh'},
-      fit(){w.style.transform='';const f=Math.min(1,(innerHeight-88-16)/w.offsetHeight);w.style.transform=f<1?'scale('+f.toFixed(3)+')':''}};
+      fit(){w.style.transform='';const f=Math.min(1,(innerHeight-84-12)/w.offsetHeight);w.style.transform=f<1?'scale('+f.toFixed(3)+')':''}};
     secs.push(P);return P;
   };
 
@@ -1168,7 +1169,7 @@ const PIN=matchMedia('(min-width:900px) and (min-height:700px)').matches&&!match
   addEventListener('resize',()=>{if(mq.matches){layout();all()}});
 })();
 (function(){
-  const mq=matchMedia('(min-width:900px) and (min-height:700px)'),was=PIN;let t;
+  const mq=matchMedia('(min-width:900px) and (min-height:520px)'),was=PIN;let t;
   addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(()=>{if((mq.matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches)!==was)location.reload()},300)});
 })();
 </script>
