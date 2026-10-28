@@ -181,6 +181,38 @@ svg.dg{width:100%;height:auto;display:block}
 .a-web{--ap-bg:#fbf6ee;--ap-panel:#f1e6d4;--ap-tx:#2b1d12;--ap-mu:#7d6650;--ap-ln:rgba(90,55,25,.16);--ap-a:#8a5a36;--ap-a2:rgba(138,90,54,.13);--ap-on:#fff}
 .a-bd{--ap-bg:#faf8ff;--ap-panel:#efeafc;--ap-tx:#1d1538;--ap-mu:#6b5f91;--ap-ln:rgba(80,50,180,.15);--ap-a:#6d3fe0;--ap-a2:rgba(109,63,224,.12);--ap-on:#fff}
 .a-ms{--ap-bg:#14060f;--ap-panel:#200c19;--ap-tx:#fbe8f2;--ap-mu:#b98aa5;--ap-ln:rgba(255,100,170,.18);--ap-a:#ec4899;--ap-a2:rgba(236,72,153,.14);--ap-on:#fff}
+.a-inv{--ap-bg:#f3fbfa;--ap-panel:#e0f2f0;--ap-tx:#0b2b29;--ap-mu:#4f7774;--ap-ln:rgba(13,120,110,.16);--ap-a:#0d9488;--ap-a2:rgba(13,148,136,.13);--ap-on:#fff}
+.a-res{--ap-bg:#fff7f8;--ap-panel:#fde8ec;--ap-tx:#3a1019;--ap-mu:#8a5560;--ap-ln:rgba(190,30,70,.15);--ap-a:#e11d48;--ap-a2:rgba(225,29,72,.11);--ap-on:#fff}
+.a-fac{--ap-bg:#0c1426;--ap-panel:#13203a;--ap-tx:#f4ecd5;--ap-mu:#a39a80;--ap-ln:rgba(230,190,90,.18);--ap-a:#d4a017;--ap-a2:rgba(212,160,23,.14);--ap-on:#1c1503}
+.a-ped{--ap-bg:#fff8f0;--ap-panel:#ffe9d3;--ap-tx:#3a1c08;--ap-mu:#8f6a4c;--ap-ln:rgba(200,90,20,.18);--ap-a:#ea580c;--ap-a2:rgba(234,88,12,.12);--ap-on:#fff}
+.a-por{--ap-bg:#0e1116;--ap-panel:#171c24;--ap-tx:#e6edf3;--ap-mu:#8b98a8;--ap-ln:rgba(120,200,230,.16);--ap-a:#06b6d4;--ap-a2:rgba(6,182,212,.14);--ap-on:#031418}
+.a-ana{--ap-bg:#fafaf9;--ap-panel:#efeeeb;--ap-tx:#1c1917;--ap-mu:#78716c;--ap-ln:rgba(60,50,40,.14);--ap-a:#2563eb;--ap-a2:rgba(37,99,235,.1);--ap-on:#fff}
+.a-lan{--ap-bg:#0b1d16;--ap-panel:#12291f;--ap-tx:#e8f6ee;--ap-mu:#8fb3a1;--ap-ln:rgba(80,220,150,.16);--ap-a:#34d399;--ap-a2:rgba(52,211,153,.13);--ap-on:#04170f}
+.ap-hb{display:grid;gap:9px;margin-top:10px}
+.ap-hb div{display:grid;grid-template-columns:130px 1fr 64px;align-items:center;gap:10px;font-size:.82rem}
+.ap-hb u{height:10px;border-radius:99px;background:var(--ap-ln);overflow:hidden;text-decoration:none}
+.ap-hb u i{display:block;height:100%;background:var(--ap-a);border-radius:99px}
+.ap-hb em{font-style:normal;color:var(--ap-mu);text-align:right}
+.slots{display:grid;grid-template-columns:56px repeat(5,1fr);gap:6px;align-items:center}
+.slots>span{font-size:.72rem;color:var(--ap-mu);text-align:center}
+.slot{padding:8px 2px;border-radius:8px;border:1px solid var(--ap-ln);background:var(--ap-bg);color:var(--ap-tx);cursor:pointer;font-size:.74rem;font-family:inherit}
+.slot:hover:not(:disabled){border-color:var(--ap-a)}
+.slot:disabled{opacity:.4;cursor:not-allowed;background:var(--ap-panel)}
+.slot.on{background:var(--ap-a);color:var(--ap-on);border-color:transparent}
+.ph{max-width:360px;margin:0 auto;border:1px solid var(--ap-ln);border-radius:28px;padding:20px 18px;background:var(--ap-panel);box-shadow:0 14px 40px -18px rgba(0,0,0,.4)}
+.ph-it{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;padding:10px 12px}
+.ph-it .ap-btn{padding:6px 12px}
+.ph-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding:10px 12px;border-radius:14px;background:var(--ap-a2);font-size:.84rem}
+.ph-steps{list-style:none;display:grid;gap:12px;margin-top:8px}
+.ph-steps li{display:flex;align-items:center;gap:12px;color:var(--ap-mu)}
+.ph-steps i{font-style:normal;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--ap-ln);font-size:.75rem;flex:none}
+.ph-steps li.done{color:var(--ap-tx)}.ph-steps li.done i{background:var(--ap-a);color:var(--ap-on);border-color:transparent}
+.ph-steps li.cur{color:var(--ap-tx);font-weight:600}.ph-steps li.cur i{border-color:var(--ap-a);color:var(--ap-a)}
+.plan.on{border-color:var(--ap-a);box-shadow:0 0 0 1px var(--ap-a)}
+.plan-p{font-size:1.5rem;font-weight:800;margin:6px 0 8px;letter-spacing:-.03em}.plan-p small{font-size:.75rem;font-weight:500;color:var(--ap-mu)}
+.lan-hero{border-radius:14px;padding:34px 26px;background:linear-gradient(120deg,#0f3d2b,#1c7a56);color:#fff}
+.lan-hero h2{font-size:clamp(1.5rem,3.4vw,2.2rem);margin-bottom:8px}.lan-hero p{opacity:.85;max-width:44ch}
+details.ap-card summary{cursor:pointer;font-weight:600}
 .ap-side{background:var(--ap-panel);border-right:1px solid var(--ap-ln);padding:16px 10px;display:flex;flex-direction:column;gap:4px}
 .ap-brand{font-weight:800;padding:4px 10px 14px;font-size:1rem;color:var(--ap-a)}
 .ap-nav{background:none;border:0;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;color:var(--ap-mu);font-weight:500;font-size:.88rem;white-space:nowrap}
@@ -554,6 +586,34 @@ i.ci{transition:background .25s,color .25s,transform .3s}
       <button class="card glass" data-open="ms">
         <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="6" y="40" width="40" height="30" rx="5"/><rect class="a" x="66" y="40" width="40" height="30" rx="5"/><rect x="132" y="6" width="56" height="26" rx="5"/><rect x="132" y="42" width="56" height="26" rx="5"/><rect x="132" y="78" width="56" height="26" rx="5"/><line x1="46" y1="55" x2="66" y2="55"/><path d="M106 55 C120 55 120 19 132 19"/><line x1="106" y1="55" x2="132" y2="55"/><path d="M106 55 C120 55 120 91 132 91"/></svg></div>
         <div class="body"><span class="tag">Arquitectura</span><h3>Microservicios</h3><p>Servicios independientes detrás de un API Gateway.</p><span class="more">Probar →</span></div>
+      </button>
+      <button class="card glass" data-open="inv">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="8" y="8" width="184" height="94" rx="7"/><rect class="h" x="8" y="8" width="184" height="14" rx="7"/><rect class="b" x="18" y="32" width="70" height="7" rx="3"/><rect class="a" x="128" y="32" width="52" height="7" rx="3"/><rect class="b" x="18" y="43" width="70" height="7" rx="3"/><rect class="b" x="128" y="43" width="52" height="7" rx="3"/><rect class="b" x="18" y="54" width="70" height="7" rx="3"/><rect class="b" x="128" y="54" width="52" height="7" rx="3"/><rect class="b" x="18" y="65" width="70" height="7" rx="3"/><rect class="a" x="128" y="65" width="52" height="7" rx="3"/><rect class="b" x="18" y="76" width="70" height="7" rx="3"/><rect class="b" x="128" y="76" width="52" height="7" rx="3"/><rect class="b" x="18" y="87" width="70" height="7" rx="3"/><rect class="b" x="128" y="87" width="52" height="7" rx="3"/></svg></div>
+        <div class="body"><span class="tag">Gestión</span><h3>Inventario y bodega</h3><p>Stock en tiempo real, alertas de mínimo y registro de movimientos.</p><span class="more">Probar →</span></div>
+      </button>
+      <button class="card glass" data-open="res">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect class="" x="14" y="14" width="28" height="18" rx="4"/><rect class="" x="50" y="14" width="28" height="18" rx="4"/><rect class="a" x="86" y="14" width="28" height="18" rx="4"/><rect class="" x="122" y="14" width="28" height="18" rx="4"/><rect class="" x="158" y="14" width="28" height="18" rx="4"/><rect class="a" x="14" y="38" width="28" height="18" rx="4"/><rect class="" x="50" y="38" width="28" height="18" rx="4"/><rect class="" x="86" y="38" width="28" height="18" rx="4"/><rect class="" x="122" y="38" width="28" height="18" rx="4"/><rect class="" x="158" y="38" width="28" height="18" rx="4"/><rect class="" x="14" y="62" width="28" height="18" rx="4"/><rect class="" x="50" y="62" width="28" height="18" rx="4"/><rect class="a" x="86" y="62" width="28" height="18" rx="4"/><rect class="a" x="122" y="62" width="28" height="18" rx="4"/><rect class="" x="158" y="62" width="28" height="18" rx="4"/><rect class="" x="14" y="86" width="28" height="18" rx="4"/><rect class="a" x="50" y="86" width="28" height="18" rx="4"/><rect class="" x="86" y="86" width="28" height="18" rx="4"/><rect class="" x="122" y="86" width="28" height="18" rx="4"/><rect class="a" x="158" y="86" width="28" height="18" rx="4"/><rect class="b" x="14" y="108" width="1" height="1"/></svg></div>
+        <div class="body"><span class="tag">Web</span><h3>Reservas online</h3><p>Agenda con horarios disponibles, reserva y cancelación.</p><span class="more">Probar →</span></div>
+      </button>
+      <button class="card glass" data-open="fac">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="40" y="6" width="120" height="98" rx="7"/><rect class="b" x="52" y="18" width="50" height="7" rx="3"/><rect class="b" x="52" y="34" width="96" height="5" rx="2"/><rect class="b" x="52" y="46" width="96" height="5" rx="2"/><rect class="b" x="52" y="58" width="70" height="5" rx="2"/><line x1="52" y1="72" x2="148" y2="72"/><rect class="a" x="100" y="80" width="48" height="12" rx="4"/></svg></div>
+        <div class="body"><span class="tag">Gestión</span><h3>Facturación y cobranza</h3><p>Emite facturas con IVA y controla lo que te deben.</p><span class="more">Probar →</span></div>
+      </button>
+      <button class="card glass" data-open="ped">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect x="68" y="4" width="64" height="102" rx="12"/><rect class="b" x="78" y="16" width="44" height="6" rx="3"/><rect x="78" y="30" width="44" height="16" rx="4"/><rect x="78" y="52" width="44" height="16" rx="4"/><rect class="a" x="106" y="35" width="12" height="7" rx="3"/><rect class="a" x="106" y="57" width="12" height="7" rx="3"/><rect class="a" x="78" y="82" width="44" height="14" rx="6"/></svg></div>
+        <div class="body"><span class="tag">App móvil</span><h3>App de pedidos</h3><p>Menú, carrito y seguimiento del pedido en el teléfono.</p><span class="more">Probar →</span></div>
+      </button>
+      <button class="card glass" data-open="por">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><circle cx="40" cy="38" r="14"/><circle cx="100" cy="38" r="14"/><circle cx="160" cy="38" r="14"/><rect class="a" x="22" y="62" width="36" height="12" rx="5"/><rect class="a" x="82" y="62" width="36" height="12" rx="5"/><rect class="b" x="142" y="62" width="36" height="12" rx="5"/><rect class="a" x="22" y="82" width="36" height="12" rx="5"/><rect class="b" x="82" y="82" width="36" height="12" rx="5"/><rect class="b" x="142" y="82" width="36" height="12" rx="5"/></svg></div>
+        <div class="body"><span class="tag">Seguridad</span><h3>Portal con roles de acceso</h3><p>Cada usuario ve solo los módulos que le corresponden.</p><span class="more">Probar →</span></div>
+      </button>
+      <button class="card glass" data-open="ana">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect class="a" x="16" y="60" width="16" height="40" rx="2"/><rect class="a" x="42" y="48" width="16" height="52" rx="2"/><rect class="a" x="68" y="54" width="16" height="46" rx="2"/><rect class="a" x="94" y="36" width="16" height="64" rx="2"/><rect class="a" x="120" y="42" width="16" height="58" rx="2"/><rect class="a" x="146" y="24" width="16" height="76" rx="2"/><path d="M16 50 L50 38 L76 44 L102 24 L128 30 L154 12 L180 16" style="stroke-width:2"/></svg></div>
+        <div class="body"><span class="tag">Datos</span><h3>Analítica de ventas</h3><p>Gráficos con filtros por año y región, y reporte automático.</p><span class="more">Probar →</span></div>
+      </button>
+      <button class="card glass" data-open="lan">
+        <div class="thumb"><svg class="mini" viewBox="0 0 200 110"><rect class="a" x="10" y="8" width="180" height="34" rx="7"/><rect x="10" y="52" width="54" height="50" rx="6"/><rect x="73" y="52" width="54" height="50" rx="6" style="stroke:var(--accent);stroke-width:2"/><rect x="136" y="52" width="54" height="50" rx="6"/><rect class="b" x="18" y="62" width="30" height="6" rx="3"/><rect class="b" x="81" y="62" width="30" height="6" rx="3"/><rect class="b" x="144" y="62" width="30" height="6" rx="3"/><rect class="a" x="18" y="88" width="38" height="8" rx="4"/><rect class="a" x="81" y="88" width="38" height="8" rx="4"/><rect class="a" x="144" y="88" width="38" height="8" rx="4"/></svg></div>
+        <div class="body"><span class="tag">Web</span><h3>Landing de servicios</h3><p>Página con planes, preguntas frecuentes e inscripción.</p><span class="more">Probar →</span></div>
       </button>
     </div>
   </div>
@@ -1136,7 +1196,299 @@ function buildMs(){
   return mkApp('a-ms','microservicios','Servicios',[['simulador','Simulador'],['estado','Estado']],views,'simulador');
 }
 
-const builders={crm:buildCrm,gestion:buildGestion,web:buildWeb,bd:buildBd,ms:buildMs};
+/* ---------- Inventario y bodega (turquesa) ---------- */
+function buildInv(){
+  const P=[['Cable HDMI 2 m','Cables',24,10,3500],['Mouse inalámbrico','Periféricos',8,10,9900],['Teclado mecánico','Periféricos',15,6,32900],['Monitor 24"','Pantallas',5,4,119000],['Pendrive 64 GB','Almacenamiento',3,8,6500],['Disco SSD 500 GB','Almacenamiento',12,5,48900],['Cámara web HD','Periféricos',9,5,21900],['Router WiFi','Redes',6,4,29900]].map(p=>({n:p[0],c:p[1],s:p[2],m:p[3],v:p[4]}));
+  const mov=['Inventario cargado'];let fil='Todos';
+  const low=p=>p.s<=p.m;
+  const views={
+    resumen(c){
+      const units=P.reduce((a,p)=>a+p.s,0),val=P.reduce((a,p)=>a+p.s*p.v,0),al=P.filter(low).length;
+      const cats={};P.forEach(p=>cats[p.c]=(cats[p.c]||0)+p.s);const mx=Math.max(...Object.values(cats));
+      c.main.innerHTML=`<div class="ap-h">Resumen de bodega</div><p class="ap-sub">Estado actual del inventario.</p>
+      <div class="ap-kpis"><div class="ap-kpi"><small>Productos</small><b>${P.length}</b></div><div class="ap-kpi"><small>Unidades</small><b>${units}</b></div><div class="ap-kpi"><small>Valor del stock</small><b>${clp(val)}</b></div><div class="ap-kpi"><small>Con alerta</small><b>${al}</b></div></div>
+      <div class="ap-card"><b>Unidades por categoría</b><div class="ap-hb">${Object.keys(cats).map(k=>`<div><span>${k}</span><u><i style="width:${cats[k]/mx*100}%"></i></u><em>${cats[k]}</em></div>`).join('')}</div></div>
+      <div class="ap-row" style="margin-top:14px"><button class="ap-btn" id="ver">Ver productos con alerta →</button><button class="ap-btn alt" data-go="movimientos">Registrar movimiento</button></div>`;
+      c.main.querySelector('#ver').onclick=()=>{fil='Alerta';c.go('productos')};
+    },
+    productos(c){
+      let q='';
+      c.main.innerHTML=`<div class="ap-h">Productos</div><p class="ap-sub">Ajusta el stock con + y −. Los productos bajo el mínimo se marcan.</p>
+      <div class="ap-row"><input class="ap-in" id="q" placeholder="Buscar producto…" style="max-width:240px"><span id="ch">${chips(['Todos','Alerta'],fil)}</span></div>
+      <div class="tblw"><table class="ap-tbl"><thead><tr><th>Producto</th><th>Categoría</th><th>Stock</th><th>Estado</th></tr></thead><tbody id="tb"></tbody></table></div>`;
+      const tb=c.main.querySelector('#tb');
+      const draw=()=>{
+        tb.innerHTML='';
+        P.filter(p=>(fil==='Todos'||low(p))&&p.n.toLowerCase().includes(q)).forEach(p=>{
+          const tr=document.createElement('tr');
+          tr.innerHTML=`<td><b>${esc(p.n)}</b></td><td>${p.c}</td><td><span class="web-qty"><button>−</button><b>${p.s}</b><button>+</button></span></td><td><span class="ap-pill ${low(p)?'st-err':''}">${low(p)?'Bajo stock':'OK'}</span></td>`;
+          const [m,pl]=tr.querySelectorAll('button');
+          m.onclick=()=>{p.s=Math.max(0,p.s-1);mov.push('Salida de 1 · '+p.n);draw()};
+          pl.onclick=()=>{p.s++;mov.push('Entrada de 1 · '+p.n);draw()};
+          tb.appendChild(tr);
+        });
+      };
+      c.main.querySelector('#q').oninput=e=>{q=e.target.value.toLowerCase();draw()};
+      c.main.querySelector('#ch').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;fil=b.dataset.c;c.main.querySelector('#ch').innerHTML=chips(['Todos','Alerta'],fil);draw()};
+      draw();
+    },
+    movimientos(c){
+      const opts=()=>P.map((p,i)=>`<option value="${i}">${esc(p.n)} (stock ${p.s})</option>`).join('');
+      c.main.innerHTML=`<div class="ap-h">Registrar movimiento</div><p class="ap-sub">Entradas y salidas de bodega.</p>
+      <form class="ap-form" id="f"><label>Producto<select class="ap-in" name="p" id="sel">${opts()}</select></label><label>Tipo<select class="ap-in" name="t"><option>Entrada</option><option>Salida</option></select></label><label>Cantidad<input class="ap-in" name="q" type="number" min="1" value="1" required></label><button class="ap-btn" type="submit">Registrar</button></form>
+      <div id="ok"></div><div class="ap-card" style="margin-top:14px"><b>Últimos movimientos</b><ul class="ap-list" id="lg"></ul></div>`;
+      const lg=c.main.querySelector('#lg');
+      const paint=()=>{lg.innerHTML=mov.slice(-6).reverse().map(x=>`<li>${esc(x)}</li>`).join('')};paint();
+      c.main.querySelector('#f').onsubmit=e=>{
+        e.preventDefault();const f=new FormData(e.target),p=P[+f.get('p')],q=+f.get('q'),t=f.get('t'),ok=c.main.querySelector('#ok');
+        if(t==='Salida'&&q>p.s){ok.innerHTML=`<div class="ap-ok" style="border-color:#f87171">✗ No hay stock suficiente de ${esc(p.n)} (disponible: ${p.s}).</div>`;return}
+        p.s+=t==='Entrada'?q:-q;mov.push(`${t} de ${q} · ${p.n}`);
+        ok.innerHTML=`<div class="ap-ok">✓ ${t} registrada. Stock actual de ${esc(p.n)}: ${p.s}.</div>`;
+        const i=f.get('p');c.main.querySelector('#sel').innerHTML=opts();c.main.querySelector('#sel').value=i;paint();
+      };
+    }
+  };
+  return mkApp('a-inv','inventario','StockPro',[['resumen','Resumen'],['productos','Productos'],['movimientos','Movimientos']],views,'resumen');
+}
+
+/* ---------- Reservas online (rosa) ---------- */
+function buildRes(){
+  const days=['Lun','Mar','Mié','Jue','Vie'],hours=['09:00','10:00','11:00','12:00','15:00','16:00'],pros=['Dra. Rojas','Dr. Vera'];
+  const booked={'Dra. Rojas|Lun|10:00':'x','Dra. Rojas|Mar|15:00':'x','Dra. Rojas|Jue|09:00':'x','Dr. Vera|Lun|09:00':'x','Dr. Vera|Mié|11:00':'x','Dr. Vera|Vie|16:00':'x'};
+  let pro=pros[0],sel=null;const mine=[];
+  const views={
+    agenda(c){
+      c.main.innerHTML=`<div class="ap-h">Elige tu horario</div><p class="ap-sub">Selecciona profesional, día y hora disponible.</p>
+      <div class="ap-row" id="ch">${chips(pros,pro)}</div><div class="slots" id="g"></div><div id="sm"></div>`;
+      const g=c.main.querySelector('#g'),sm=c.main.querySelector('#sm');
+      const draw=()=>{
+        g.innerHTML='<span></span>'+days.map(d=>`<span><b>${d}</b></span>`).join('');
+        hours.forEach(h=>{g.insertAdjacentHTML('beforeend',`<span>${h}</span>`);days.forEach(d=>{
+          const k=`${pro}|${d}|${h}`,b=document.createElement('button');b.className='slot'+(sel===k?' on':'');b.disabled=!!booked[k];b.textContent=booked[k]?'Ocupado':'Libre';
+          b.onclick=()=>{sel=k;draw()};g.appendChild(b)})});
+        sm.innerHTML=sel?`<div class="ap-card" style="margin-top:14px"><b>${sel.split('|')[1]} ${sel.split('|')[2]}</b> con ${sel.split('|')[0]}<div class="ap-row" style="margin:10px 0 0"><button class="ap-btn" data-go="reservar">Reservar este horario →</button></div></div>`:`<p class="ap-sub" style="margin-top:14px">Aún no has elegido un horario.</p>`;
+        c.wire();
+      };
+      c.main.querySelector('#ch').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;pro=b.dataset.c;sel=null;c.main.querySelector('#ch').innerHTML=chips(pros,pro);draw()};
+      draw();
+    },
+    reservar(c){
+      if(!sel){c.main.innerHTML=`<div class="ap-h">Reservar</div><p class="ap-sub">Primero elige un horario en la agenda.</p><button class="ap-btn" data-go="agenda">Ir a la agenda →</button>`;return}
+      const [pr,d,h]=sel.split('|');
+      c.main.innerHTML=`<div class="ap-h">Confirma tu reserva</div><p class="ap-sub">${d} ${h} · ${pr}</p>
+      <form class="ap-form" id="f"><label>Nombre<input class="ap-in" name="n" required></label><label>Correo<input class="ap-in" name="e" type="email" required></label><label>Motivo<select class="ap-in" name="m"><option>Primera consulta</option><option>Control</option><option>Otro</option></select></label><button class="ap-btn" type="submit">Confirmar reserva</button></form><div id="ok"></div>`;
+      c.main.querySelector('#f').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);booked[sel]=f.get('n');mine.push({k:sel,n:f.get('n'),m:f.get('m')});sel=null;
+        c.main.querySelector('#f').remove();c.main.querySelector('#ok').innerHTML=`<div class="ap-ok"><b>✓ ¡Reserva confirmada!</b><p style="margin:6px 0 0">Te enviamos los datos a tu correo. Puedes verla o cancelarla cuando quieras.</p><div class="ap-row" style="margin:12px 0 0"><button class="ap-btn" data-go="mis">Ver mis reservas →</button></div></div>`;c.wire()};
+    },
+    mis(c){
+      c.main.innerHTML=`<div class="ap-h">Mis reservas</div><p class="ap-sub">Cancela una reserva para liberar el horario.</p><div id="ls"></div>`;
+      const ls=c.main.querySelector('#ls');
+      const draw=()=>{
+        if(!mine.length){ls.innerHTML=`<div class="ap-card">No tienes reservas todavía.</div><div class="ap-row" style="margin-top:12px"><button class="ap-btn" data-go="agenda">Reservar ahora →</button></div>`;c.wire();return}
+        ls.innerHTML='';
+        mine.forEach((r,i)=>{const [pr,d,h]=r.k.split('|'),el=document.createElement('div');el.className='ap-card';el.style.marginBottom='8px';
+          el.innerHTML=`<div class="ap-row" style="justify-content:space-between;margin:0"><span><b>${d} ${h}</b> · ${pr}<br><small style="color:var(--ap-mu)">${esc(r.n)} · ${r.m}</small></span><button class="ap-btn alt">Cancelar</button></div>`;
+          el.querySelector('button').onclick=()=>{delete booked[r.k];mine.splice(i,1);draw()};ls.appendChild(el)});
+      };
+      draw();
+    }
+  };
+  return mkApp('a-res','reservas','Clínica Sol',[['agenda','Agenda'],['reservar','Reservar'],['mis','Mis reservas']],views,'agenda',true);
+}
+
+/* ---------- Facturación y cobranza (azul noche y dorado) ---------- */
+function buildFac(){
+  const inv=[['F-1001','Altiplano Logística',1600000,'Pagada','05 sep'],['F-1002','Norte Salud SpA',850000,'Pendiente','30 oct'],['F-1003','Pampa Retail',2400000,'Vencida','12 oct'],['F-1004','Costa Verde Hotel',1250000,'Pendiente','08 nov'],['F-1005','Andes Educa',980000,'Pagada','20 sep'],['F-1006','Puerto Sur Ltda.',1700000,'Vencida','01 oct']].map(x=>({id:x[0],c:x[1],neto:x[2],e:x[3],v:x[4]}));
+  const tot=n=>Math.round(n*1.19),cls={Pagada:'st-ok',Pendiente:'st-warn',Vencida:'st-err'};
+  let fil='Todas';const sent={};
+  const sum=e=>inv.filter(i=>e==='Todas'||i.e===e).reduce((a,i)=>a+tot(i.neto),0);
+  const views={
+    facturas(c){
+      c.main.innerHTML=`<div class="ap-h">Facturas</div><p class="ap-sub">Marca como pagadas las facturas que ya cobraste.</p>
+      <div class="ap-kpis"><div class="ap-kpi"><small>Por cobrar</small><b>${clp(sum('Pendiente'))}</b></div><div class="ap-kpi"><small>Vencido</small><b>${clp(sum('Vencida'))}</b></div><div class="ap-kpi"><small>Cobrado</small><b>${clp(sum('Pagada'))}</b></div></div>
+      <div class="ap-row" id="ch">${chips(['Todas','Pendiente','Vencida','Pagada'],fil)}</div>
+      <div class="tblw"><table class="ap-tbl"><thead><tr><th>N°</th><th>Cliente</th><th>Total</th><th>Vence</th><th>Estado</th></tr></thead><tbody id="tb"></tbody></table></div>`;
+      const tb=c.main.querySelector('#tb');
+      const draw=()=>{
+        c.main.querySelectorAll('.ap-kpi b')[0].textContent=clp(sum('Pendiente'));c.main.querySelectorAll('.ap-kpi b')[1].textContent=clp(sum('Vencida'));c.main.querySelectorAll('.ap-kpi b')[2].textContent=clp(sum('Pagada'));
+        tb.innerHTML='';
+        inv.filter(i=>fil==='Todas'||i.e===fil).forEach(i=>{const tr=document.createElement('tr');
+          tr.innerHTML=`<td class="mono">${i.id}</td><td>${esc(i.c)}</td><td>${clp(tot(i.neto))}</td><td>${i.v}</td><td>${i.e==='Pagada'?`<span class="ap-pill st-ok">Pagada</span>`:`<button class="ap-pill ap-pbtn ${cls[i.e]}">${i.e} · cobrar ✓</button>`}</td>`;
+          const b=tr.querySelector('button');if(b)b.onclick=()=>{i.e='Pagada';draw()};tb.appendChild(tr)});
+      };
+      c.main.querySelector('#ch').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;fil=b.dataset.c;c.main.querySelector('#ch').innerHTML=chips(['Todas','Pendiente','Vencida','Pagada'],fil);draw()};
+      draw();
+    },
+    nueva(c){
+      c.main.innerHTML=`<div class="ap-h">Nueva factura</div><p class="ap-sub">El IVA (19%) y el total se calculan solos.</p>
+      <form class="ap-form" id="f"><label>Cliente<select class="ap-in" name="c">${[...new Set(inv.map(i=>i.c))].map(x=>`<option>${esc(x)}</option>`).join('')}</select></label><label>Concepto<input class="ap-in" name="k" required placeholder="Ej: Desarrollo módulo de reportes"></label><label>Monto neto (CLP)<input class="ap-in" name="n" id="n" type="number" min="1" required placeholder="1000000"></label>
+      <div class="ap-card" id="calc">Neto $0 · IVA 19% $0 · <b>Total $0</b></div><button class="ap-btn" type="submit">Emitir factura</button></form><div id="ok"></div>`;
+      const n=c.main.querySelector('#n');
+      n.oninput=()=>{const v=+n.value||0;c.main.querySelector('#calc').innerHTML=`Neto ${clp(v)} · IVA 19% ${clp(tot(v)-v)} · <b>Total ${clp(tot(v))}</b>`};
+      c.main.querySelector('#f').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),id='F-'+(1001+inv.length);inv.push({id,c:f.get('c'),neto:+f.get('n'),e:'Pendiente',v:'30 días'});
+        e.target.reset();n.oninput();c.main.querySelector('#ok').innerHTML=`<div class="ap-ok">✓ Factura ${id} emitida por ${clp(tot(+f.get('n')))}. Quedó en estado «Pendiente».<div class="ap-row" style="margin:10px 0 0"><button class="ap-btn" data-go="facturas">Ver facturas →</button></div></div>`;c.wire()};
+    },
+    cobranza(c){
+      const tt=sum('Todas')||1,est=['Pagada','Pendiente','Vencida'];
+      c.main.innerHTML=`<div class="ap-h">Cobranza</div><p class="ap-sub">Cómo está distribuida tu facturación y a quién recordarle.</p>
+      <div class="ap-card"><b>Facturación por estado</b><div class="ap-hb">${est.map(e=>`<div><span>${e}</span><u><i style="width:${sum(e)/tt*100}%"></i></u><em>${Math.round(sum(e)/tt*100)}%</em></div>`).join('')}</div></div>
+      <div class="ap-card" style="margin-top:12px"><b>Facturas vencidas</b><div id="vl"></div></div>`;
+      const vl=c.main.querySelector('#vl');
+      const v=inv.filter(i=>i.e==='Vencida');
+      if(!v.length)vl.innerHTML='<p class="ap-sub" style="margin:8px 0 0">¡Sin facturas vencidas! 🎉</p>';
+      v.forEach(i=>{const r=document.createElement('div');r.className='ap-row';r.style.cssText='justify-content:space-between;margin:10px 0 0';
+        r.innerHTML=`<span>${i.id} · ${esc(i.c)} · ${clp(tot(i.neto))}</span><button class="ap-btn alt">${sent[i.id]?'✓ Recordatorio enviado':'Enviar recordatorio'}</button>`;
+        const b=r.querySelector('button');b.disabled=!!sent[i.id];b.onclick=()=>{sent[i.id]=1;b.textContent='✓ Recordatorio enviado';b.disabled=true};vl.appendChild(r)});
+    }
+  };
+  return mkApp('a-fac','facturacion','FacturaPro',[['facturas','Facturas'],['nueva','+ Nueva'],['cobranza','Cobranza']],views,'facturas');
+}
+
+/* ---------- App móvil de pedidos (naranja) ---------- */
+function buildPed(){
+  const M=[['Roll California','Sushi',5900],['Roll Salmón','Sushi',6500],['Gyoza x6','Sushi',4200],['Bowl Pollo Teriyaki','Bowls',6900],['Bowl Vegano','Bowls',6400],['Té helado','Bebidas',2200],['Limonada menta','Bebidas',2500]];
+  const cart={},steps=['Pedido recibido','En preparación','En camino','Entregado'];let order=null,ctx0;
+  const n=()=>Object.values(cart).reduce((a,b)=>a+b,0),total=()=>Object.keys(cart).reduce((a,k)=>a+cart[k]*M.find(m=>m[0]===k)[2],0);
+  const upd=()=>ctx0.setNav('pedido','Pedido ('+n()+')');
+  const views={
+    menu(c){
+      ctx0=c;let f='Todo';
+      c.main.innerHTML=`<div class="ph"><div class="ap-h">Sabor Express</div><p class="ap-sub">Pide en 3 pasos desde tu teléfono.</p><div class="ap-row" id="ch">${chips(['Todo','Sushi','Bowls','Bebidas'],f)}</div><div id="ls"></div><div class="ph-bar"><span id="bt"></span><button class="ap-btn" data-go="pedido">Ver pedido →</button></div></div>`;
+      const ls=c.main.querySelector('#ls');
+      const draw=()=>{ls.innerHTML='';M.filter(m=>f==='Todo'||m[1]===f).forEach(m=>{const r=document.createElement('div');r.className='ap-card ph-it';
+          r.innerHTML=`<span><b>${m[0]}</b><br><small style="color:var(--ap-mu)">${m[1]} · ${clp(m[2])}</small></span><button class="ap-btn">+</button>`;
+          r.querySelector('button').onclick=()=>{cart[m[0]]=(cart[m[0]]||0)+1;upd();draw()};ls.appendChild(r)});
+        c.main.querySelector('#bt').textContent=n()?`${n()} ítem${n()>1?'s':''} · ${clp(total())}`:'Tu pedido está vacío'};
+      c.main.querySelector('#ch').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;f=b.dataset.c;c.main.querySelector('#ch').innerHTML=chips(['Todo','Sushi','Bowls','Bebidas'],f);draw()};
+      draw();c.wire();
+    },
+    pedido(c){
+      const ks=Object.keys(cart).filter(k=>cart[k]>0);
+      if(!ks.length){c.main.innerHTML=`<div class="ph"><div class="ap-h">Tu pedido</div><p class="ap-sub">Aún no agregas productos.</p><button class="ap-btn" data-go="menu">Ir al menú →</button></div>`;return}
+      c.main.innerHTML=`<div class="ph"><div class="ap-h">Tu pedido</div><p class="ap-sub">Ajusta cantidades y confirma.</p><div id="ls"></div><div class="ap-row" style="justify-content:space-between;margin-top:12px"><b id="tt"></b></div><button class="ap-btn" id="ok" style="width:100%">Confirmar y pagar</button></div>`;
+      const ls=c.main.querySelector('#ls');
+      const draw=()=>{ls.innerHTML='';ks.forEach(k=>{const m=M.find(x=>x[0]===k),r=document.createElement('div');r.className='ap-card ph-it';
+          r.innerHTML=`<span><b>${k}</b><br><small style="color:var(--ap-mu)">${clp(m[2])} c/u</small></span><span class="web-qty"><button>−</button><b>${cart[k]}</b><button>+</button></span>`;
+          const [mi,pl]=r.querySelectorAll('button');mi.onclick=()=>{cart[k]=Math.max(0,cart[k]-1);upd();cart[k]===0?c.go('pedido'):draw()};pl.onclick=()=>{cart[k]++;upd();draw()};ls.appendChild(r)});
+        c.main.querySelector('#tt').textContent='Total: '+clp(total())};
+      draw();
+      c.main.querySelector('#ok').onclick=()=>{order={n:2000+Math.floor(Math.random()*8000),s:0,t:total()};Object.keys(cart).forEach(k=>delete cart[k]);upd();c.go('seguimiento')};
+    },
+    seguimiento(c){
+      if(!order){c.main.innerHTML=`<div class="ph"><div class="ap-h">Seguimiento</div><p class="ap-sub">Cuando hagas un pedido podrás seguirlo aquí.</p><button class="ap-btn" data-go="menu">Hacer un pedido →</button></div>`;return}
+      const draw=()=>{c.main.innerHTML=`<div class="ph"><div class="ap-h">Pedido #${order.n}</div><p class="ap-sub">${clp(order.t)} · pagado</p>
+        <ul class="ph-steps">${steps.map((s,i)=>`<li class="${i<order.s?'done':i===order.s?'cur':''}"><i>${i<order.s?'✓':i+1}</i>${s}</li>`).join('')}</ul>
+        <p class="ap-sub" style="margin:12px 0">${order.s<3?'Llegada estimada: '+(35-order.s*10)+' min':'¡Que lo disfrutes!'}</p>
+        ${order.s<3?'<button class="ap-btn" id="av" style="width:100%">Avanzar estado (demo)</button>':'<button class="ap-btn alt" data-go="menu" style="width:100%">Hacer otro pedido</button>'}</div>`;
+        const b=c.main.querySelector('#av');if(b)b.onclick=()=>{order.s++;draw()};c.wire()};
+      draw();
+    }
+  };
+  return mkApp('a-ped','app-pedidos','📱 Sabor Express',[['menu','Menú'],['pedido','Pedido (0)'],['seguimiento','Seguimiento']],views,'menu',true);
+}
+
+/* ---------- Portal con roles (grafito y cian) ---------- */
+function buildPor(){
+  const U=[['Ana Pizarro','Administradora','admin'],['Luis Cáceres','Coordinador','coord'],['Marta Soto','Docente','doc']];
+  const MOD=[['Usuarios',['admin']],['Reportes',['admin','coord']],['Cursos',['admin','coord','doc']],['Mis notas',['coord','doc']],['Configuración',['admin']]];
+  let user=null;const log=[];
+  const views={
+    ingreso(c){
+      c.main.innerHTML=`<div class="ap-h">Ingreso</div><p class="ap-sub">Elige un usuario de prueba para ver cómo cambia el acceso según el rol.</p><div class="ap-grid" id="g"></div>`;
+      const g=c.main.querySelector('#g');
+      U.forEach(u=>{const d=document.createElement('div');d.className='ap-card';d.innerHTML=`<b>${u[0]}</b><p class="ap-sub" style="margin:2px 0 10px">${u[1]}</p><button class="ap-btn">Ingresar</button>`;
+        d.querySelector('button').onclick=()=>{user=u;log.push(['200','Inicio de sesión: '+u[0]+' ('+u[1]+')']);c.go('modulos')};g.appendChild(d)});
+    },
+    modulos(c){
+      if(!user){c.main.innerHTML=`<div class="ap-h">Módulos</div><p class="ap-sub">Primero inicia sesión.</p><button class="ap-btn" data-go="ingreso">Ir al ingreso →</button>`;return}
+      c.main.innerHTML=`<div class="ap-h">Hola, ${user[0].split(' ')[0]}</div><p class="ap-sub">Rol: ${user[1]}. Los módulos bloqueados no están disponibles para tu rol.</p><div class="ap-grid" id="g"></div><div id="msg"></div>
+      <div class="ap-row" style="margin-top:14px"><button class="ap-btn alt" id="out">Cerrar sesión</button><button class="ap-btn alt" data-go="registro">Ver registro de accesos</button></div>`;
+      const g=c.main.querySelector('#g'),msg=c.main.querySelector('#msg');
+      MOD.forEach(m=>{const ok=m[1].includes(user[2]),d=document.createElement('button');d.className='ap-card ap-deal';d.style.opacity=ok?1:.5;
+        d.innerHTML=`<b>${ok?'🔓':'🔒'} ${m[0]}</b><span>${ok?'Acceso permitido':'Sin permiso'}</span>`;
+        d.onclick=()=>{if(ok){log.push(['200',user[0]+' abrió «'+m[0]+'»']);msg.innerHTML=`<div class="ap-ok">✓ 200 · Acceso permitido a «${m[0]}».</div>`}else{log.push(['403',user[0]+' intentó abrir «'+m[0]+'»']);msg.innerHTML=`<div class="ap-ok" style="border-color:#f87171">✗ 403 · Tu rol (${user[1]}) no tiene permiso para «${m[0]}».</div>`}};g.appendChild(d)});
+      c.main.querySelector('#out').onclick=()=>{log.push(['200','Cierre de sesión: '+user[0]]);user=null;c.go('ingreso')};
+    },
+    registro(c){
+      c.main.innerHTML=`<div class="ap-h">Registro de accesos</div><p class="ap-sub">Cada intento queda guardado, permitido o rechazado.</p><div class="ap-card"><ul class="ap-list" id="lg"></ul></div>`;
+      c.main.querySelector('#lg').innerHTML=log.length?log.slice().reverse().map(l=>`<li><span class="ap-pill ${l[0]==='200'?'st-ok':'st-err'}">${l[0]}</span> ${esc(l[1])}</li>`).join(''):'<li>Aún no hay actividad.</li>';
+    }
+  };
+  return mkApp('a-por','portal','Portal Acceso',[['ingreso','Ingreso'],['modulos','Módulos'],['registro','Registro']],views,'ingreso');
+}
+
+/* ---------- Analítica de ventas (piedra y azul) ---------- */
+function buildAna(){
+  const mes=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  const B={Norte:[32,35,38,36,40,43,45,47,44,46,50,58],Centro:[48,50,55,52,58,61,64,66,63,67,72,84],Sur:[22,24,27,26,29,31,33,35,32,34,38,44]};
+  const F=[1.08,1.1,1.09,1.12,1.11,1.13,1.12,1.14,1.12,1.15,1.13,1.16],TK={'2025':41200,'2026':43800};
+  let yr='2026',rg='Todas';
+  const ser=(y,r)=>mes.map((_,i)=>{const s=(r==='Todas'?Object.keys(B):[r]).reduce((a,k)=>a+B[k][i],0);return y==='2025'?s:Math.round(s*F[i]*10)/10});
+  const tot=a=>Math.round(a.reduce((x,y)=>x+y,0)*10)/10;
+  const bar=c=>`<div class="ap-row"><span id="fy">${chips(['2025','2026'],yr)}</span><span id="fr">${chips(['Todas','Norte','Centro','Sur'],rg)}</span></div>`;
+  const wire=(c,redraw)=>{
+    c.main.querySelector('#fy').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;yr=b.dataset.c;c.main.querySelector('#fy').innerHTML=chips(['2025','2026'],yr);redraw()};
+    c.main.querySelector('#fr').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;rg=b.dataset.c;c.main.querySelector('#fr').innerHTML=chips(['Todas','Norte','Centro','Sur'],rg);redraw()};
+  };
+  const views={
+    dashboard(c){
+      c.main.innerHTML=`<div class="ap-h">Dashboard de ventas</div><p class="ap-sub">Cambia el año y la región para actualizar todo.</p>${bar(c)}<div class="ap-kpis" id="k"></div><div class="ap-card"><b>Ventas por mes (millones de pesos)</b><div class="ap-bars" id="b"></div></div>`;
+      const draw=()=>{const s=ser(yr,rg),t=tot(s),mx=Math.max(...s),ped=Math.round(t*1e6/TK[yr]);
+        c.main.querySelector('#k').innerHTML=`<div class="ap-kpi"><small>Ventas ${yr}</small><b>$${t.toLocaleString('es-CL')} M</b></div><div class="ap-kpi"><small>Pedidos</small><b>${ped.toLocaleString('es-CL')}</b></div><div class="ap-kpi"><small>Ticket promedio</small><b>${clp(TK[yr])}</b></div>`;
+        c.main.querySelector('#b').innerHTML=s.map((v,i)=>`<div class="ap-bw" title="${mes[i]}: $${v} M"><span>${v}</span><div class="ap-bar" style="height:${v/mx*100}%"></div><em>${mes[i]}</em></div>`).join('')};
+      wire(c,draw);draw();
+    },
+    productos(c){
+      c.main.innerHTML=`<div class="ap-h">Ventas por producto</div><p class="ap-sub">Participación de cada línea en el total filtrado.</p>${bar(c)}<div class="ap-card"><div class="ap-hb" id="h"></div></div>`;
+      const P=[['Plan Pro',.34],['Plan Básico',.28],['Soporte mensual',.2],['Capacitación',.12],['Otros',.06]];
+      const draw=()=>{const t=tot(ser(yr,rg));c.main.querySelector('#h').innerHTML=P.map(p=>`<div><span>${p[0]}</span><u><i style="width:${p[1]*100/.34}%"></i></u><em>$${(t*p[1]).toFixed(1)} M</em></div>`).join('')};
+      wire(c,draw);draw();
+    },
+    reporte(c){
+      c.main.innerHTML=`<div class="ap-h">Reporte automático</div><p class="ap-sub">Se genera con los filtros elegidos.</p>${bar(c)}<button class="ap-btn" id="gen">Generar reporte</button><div id="rs"></div>`;
+      wire(c,()=>{c.main.querySelector('#rs').innerHTML=''});
+      c.main.querySelector('#gen').onclick=()=>{const s=ser(yr,rg),t=tot(s),mx=Math.max(...s),mi=mes[s.indexOf(mx)];
+        const prev=tot(ser('2025',rg)),dif=yr==='2026'?` Frente a 2025, la variación es de <b>+${Math.round((t/prev-1)*100)}%</b>.`:'';
+        c.main.querySelector('#rs').innerHTML=`<div class="ap-card" style="margin-top:14px"><b>Reporte ${yr} · ${rg}</b><p style="margin:8px 0">Las ventas totales fueron de <b>$${t.toLocaleString('es-CL')} millones</b>. El mejor mes fue <b>${mi}</b> con $${mx} M.${dif}</p><div class="ap-row" style="margin:0"><button class="ap-btn alt" id="dl">Descargar PDF (demo)</button></div><div id="dm"></div></div>`;
+        c.main.querySelector('#dl').onclick=()=>{c.main.querySelector('#dm').innerHTML='<div class="ap-ok" style="margin-top:10px">Demo: aquí se descargaría el archivo PDF.</div>'}};
+    }
+  };
+  return mkApp('a-ana','analitica','VentasBI',[['dashboard','Dashboard'],['productos','Productos'],['reporte','Reporte']],views,'dashboard');
+}
+
+/* ---------- Landing de servicios (verde bosque) ---------- */
+function buildLan(){
+  const PL=[['Básico',19990,['2 clases por semana','Acceso a la app']],['Plus',29990,['Clases ilimitadas','App y plan de entrenamiento','1 evaluación al mes']],['Premium',44990,['Todo lo de Plus','Entrenador personal','Nutrición guiada']]];
+  let plan='Plus',per='Mensual';
+  const price=p=>per==='Mensual'?p[1]:p[1]*10;
+  const FAQ=[['¿Hay contrato de permanencia?','No. Puedes cancelar cuando quieras desde tu cuenta.'],['¿Puedo probar antes de pagar?','Sí, tu primera clase es gratis para que conozcas el lugar.'],['¿Qué pasa si no puedo asistir un día?','Puedes reprogramar tu clase hasta 2 horas antes sin costo.'],['¿Cómo pago?','Con tarjeta de débito, crédito o transferencia.']];
+  const views={
+    inicio(c){
+      c.main.innerHTML=`<div class="lan-hero"><h2>Entrena a tu ritmo,<br>todos los días.</h2><p>Clases guiadas, planes flexibles y un equipo que te acompaña.</p><div class="ap-row" style="margin:18px 0 0"><button class="ap-btn" data-go="planes">Ver planes</button><button class="ap-btn alt" data-go="inscripcion">Clase gratis</button></div></div>
+      <div class="ap-grid" style="margin-top:14px"><div class="ap-card"><b>Clases guiadas</b><p class="ap-sub" style="margin:4px 0 0">Para todos los niveles.</p></div><div class="ap-card"><b>Horarios flexibles</b><p class="ap-sub" style="margin:4px 0 0">De 6:00 a 22:00.</p></div><div class="ap-card"><b>Seguimiento</b><p class="ap-sub" style="margin:4px 0 0">Mide tu progreso en la app.</p></div></div>`;
+    },
+    planes(c){
+      c.main.innerHTML=`<div class="ap-h">Elige tu plan</div><p class="ap-sub">Pagando el plan anual te ahorras 2 meses.</p><div class="ap-row" id="pr">${chips(['Mensual','Anual'],per)}</div><div class="ap-grid" id="g"></div>`;
+      const g=c.main.querySelector('#g');
+      const draw=()=>{g.innerHTML='';PL.forEach(p=>{const d=document.createElement('div');d.className='ap-card plan'+(plan===p[0]?' on':'');
+          d.innerHTML=`<b>${p[0]}</b><div class="plan-p">${clp(price(p))}<small>/${per==='Mensual'?'mes':'año'}</small></div><ul class="ap-list">${p[2].map(x=>`<li>✓ ${x}</li>`).join('')}</ul><button class="ap-btn" style="margin-top:12px">${plan===p[0]?'Plan elegido ✓':'Elegir plan'}</button>`;
+          d.querySelector('button').onclick=()=>{plan=p[0];draw()};g.appendChild(d)})};
+      c.main.querySelector('#pr').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;per=b.dataset.c;c.main.querySelector('#pr').innerHTML=chips(['Mensual','Anual'],per);draw()};
+      draw();
+      c.main.insertAdjacentHTML('beforeend','<div class="ap-row" style="margin-top:14px"><button class="ap-btn" data-go="inscripcion">Continuar con mi plan →</button></div>');c.wire();
+    },
+    preguntas(c){
+      c.main.innerHTML=`<div class="ap-h">Preguntas frecuentes</div><p class="ap-sub">Haz clic en una pregunta para ver la respuesta.</p>`+FAQ.map(f=>`<details class="ap-card" style="margin-bottom:8px"><summary>${f[0]}</summary><p class="ap-sub" style="margin:8px 0 0">${f[1]}</p></details>`).join('');
+    },
+    inscripcion(c){
+      c.main.innerHTML=`<div class="ap-h">Inscríbete</div><p class="ap-sub">Plan elegido: <b>${plan}</b> · ${per}</p><form class="ap-form" id="f"><label>Nombre<input class="ap-in" name="n" required></label><label>Correo<input class="ap-in" name="e" type="email" required></label><label>¿Cuándo quieres empezar?<select class="ap-in"><option>Esta semana</option><option>Próxima semana</option><option>Este mes</option></select></label><button class="ap-btn" type="submit">Reservar clase gratis</button></form><div id="ok"></div>`;
+      c.main.querySelector('#f').onsubmit=e=>{e.preventDefault();const n=new FormData(e.target).get('n');e.target.remove();c.main.querySelector('#ok').innerHTML=`<div class="ap-ok"><b>✓ ¡Listo, ${esc(n)}!</b><p style="margin:6px 0 0">Reservamos tu clase gratis y te escribiremos para confirmar tu plan ${plan}.</p></div>`};
+    }
+  };
+  return mkApp('a-lan','landing','Vita Studio',[['inicio','Inicio'],['planes','Planes'],['preguntas','Preguntas'],['inscripcion','Inscripción']],views,'inicio',true);
+}
+
+const builders={crm:buildCrm,gestion:buildGestion,web:buildWeb,bd:buildBd,ms:buildMs,inv:buildInv,res:buildRes,fac:buildFac,ped:buildPed,por:buildPor,ana:buildAna,lan:buildLan};
 function openDemo(id){
   body.innerHTML='';
   if(builders[id]){body.className='mb appmode';body.appendChild(builders[id]())}
