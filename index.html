@@ -77,6 +77,7 @@ header .in{display:flex;align-items:center;justify-content:space-between;height:
 .right{display:flex;gap:10px;align-items:center}
 .icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--glass);cursor:pointer;display:grid;place-items:center;padding:0}
 .icon-btn:hover{border-color:var(--accent)}
+.lang-btn{width:46px;font-family:"JetBrains Mono",monospace;font-size:.76rem;font-weight:700;letter-spacing:.04em}
 .icon-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
 #theme .sun{display:none}:root[data-theme="light"] #theme .sun{display:block}:root[data-theme="light"] #theme .moon{display:none}
 .menu-btn{display:none}
@@ -497,6 +498,7 @@ i.ci{transition:background .25s,color .25s,transform .3s}
       <a href="#contacto">Contacto</a>
     </nav>
     <div class="right">
+      <button class="icon-btn lang-btn" id="language-toggle" type="button" aria-label="Switch language" title="Switch language">EN</button>
       <button class="icon-btn" id="theme" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">
         <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -1704,6 +1706,107 @@ if(!PIN&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
   const mq=matchMedia('(min-width:900px) and (min-height:520px)'),was=PIN;let t;
   addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(()=>{if((mq.matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches)!==was)location.reload()},300)});
 })();
+
+/* Idioma del portafolio: ES / EN */
+(function(){
+  const toggle=document.getElementById('language-toggle');
+  if(!toggle)return;
+  const copy={
+    es:{
+      nav:['Servicios','Ejemplos','Recursos','Proyectos','Perfil','Contacto'],
+      navCta:'Cotizar', heroLead:'Diseño y desarrollo sistemas de gestión, páginas web, APIs y microservicios. Primero entiendo cómo funciona tu operación; después construyo algo claro, seguro y hecho para durar.',
+      heroCta:['Solicitar cotización','Ver ejemplos','Descargar CV'],
+      promise:['✓ Cotización sin costo','✓ Respuesta en 24 horas'],
+      facts:['años de experiencia','proyectos destacados','certificaciones'],
+      sections:{
+        servicios:['Servicios','Lo que puedo hacer por tu proyecto','Desde la idea hasta el sistema funcionando: diseño, desarrollo, seguridad y despliegue.'],
+        ejemplos:['Ejemplos','Así se ven las soluciones','Maquetas que construí con datos ficticios para mostrar el tipo de sistemas que puedo desarrollar. Cada ejemplo es una mini-aplicación con su propia paleta: navega, haz clic y pruébala.'],
+        recursos:['Recursos','Material de referencia','Esquemas y plantillas que uso al planificar un proyecto, listos para consultar.'],
+        proceso:['Cómo trabajo','De la idea al sistema funcionando','Un proceso ágil y transparente, con entregas que ya se pueden usar.'],
+        proyectos:['Proyectos','Experiencia real','Proyectos de software y arquitectura en los que participé, incluyendo soluciones para la Universidad de Tarapacá.'],
+        perfil:['Perfil','Ingeniería con enfoque práctico','Ingeniero de Ejecución en Computación e Informática y Licenciado en Ciencias de la Ingeniería, con experiencia en el ciclo de vida del desarrollo de software. Conocimientos en seguridad, redes e integración continua bajo metodologías ágiles.'],
+        contacto:['Contacto','Conversemos sobre tu proyecto','Cuéntame qué necesitas resolver. Podemos conversar sobre alcance, objetivos y posibles soluciones.']
+      },
+      projectBullets:[
+        ['Participé en el desarrollo de una plataforma de seguimiento académico y laboral para egresados de Pedagogía en Educación Diferencial.','Trabajé en funcionalidades de backend y persistencia de datos utilizando Prisma ORM.','Se incorporaron mecanismos de autenticación JWT y control de acceso basado en roles (RBAC).'],
+        ['Participé en el desarrollo de servicios backend y su entorno de ejecución con Docker Compose.','El proyecto contempla autenticación con Bcrypt y gestión de sesiones mediante tokens.','Se implementaron middlewares para proteger rutas y validar permisos.'],
+        ['Participé en el desarrollo de una solución distribuida que integra un Micro Frontend con un API Gateway.','El proyecto contempla servicios separados y mecanismos de continuidad ante fallos.','Se trabajó con solicitudes asíncronas y configuración de políticas CORS.']
+      ],
+      profile:['Habilidades técnicas','Lenguajes y frameworks','Bases de datos y API','DevOps y metodologías','Idiomas','Certificaciones'],
+      contactLabels:['Correo','Teléfono','WhatsApp','LinkedIn','Currículum','Ubicación','Descargar CV en PDF ↓','Arica, Chile · Trabajo remoto'],
+      form:['Nombre','Correo','¿Qué necesitas?','Cuéntame tu idea','Enviar por correo','Al enviar se abrirá tu aplicación de correo con el mensaje listo para mandar.']
+    },
+    en:{
+      nav:['Services','Examples','Resources','Projects','Profile','Contact'],
+      navCta:'Contact me', heroLead:'I design and build management systems, websites, APIs and microservices. I first understand how your operation works; then I build solutions that are clear, secure and maintainable.',
+      heroCta:['Request a quote','View examples','Download CV'],
+      promise:['✓ No-obligation quote','✓ Response within 24 hours'],
+      facts:['years of experience','featured projects','certifications'],
+      sections:{
+        servicios:['Services','How I can help your project','From concept to a working system: design, development, security and deployment.'],
+        ejemplos:['Examples','What solutions can look like','Interactive mockups built with fictional data to demonstrate the types of systems I can develop. Each example is a mini application you can explore.'],
+        recursos:['Resources','Technical references','Diagrams and templates I use when planning software projects, ready to explore.'],
+        proceso:['My process','From idea to working software','An agile, transparent process with useful deliverables at every stage.'],
+        proyectos:['Projects','Selected experience','Software and architecture projects I contributed to, including solutions for Universidad de Tarapacá.'],
+        perfil:['Profile','Practical software engineering','Computer Science Engineer and Bachelor of Science in Engineering, with experience across the software development lifecycle. Knowledge of security, networking and continuous integration in agile environments.'],
+        contacto:['Contact','Let’s discuss your project','Tell me what you need to solve. We can discuss scope, goals and possible technical solutions.']
+      },
+      projectBullets:[
+        ['Contributed to the development of an academic and career tracking platform for graduates of the Special Education program.','Worked on backend features and data persistence using Prisma ORM.','The platform includes JWT authentication and role-based access control (RBAC).'],
+        ['Contributed to backend services and their runtime environment using Docker Compose.','The project includes Bcrypt-based authentication and token-based session management.','Middleware was used to protect routes and validate permissions.'],
+        ['Contributed to a distributed solution integrating a Micro Frontend with a centralized API Gateway.','The project includes separate services and mechanisms designed to improve continuity during failures.','Worked with asynchronous requests and CORS policy configuration.']
+      ],
+      profile:['Technical skills','Languages and frameworks','Databases and APIs','DevOps and methodologies','Languages','Certifications'],
+      contactLabels:['Email','Phone','WhatsApp','LinkedIn','Resume','Location','Download CV in PDF ↓','Arica, Chile · Remote work'],
+      form:['Name','Email','What do you need?','Tell me about your idea','Send by email','Your email application will open with the message ready to send.']
+    }
+  };
+  const setText=(selector,values)=>document.querySelectorAll(selector).forEach((el,i)=>{if(values[i]!==undefined)el.textContent=values[i]});
+  const apply=(lang)=>{
+    const d=copy[lang];document.documentElement.lang=lang;
+    toggle.textContent=lang==='es'?'EN':'ES';
+    document.title=lang==='es'?'Joe Arellano R. · Ingeniero en Computación e Informática':'Joe Arellano R. · Computer Science Engineer';
+    const desc=document.querySelector('meta[name="description"]');
+    if(desc)desc.content=lang==='es'?'Ingeniero en Computación e Informática. Desarrollo de software, sistemas web, APIs y arquitectura de software.':'Computer Science Engineer. Software development, web systems, APIs and software architecture.';
+    setText('#links a',d.nav);
+    const cta=document.querySelector('.nav-cta');if(cta)cta.textContent=d.navCta;
+    const lead=document.querySelector('#inicio .lead');if(lead)lead.textContent=d.heroLead;
+    setText('#inicio .cta a',d.heroCta);
+    setText('#inicio .promise span',d.promise);
+    setText('#inicio .facts .fi span',d.facts);
+    Object.entries(d.sections).forEach(([id,arr])=>{
+      const sec=document.getElementById(id);if(!sec)return;
+      const eyebrow=sec.querySelector('.eyebrow'),heading=sec.querySelector('h2'),sub=sec.querySelector('.sub');
+      if(eyebrow)eyebrow.textContent=arr[0];if(heading)heading.textContent=arr[1];if(sub)sub.textContent=arr[2];
+    });
+    setText('#perfil .panel:first-child h3', [d.profile[0]]);
+    setText('#perfil .skill h4',d.profile.slice(1,5));
+    setText('#perfil .panel:last-child h3',[d.profile[5]]);
+    document.querySelectorAll('#proyectos .proj').forEach((p,i)=>p.querySelectorAll('.pts li').forEach((li,j)=>{const v=d.projectBullets[i]?.[j];if(v)li.textContent=v}));
+    const labels=document.querySelectorAll('#contacto .cinfo .ct small');
+    labels.forEach((el,i)=>{if(d.contactLabels[i])el.textContent=d.contactLabels[i]});
+    const cv=document.querySelector('#contacto .cinfo a[download] .ct b');if(cv)cv.textContent=d.contactLabels[6];
+    const loc=document.querySelector('#contacto .cinfo .crow:last-child .ct b');if(loc)loc.textContent=d.contactLabels[7];
+    const form=document.getElementById('form');
+    if(form){
+      const labs=form.querySelectorAll('label');const f=form.querySelector('button[type=submit]'),note=form.querySelector('.note');
+      if(labs[0])labs[0].childNodes[0].textContent=d.form[0];
+      if(labs[1])labs[1].childNodes[0].textContent=d.form[1];
+      if(labs[2])labs[2].childNodes[0].textContent=d.form[2];
+      if(labs[3])labs[3].childNodes[0].textContent=d.form[3];
+      if(f)f.textContent=d.form[4];if(note)note.textContent=d.form[5];
+      const inputs=form.querySelectorAll('input');
+      if(inputs[0])inputs[0].placeholder=lang==='es'?'Tu nombre':'Your name';
+      if(inputs[1])inputs[1].placeholder=lang==='es'?'tu@correo.com':'you@email.com';
+      const ta=form.querySelector('textarea');if(ta)ta.placeholder=lang==='es'?'Describe brevemente qué necesitas, plazos y presupuesto estimado...':'Briefly describe your needs, timeline and estimated budget...';
+    }
+    try{localStorage.setItem('portfolio-language',lang)}catch(e){}
+  };
+  let current='es';try{current=localStorage.getItem('portfolio-language')||'es'}catch(e){}
+  toggle.addEventListener('click',()=>{current=current==='es'?'en':'es';apply(current)});
+  apply(current);
+})();
+
 </script>
 </body>
 </html>
